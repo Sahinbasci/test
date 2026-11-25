@@ -3842,7 +3842,7 @@
  [
   "tutarda sıfır ya da eksi ölçüt üst katmana geçmez",
   "avukat_perf/referans.py",
-  "    return oran.where(oran > 0) if sifir_olcut_degil else oran",
+  "    return oran.where(diger_pay > YARIM_KURUS) if sifir_olcut_degil else oran",
   "    return oran"
  ],
  [
@@ -3968,7 +3968,7 @@
  [
   "süre beklentisi kendi dönemlerini içerir",
   "avukat_perf/referans.py",
-  "    oran = ((toplam[pay] - kendi[pay]) / diger_payda).where(diger_payda > 0)",
+  "    oran = (diger_pay / diger_payda).where(diger_payda > 0)",
   "    oran = (toplam[pay] / toplam[payda]).where(diger_payda > 0)"
  ],
  [
@@ -4774,5 +4774,11 @@
   "avukat_perf/agirlik.py",
   "RASTGELE_TUTARLILIK = {3: 0.58, 4: 0.90}",
   "RASTGELE_TUTARLILIK = {3: 0.90, 4: 0.90}"
+ ],
+ [
+  "tutar ölçütünde yarım kuruş artığı ölçüt sayılır",
+  "avukat_perf/referans.py",
+  "    return oran.where(diger_pay > YARIM_KURUS) if sifir_olcut_degil else oran",
+  "    return oran.where(diger_pay > 0) if sifir_olcut_degil else oran"
  ]
 ]

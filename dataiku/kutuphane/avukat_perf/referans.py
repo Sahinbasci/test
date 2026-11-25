@@ -1,17 +1,21 @@
 """Beklentinin karşılaştırma ölçütü: aynı gruptaki DİĞER avukatların oranı (tahsilat ve süre).
 
-Avukatın kendi sonucu kendi beklentisine girmez. Böylece fazla başarı puanı hiçbir zaman
-düşürmez ve grupta payı büyük olan avukatın sapması bastırılmaz; herkes aynı başarıdaysa yine
+Avukatın kendi sonucu kendi beklentisine girmez. Böylece fazla başarı kendi ölçütünü
+yükseltmez ve grupta payı büyük olan avukatın sapması bastırılmaz; herkes aynı başarıdaysa yine
 herkes 75 alır. Grupta başka avukat yoksa sıradaki katman (daha geniş grup), en son bütün diğer
 avukatlar kullanılır. Katman seçimi tek yerdedir:
 - Tahsilat: dosya grubu, branş, bütün diğerleri. Tutar bileşeninde diğerlerinin oranı 0 ya da
   eksiyse (kimse tahsil etmedi, ters kayıt) ölçüt yok sayılır, üst katmana geçilir; hepsinde
-  yoksa oran 0 (beklenen sıfır, puan yok). Sıklık ve güncellikte 0 geçerli bir ölçüttür (o yaş
-  bandında kimseden tahsilat beklenmez; beklenen 0 puanı gizlemez).
+  yoksa oran 0 (beklenen sıfır, puan yok). Net tahsilatı yarım kuruşu aşmayan ölçüt de yok
+  sayılır: ters kayıtla sıfırlanan toplamın kayan nokta artığı (1e-12) ölçüt olmaz. Sıklık
+  ve güncellikte 0 geçerli bir ölçüttür (o yaş bandında kimseden tahsilat beklenmez; beklenen
+  0 puanı gizlemez).
 - Süre: kriter × süreç × branş, kriter × süreç, bütün diğerleri. Diğerlerinin düşüm oranı 0
   geçerli bir ölçüttür (kimse gecikmedi).
 """
 import pandas as pd
+
+from avukat_perf.tahsilat_puan import YARIM_KURUS
 
 AVUKAT = "avukat_kodu"
 
@@ -19,9 +23,9 @@ AVUKAT = "avukat_kodu"
 def _oran(tablo, anahtar, pay, payda, sifir_olcut_degil):
     toplam = tablo.groupby(anahtar)[[pay, payda]].transform("sum")
     kendi = tablo.groupby([AVUKAT] + anahtar)[[pay, payda]].transform("sum")
-    diger_payda = toplam[payda] - kendi[payda]
-    oran = ((toplam[pay] - kendi[pay]) / diger_payda).where(diger_payda > 0)
-    return oran.where(oran > 0) if sifir_olcut_degil else oran
+    diger_pay, diger_payda = toplam[pay] - kendi[pay], toplam[payda] - kendi[payda]
+    oran = (diger_pay / diger_payda).where(diger_payda > 0)
+    return oran.where(diger_pay > YARIM_KURUS) if sifir_olcut_degil else oran
 
 
 def digerlerinin_orani(tablo, katmanlar, pay, payda, sifir_olcut_degil):

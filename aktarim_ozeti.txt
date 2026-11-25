@@ -47,7 +47,7 @@ avukat_perf/params_tahsilat.py cd383f6cbebf
 avukat_perf/params_veri.py 5583b5fb97b8
 avukat_perf/pencere.py ebff227eaa79
 avukat_perf/portfoy.py ff971861785f
-avukat_perf/referans.py e82c47e0a8f6
+avukat_perf/referans.py 56a617f0c17d
 avukat_perf/sema.py f1fa10c75893
 avukat_perf/sure_ozet.py 84c368b1390d
 avukat_perf/sure_puani.py c173762db5b8
@@ -89,4 +89,4 @@ kontrol/aktarim_kontrol.py a0d5941fe900
 kontrol/kurulum.py 53bb518cb1f4
 degiskenler/params.json a1c6887cc791
 degiskenler/kaynaklar.json 3e4bd484cfd6
-hesap_surumu 0.3.0+b62c8a13+762a23a6009e
+hesap_surumu 0.3.0+91bd9c97+762a23a6009e

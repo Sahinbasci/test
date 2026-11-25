@@ -32,7 +32,7 @@ girintiyi bozabilir. Büyük dosyalarda (kütüphane paketleri) de aynı düğme
 | Dataiku'da proje açma ve kod kütüphanesi yazma yetkisi | Dataiku yöneticisi | Evet |
 | Yazılabilir bir bağlantı (Dataiku'nun kendi dosya sistemi bağlantısı yeterli) | Dataiku yöneticisi | Evet |
 | MinIO'da iki kova ve S3 bağlantısı (`minio/README.md`) | MinIO ve Dataiku yöneticisi | Hayır |
-| Grafana'nın okuyacağı SQL bağlantısı (`grafana/README.md`) | Dataiku ve veritabanı yöneticisi | Hayır; canlıdan önce |
+| Grafana'nın okuyacağı SQL bağlantısı (`grafana/README.md`) | Dataiku ve veritabanı yöneticisi | Hayır; isteğe bağlı |
 
 ## 1. Proje ve sürüm kontrolü
 
@@ -149,10 +149,14 @@ Tahsilat raporu ekranlarından Excel olarak dışa aktarılan tablolarla deneme.
 olmalıdır: aktarım doğrulanmış olur, çıkan sorun veriden kaynaklanır. Gerçek veri şirket
 ortamından çıkmaz; dışarı yalnız şema özeti (alan adı, tür, satır sayısı, biçim) gider.
 
-1. **Dışa aktarma.** Her tabloyu (dosya bazında liste, tahsilat hareketleri, avukat toplamları)
-   tablo görselinin **…** menüsünden **Export data** ile Excel olarak alın. Sayfa ve görsel
-   süzgeçlerini kaldırın (dönem: tümü). Rapor aracı dışa aktarmada satır sayısını sınırlayabilir;
-   indirilen satır sayısını ekrandaki toplamla karşılaştırın.
+1. **Dışa aktarma.** Rapor ekranlarındaki tablolar özettir: dosya numarası olan bir tablo yoktur,
+   görsellerden alınan Excel tahsilat puanı için yetmez. Puan denemesi için raporun beslendiği
+   kaynak tablodan dosya bazında liste (dosya no, branş, rücu tutarı, açılış tarihi) ve tahsilat
+   hareketleri (dosya no, tarih, tutar, tahsilat türü: anapara, masraf, faiz) gerekir. Yalnız
+   mutabakat için aylık tahsilat toplamı tablosu görselin **…** menüsünden **Export data** ile
+   Excel olarak alınabilir. Sayfa ve görsel süzgeçlerini kaldırın (dönem: tümü). Rapor aracı dışa
+   aktarmada satır sayısını sınırlayabilir; indirilen satır sayısını ekrandaki toplamla
+   karşılaştırın.
 2. **Yükleme.** Her Excel dosyasını **+ Dataset > Upload your files** ile ayrı bir veri kümesi
    olarak yükleyin (ör. `pbi_dosya`, `pbi_tahsilat`, `pbi_avukat_toplam`); doğru Excel sayfasını
    seçin. Veri kümesinin **Schema** sekmesinde dosya numarası ve avukat kodu sütunlarının türünü
@@ -189,7 +193,8 @@ ortamından çıkmaz; dışarı yalnız şema özeti (alan adı, tür, satır sa
    İlk fazda Süre ve Performans birleşik puana girmez (`birlesik_sutunlar`; ağırlıklar
    Tahsilat 50, Hukuki Kalite 36, Davranış 14). Değerlendirme sistemi bağlanana kadar Hukuki
    Kalite ve Davranış "kaynak bekleniyor" kalır; birleşik puan bu iki sütun gelince yayımlanır.
-4. Grafana: SQL bağlantısına bağlanıp `grafana/pano.json` ve `grafana/sorgular.sql` kurulur.
+4. Grafana (isteğe bağlı; izleme Veri Durumu sayfasında ve senaryo e-postasında da var): SQL
+   bağlantısına bağlanıp `grafana/pano.json` ve `grafana/sorgular.sql` kurulur.
 5. Zaman tetikleyicileri açılır.
 
 ## Güncellemeler

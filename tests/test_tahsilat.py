@@ -264,9 +264,9 @@ def test_brans_yeterliligi_tabanin_tam_sinirinda_ve_yarim_kurusta_oran_yok():
     assert bool(brans.loc[("AV-1", "TRAFIK"), "yeterli"])
     assert not bool(brans.loc[("AV-2", "TRAFIK"), "yeterli"])
     assert pd.notna(brans.loc[("AV-2", "TRAFIK"), "puan"])
-    # Branşın bütün tahsilatı 0,001 TL: beklenen yarım kuruşun altında, oran üretilmez (kayan
-    # nokta artığı sahte 1,0 oran vermez).
+    # Branşın bütün tahsilatı 0,001 TL: yarım kuruşu aşmayan tahsilat ölçüt sayılmaz, beklenen
+    # yarım kuruşun altında kalır ve oran üretilmez (kayan nokta artığı sahte 1,0 oran vermez).
     brans = _kirilim([_portfoy("AV-1", 25, "KASKO", 1000.0, 0.001 / 25000.0, 0),
                       _portfoy("AV-2", 25, "KASKO", 1000.0, 0.001 / 25000.0, 100)])
     satir = brans.loc[("AV-1", "KASKO")]
-    assert 0 < satir["beklenen"] < tahsilat.YARIM_KURUS and pd.isna(satir["oran"])
+    assert satir["beklenen"] < tahsilat.YARIM_KURUS and pd.isna(satir["oran"])

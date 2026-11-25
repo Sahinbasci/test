@@ -152,6 +152,21 @@ def test_digerlerinin_orani_sifirsa_ust_katmana_gecilir():
     assert yalniz.loc["AV-A", "eksik_nedeni"] == "BEKLENEN_SIFIR"
 
 
+def test_ters_kayitla_sifirlanan_olcut_artigi_ust_katmana_gecer():
+    """AV-B'nin tek tahsilatı aynı ay ters kayıtlarla sıfırlanır; toplam kayan noktada 1e-12 kalır.
+    Bu artık ölçüt sayılmaz, AV-A için bütün diğerleri (AV-B ve AV-C) kullanılır. Önceden AV-A
+    beklenen 1e-12 ile puansız kalıyor (BEKLENEN_SIFIR), sonuç satır sırasına bağlı oluyordu."""
+    parca = _birlestir(_portfoy("AV-A", "A", 20), _portfoy("AV-B", "B", 20, tutar=0),
+                       _portfoy("AV-C", "C", 20, tutar=3000.0, brans="KASKO"))
+    beklenen = 20 * 10000.0 * (20 * 3000.0) / (40 * 10000.0)
+    ters = [("B-00", "2024-06-01", 13033.45), ("B-00", "2024-06-20", -11730.90),
+            ("B-00", "2024-06-25", -1302.55)]
+    for sira in (ters, ters[::-1], [ters[1], ters[0], ters[2]]):
+        avukat, _ = _hesapla(parca[0], parca[1], parca[2] + sira)
+        assert avukat.loc["AV-A", "durum"] == "GECERLI"
+        assert abs(avukat.loc["AV-A", "beklenen"] - beklenen) < 1e-6
+
+
 def test_sifir_rucu_tutarli_dosyanin_tahsilati_olcut_payina_girmez():
     """AV-A'nın rücu tutarı 0 olan dosyasında 5000 TL tahsilat. AV-A'nın gerçekleşenine girer;
     diğer avukatların beklentisini yükseltmez (önceden AV-B ve AV-C 2000 yerine 4500)."""

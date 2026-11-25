@@ -72,7 +72,7 @@ listesinin güncelliği sayılmaz; yazım kurallarının geri kalanı (3.7 söz 
 bağımlılıklar) sayılır. Test koşusu 3600 saniyeyi aşan mutasyon "ZAMAN AŞIMI" ile sorunlu sayılır.
 
 Ölçek denemesi (1000 avukat, 150 bin dosya, 254 bin tahsilat hareketi, yerel CSV ortamı):
-gecelik akış ve üç dönem yayını 65 saniye, en yüksek bellek 0,9 GB; puanlar bağımsız bir
+gecelik akış ve üç dönem yayını yaklaşık 70 saniye, en yüksek bellek 1,2 GB; puanlar bağımsız bir
 hesapla birebir aynı. Arayüzün en ağır sayfası 0,05 saniyede hazırlanır.
 
 ## GitHub'a aktarım
