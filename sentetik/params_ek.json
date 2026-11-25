@@ -1,0 +1,19 @@
+{
+  "_not": "Yalnız sentetik prova ve önizleme için parametre eki. Gerçek params.json'da değerlendirme ölçeği ve yönü teyit beklediği için null; prova sentetik formun 1-5 ölçeğini ve olumlu yönünü varsayar. Gölge mod kapalı ki süre puanı da görünsün. Tahsilat ayarları (tutar bantları dahil) params.json'daki üretim varsayılanıdır.",
+  "kalite_davranis": {
+    "olcek": {
+      "en_dusuk": 1,
+      "en_yuksek": 5
+    },
+    "ters_yonlu": []
+  },
+  "uyari": {
+    "golge_mod": false
+  },
+  "hazirlik": {
+    "sulh_avukat_kodlari": [
+      "SL-01",
+      "SL-02"
+    ]
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "_not": "Kaynak ayarları. sistemler: sistem başına ortak ayar (yontem: bekliyor | dataiku | api | dosya; api.adres_koku, api.kimlik, api.sayfalama, biçimler). Bir sistemi bağlamak için çoğu zaman yalnız o sistemin bloğu doldurulur: yontem, adres_koku, kimlik, sayfalama. kaynaklar: kaynağa özgü ayar (api.yol, veri kümesi, dosya yolu, alan eşlemesi); sistemdeki değeri ezer. Gizli değer dosyaya yazılmaz: kimlik.gizli Dataiku kullanıcı gizlisinin adıdır. Şirkete özgü değerler aynı klasördeki kaynaklar_ek.json'a yazılır (depoya girmez). Ayrıntı README, Veri entegrasyonu.",
+  "sistemler": {
+    "cekirdek": {
+      "_not": "Çekirdek sistem: dosya, atama_log, takip.",
+      "yontem": "bekliyor",
+      "api": {
+        "adres_koku": "https://CEKIRDEK-ADRESI-BEKLENIYOR",
+        "http_yontemi": "GET",
+        "kimlik": {
+          "tur": "bearer",
+          "gizli": "API_CEKIRDEK_ANAHTARI"
+        },
+        "sayfalama": {
+          "tur": "sayfa",
+          "sayfa_parametresi": "page",
+          "boyut_parametresi": "size",
+          "boyut": 1000
+        },
+        "kayit_yolu": "data",
+        "basliklar": {},
+        "zaman_asimi_sn": 60,
+        "deneme": 3,
+        "bekleme_sn": 2
+      },
+      "sayi_bicimi": "en",
+      "tarih_bicimi": null
+    },
+    "tahsilat_raporu": {
+      "_not": "Tahsilat raporu: tahsilat_hareketi, rapor_avukat_toplam.",
+      "yontem": "bekliyor",
+      "api": {
+        "adres_koku": "https://RAPOR-ADRESI-BEKLENIYOR",
+        "http_yontemi": "GET",
+        "kimlik": {
+          "tur": "bearer",
+          "gizli": "API_RAPOR_ANAHTARI"
+        },
+        "sayfalama": {
+          "tur": "sayfa",
+          "sayfa_parametresi": "page",
+          "boyut_parametresi": "size",
+          "boyut": 1000
+        },
+        "kayit_yolu": "data",
+        "basliklar": {},
+        "zaman_asimi_sn": 60,
+        "deneme": 3,
+        "bekleme_sn": 2
+      },
+      "sayi_bicimi": "en",
+      "tarih_bicimi": null
+    },
+    "degerlendirme": {
+      "_not": "Değerlendirme sistemi: degerlendirme, avukat.",
+      "yontem": "bekliyor",
+      "api": {
+        "adres_koku": "https://DEGERLENDIRME-ADRESI-BEKLENIYOR",
+        "http_yontemi": "GET",
+        "kimlik": {
+          "tur": "bearer",
+          "gizli": "API_DEGERLENDIRME_ANAHTARI"
+        },
+        "sayfalama": {
+          "tur": "sayfa",
+          "sayfa_parametresi": "page",
+          "boyut_parametresi": "size",
+          "boyut": 1000
+        },
+        "kayit_yolu": "data",
+        "basliklar": {},
+        "zaman_asimi_sn": 60,
+        "deneme": 3,
+        "bekleme_sn": 2
+      },
+      "sayi_bicimi": "en",
+      "tarih_bicimi": null
+    },
+    "dava_takip": {
+      "_not": "Dava takip sistemi: esas_goruntu, k2_goruntu.",
+      "yontem": "bekliyor",
+      "api": {
+        "adres_koku": "https://DAVA-TAKIP-ADRESI-BEKLENIYOR",
+        "http_yontemi": "GET",
+        "kimlik": {
+          "tur": "bearer",
+          "gizli": "API_DAVA_TAKIP_ANAHTARI"
+        },
+        "sayfalama": {
+          "tur": "sayfa",
+          "sayfa_parametresi": "page",
+          "boyut_parametresi": "size",
+          "boyut": 1000
+        },
+        "kayit_yolu": "data",
+        "basliklar": {},
+        "zaman_asimi_sn": 60,
+        "deneme": 3,
+        "bekleme_sn": 2
+      },
+      "sayi_bicimi": "en",
+      "tarih_bicimi": null
+    },
+    "duzeltme": {
+      "_not": "Düzeltme kayıtları: bekleme.",
+      "yontem": "bekliyor",
+      "api": {
+        "adres_koku": "https://DUZELTME-ADRESI-BEKLENIYOR",
+        "http_yontemi": "GET",
+        "kimlik": {
+          "tur": "bearer",
+          "gizli": "API_DUZELTME_ANAHTARI"
+        },
+        "sayfalama": {
+          "tur": "sayfa",
+          "sayfa_parametresi": "page",
+          "boyut_parametresi": "size",
+          "boyut": 1000
+        },
+        "kayit_yolu": "data",
+        "basliklar": {},
+        "zaman_asimi_sn": 60,
+        "deneme": 3,
+        "bekleme_sn": 2
+      },
+      "sayi_bicimi": "en",
+      "tarih_bicimi": null
+    }
+  },
+  "kaynaklar": {
+    "dosya": {
+      "api": {
+        "yol": "/dosya"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_cekirdek_dosya"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_cekirdek_dosya.csv"
+      },
+      "alan_eslemesi": {}
+    },
+    "atama_log": {
+      "api": {
+        "yol": "/atama_log"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_cekirdek_atama_log"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_cekirdek_atama_log.csv"
+      },
+      "alan_eslemesi": {}
+    },
+    "takip": {
+      "api": {
+        "yol": "/takip"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_cekirdek_takip"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_cekirdek_takip.csv"
+      },
+      "alan_eslemesi": {}
+    },
+    "tahsilat_hareketi": {
+      "api": {
+        "yol": "/tahsilat_hareketi"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_rapor_tahsilat_hareketi"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_rapor_tahsilat_hareketi.csv"
+      },
+      "alan_eslemesi": {}
+    },
+    "rapor_avukat_toplam": {
+      "api": {
+        "yol": "/rapor_avukat_toplam"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_rapor_avukat_toplam"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_rapor_avukat_toplam.csv"
+      },
+      "alan_eslemesi": {}
+    },
+    "degerlendirme": {
+      "api": {
+        "yol": "/degerlendirme"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_degerlendirme_puan"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_degerlendirme_puan.csv"
+      },
+      "alan_eslemesi": {},
+      "genis_degerlendirme": null
+    },
+    "avukat": {
+      "api": {
+        "yol": "/avukat"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_degerlendirme_avukat"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_degerlendirme_avukat.csv"
+      },
+      "alan_eslemesi": {}
+    },
+    "esas_goruntu": {
+      "api": {
+        "yol": "/esas_goruntu"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_dava_takip_esas"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_dava_takip_esas.csv"
+      },
+      "alan_eslemesi": {}
+    },
+    "k2_goruntu": {
+      "api": {
+        "yol": "/k2_goruntu"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_dava_takip_surec"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_dava_takip_surec.csv"
+      },
+      "alan_eslemesi": {}
+    },
+    "bekleme": {
+      "api": {
+        "yol": "/bekleme"
+      },
+      "dataiku": {
+        "veri_kumesi": "kaynak_duzeltme_bekleme"
+      },
+      "dosya": {
+        "yol": "sentetik/veri/kaynak_duzeltme_bekleme.csv"
+      },
+      "alan_eslemesi": {}
+    }
+  }
+}

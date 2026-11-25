@@ -1,0 +1,326 @@
+{
+  "title": "Avukat Performans · Operasyonel İzleme",
+  "uid": "avukat-perf-izleme",
+  "tags": [
+    "avukat-perf"
+  ],
+  "timezone": "Europe/Istanbul",
+  "schemaVersion": 36,
+  "version": 1,
+  "editable": true,
+  "refresh": "15m",
+  "time": {
+    "from": "now-60d",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "name": "ds",
+        "label": "Veri kaynağı",
+        "type": "datasource",
+        "query": "postgres",
+        "current": {},
+        "hide": 0
+      },
+      {
+        "name": "calisma_tablosu",
+        "label": "Çalışma kaydı tablosu",
+        "type": "textbox",
+        "query": "calisma_kaydi",
+        "current": {
+          "text": "calisma_kaydi",
+          "value": "calisma_kaydi"
+        },
+        "hide": 0
+      },
+      {
+        "name": "kalite_tablosu",
+        "label": "Kalite sonucu tablosu",
+        "type": "textbox",
+        "query": "kalite_sonucu",
+        "current": {
+          "text": "kalite_sonucu",
+          "value": "kalite_sonucu"
+        },
+        "hide": 0
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "table",
+      "title": "Son gecelik çalışma",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "${ds}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT cekim_tarihi, durum, baslangic, bitis, calisma_kimligi\nFROM ${calisma_tablosu}\nWHERE kaynak = '*' AND tur = 'GECELIK'\nORDER BY baslangic DESC\nLIMIT 1"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "durum"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "GECTI": {
+                        "text": "Geçti",
+                        "color": "green",
+                        "index": 0
+                      },
+                      "KAYNAK_BEKLENIYOR": {
+                        "text": "Kaynak bekleniyor",
+                        "color": "blue",
+                        "index": 1
+                      },
+                      "KALDI": {
+                        "text": "Kaldı",
+                        "color": "red",
+                        "index": 2
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "table",
+      "title": "Kaynak tazeliği",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 10
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "${ds}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT kaynak,\n       MAX(yontem) FILTER (WHERE baslangic = son_baslangic) AS yontem,\n       MAX(cekim_tarihi) FILTER (WHERE durum = 'BASARILI') AS son_basarili_cekim,\n       CURRENT_DATE - (MAX(cekim_tarihi) FILTER (WHERE durum = 'BASARILI'))::date AS gecen_gun,\n       MAX(durum) FILTER (WHERE baslangic = son_baslangic) AS son_durum\nFROM (SELECT *, MAX(baslangic) OVER (PARTITION BY kaynak) AS son_baslangic\n      FROM ${calisma_tablosu}\n      WHERE tur = 'GECELIK' AND kaynak <> '*') t\nGROUP BY kaynak\nORDER BY gecen_gun DESC NULLS FIRST, kaynak"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gecen_gun"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-background"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": 2
+                    },
+                    {
+                      "color": "red",
+                      "value": 3
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "state-timeline",
+      "title": "Gece kararları",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 5,
+        "w": 12,
+        "h": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "${ds}"
+          },
+          "editorMode": "code",
+          "format": "time_series",
+          "rawQuery": true,
+          "rawSql": "SELECT cekim_tarihi AS \"time\",\n       CASE durum WHEN 'GECTI' THEN 0 WHEN 'KAYNAK_BEKLENIYOR' THEN 1 ELSE 2 END AS karar\nFROM ${calisma_tablosu}\nWHERE kaynak = '*' AND tur = 'GECELIK' AND $__timeFilter(cekim_tarihi)\nORDER BY 1"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "Geçti",
+                  "color": "green",
+                  "index": 0
+                },
+                "1": {
+                  "text": "Kaynak bekleniyor",
+                  "color": "blue",
+                  "index": 1
+                },
+                "2": {
+                  "text": "Kaldı",
+                  "color": "red",
+                  "index": 2
+                }
+              }
+            }
+          ],
+          "color": {
+            "mode": "fixed"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showValue": "never",
+        "mergeValues": true
+      }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Kaynak başına satır sayısı",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 10,
+        "w": 24,
+        "h": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "${ds}"
+          },
+          "editorMode": "code",
+          "format": "time_series",
+          "rawQuery": true,
+          "rawSql": "SELECT cekim_tarihi AS \"time\", kaynak AS metric, satir_sayisi AS value\nFROM ${calisma_tablosu}\nWHERE tur = 'GECELIK' AND kaynak <> '*' AND satir_sayisi IS NOT NULL\n  AND $__timeFilter(cekim_tarihi)\nORDER BY 1"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "pointSize": 4,
+            "showPoints": "always"
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 5,
+      "type": "table",
+      "title": "Son gecenin geçmeyen kalite denetimleri",
+      "datasource": {
+        "type": "postgres",
+        "uid": "${ds}"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 18,
+        "w": 24,
+        "h": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "${ds}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT kaynak, kontrol, durum, deger, esik, aciklama\nFROM ${kalite_tablosu}\nWHERE calisma_kimligi = (SELECT calisma_kimligi FROM ${calisma_tablosu}\n                         WHERE kaynak = '*' AND tur = 'GECELIK'\n                         ORDER BY baslangic DESC LIMIT 1)\n  AND durum <> 'GECTI'\nORDER BY CASE durum WHEN 'KALDI' THEN 0 ELSE 1 END, kaynak, kontrol"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    }
+  ]
+}

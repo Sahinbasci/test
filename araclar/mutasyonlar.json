@@ -1,0 +1,4778 @@
+[
+ [
+  "kapanış düşümü silerse (v6 hatası)",
+  "avukat_perf/bayrak.py",
+  "    dusum = \"TURUNCU\" in olusan\n",
+  "    dusum = \"TURUNCU\" in olusan and kapanis != \"KAPANDI\"\n"
+ ],
+ [
+  "kesit sonrası esas bilinirse",
+  "avukat_perf/kriter1.py",
+  "if kayit[\"esas_ilk_giris\"] <= kesit else None",
+  "if True else None"
+ ],
+ [
+  "sonlanan dönem parametresi yok sayılırsa",
+  "avukat_perf/kriter1.py",
+  "k1[\"sonlanan_atamada_dusum_korunur\"])",
+  "True)"
+ ],
+ [
+  "esas önceden var kuralı yoksa",
+  "avukat_perf/kriter1.py",
+  "and esas < atama",
+  "and False"
+ ],
+ [
+  "sulh kapsam dışı sayılmazsa",
+  "avukat_perf/atama.py",
+  "tablo[\"atama_turu\"] == \"SULH\"",
+  "tablo[\"atama_turu\"] == \"YOK\""
+ ],
+ [
+  "kırmızı aynı ay sayılırsa",
+  "avukat_perf/bayrak.py",
+  "pd.offsets.MonthBegin(1)",
+  "pd.Timedelta(days=1)"
+ ],
+ [
+  "ay eşiği 60 gün sayılırsa",
+  "avukat_perf/kriter1.py",
+  "pd.DateOffset(months=k1[\"dusum_ay_diger\"])",
+  "pd.Timedelta(days=60)"
+ ],
+ [
+  "bekleme birleştirilmezse",
+  "avukat_perf/bekleme.py",
+  "if birlesik and bas <= birlesik[-1][1]:",
+  "if False:"
+ ],
+ [
+  "bekleme bitiş günü hariç sayılırsa",
+  "avukat_perf/bekleme.py",
+  "son = min(son, kesit) + BIR_GUN",
+  "son = min(son, kesit)"
+ ],
+ [
+  "bekleme kesitte kesilmezse",
+  "avukat_perf/bekleme.py",
+  "son = min(son, kesit) + BIR_GUN",
+  "son = son + BIR_GUN"
+ ],
+ [
+  "kaydırma zinciri kurulmazsa",
+  "avukat_perf/bekleme.py",
+  "if bas < esik and son > bas:",
+  "if bas < esik and son > bas and False:"
+ ],
+ [
+  "saat dilimi çevrilmezse",
+  "avukat_perf/ortak.py",
+  "tarih.dt.tz_convert(SAAT_DILIMI).dt.tz_localize(None)",
+  "tarih.dt.tz_localize(None)"
+ ],
+ [
+  "birleştirme anahtarsız eklerse",
+  "avukat_perf/olay.py",
+  "birlesim[birlesim[\"_merge\"] == \"left_only\"]",
+  "birlesim"
+ ],
+ [
+  "çelişki tarih farkına bakmazsa",
+  "avukat_perf/olay.py",
+  "farkli = karsilastirma[\"olay_tarihi_yeni\"] != karsilastirma[\"olay_tarihi\"]",
+  "farkli = karsilastirma[\"olay_tarihi_yeni\"].isna()"
+ ],
+ [
+  "yinelenen anahtar denetlenmezse",
+  "avukat_perf/ortak.py",
+  "    if sayi:\n        raise ValueError(\"{}: anahtarı",
+  "    if False:\n        raise ValueError(\"{}: anahtarı"
+ ],
+ [
+  "grup oranına atanamayan girerse",
+  "avukat_perf/tahsilat_tutar.py",
+  "tablo[\"atfedilen\"] / tablo[\"rucu_toplami\"]",
+  "(tablo[\"atfedilen\"] + tablo[\"atanamayan\"]) / tablo[\"rucu_toplami\"]"
+ ],
+ [
+  "güven ayarı uygulanmazsa",
+  "avukat_perf/tahsilat_puan.py",
+  "r = (n * gerceklesen / beklenen + sabit) / (n + sabit)",
+  "r = gerceklesen / beklenen"
+ ],
+ [
+  "dosya eşiği uygulanmazsa",
+  "avukat_perf/tahsilat_puan.py",
+  "if round(n, 9) < tah[\"en_az_olgun_dosya\"]:",
+  "if False:"
+ ],
+ [
+  "beklenen sıfır denetlenmezse",
+  "avukat_perf/tahsilat_puan.py",
+  "    if beklenen < YARIM_KURUS:",
+  "    if beklenen < 0:"
+ ],
+ [
+  "100'de kırpılmazsa",
+  "avukat_perf/tahsilat_puan.py",
+  "min(max(ham_puan(r, tah), 0.0), 100.0)",
+  "max(ham_puan(r, tah), 0.0)"
+ ],
+ [
+  "0'da kırpılmazsa",
+  "avukat_perf/tahsilat_puan.py",
+  "min(max(ham_puan(r, tah), 0.0), 100.0)",
+  "min(ham_puan(r, tah), 100.0)"
+ ],
+ [
+  "olgunluk günü hariç sayılırsa",
+  "avukat_perf/tahsilat_evren.py",
+  "dtype=\"datetime64[ns]\") <= tek_gun(kesit)",
+  "dtype=\"datetime64[ns]\") < tek_gun(kesit)"
+ ],
+ [
+  "tüm branşlar DIGER sayılırsa",
+  "avukat_perf/tahsilat_evren.py",
+  "tablo[\"brans\"].map(tah[\"olgunluk_ay\"])",
+  "tablo[\"brans\"].map({})"
+ ],
+ [
+  "bant sınırı alt banda girerse",
+  "avukat_perf/tahsilat_evren.py",
+  "right=False",
+  "right=True"
+ ],
+ [
+  "olgun olmayan dosya evrene girerse",
+  "avukat_perf/tahsilat_evren.py",
+  "    return tablo[olgun].reset_index(drop=True)",
+  "    return tablo.reset_index(drop=True)"
+ ],
+ [
+  "beklenen diğerlerinin oranıyla çarpılmazsa",
+  "avukat_perf/tahsilat_tutar.py",
+  "    tablo[\"beklenen\"] = tablo[\"maruziyet\"] * oran",
+  "    tablo[\"beklenen\"] = tablo[\"maruziyet\"] * 0.3 + 0 * oran"
+ ],
+ [
+  "tutar sayıya çevrilmezse",
+  "avukat_perf/atama.py",
+  "tutar=hareketler[\"tutar\"].astype(float))",
+  "tutar=hareketler[\"tutar\"])"
+ ],
+ [
+  "pay normalleştirilmezse",
+  "avukat_perf/atama.py",
+  "    tablo = tablo.assign(pay=tablo[\"gun\"] / bolen)",
+  "    tablo = tablo.assign(pay=tablo[\"gun\"] / 365.0)"
+ ],
+ [
+  "pay başlangıçta kesilmezse",
+  "avukat_perf/atama.py",
+  "tablo[\"atama_tarihi\"] >= tablo[\"baslangic\"]",
+  "tablo[\"atama_tarihi\"] == tablo[\"atama_tarihi\"]"
+ ],
+ [
+  "pay kesitte kesilmezse",
+  "avukat_perf/atama.py",
+  "son = son.where(son <= sinir, sinir)",
+  "son = son"
+ ],
+ [
+  "atıfta bitiş günü eski avukata giderse",
+  "avukat_perf/atama.py",
+  "(tarih < eslesme[\"bitis_tarihi\"])",
+  "(tarih <= eslesme[\"bitis_tarihi\"])"
+ ],
+ [
+  "kesitten sonraki hareket alınırsa",
+  "avukat_perf/atama.py",
+  "tablo[tablo[\"hareket_tarihi\"] <= tek_gun(kesit)]",
+  "tablo[tablo[\"hareket_tarihi\"] == tablo[\"hareket_tarihi\"]]"
+ ],
+ [
+  "çakışma denetlenmezse",
+  "avukat_perf/atama.py",
+  "    if cakisma.any():",
+  "    if False:"
+ ],
+ [
+  "açık önceki dönem çakışma sayılmazsa",
+  "avukat_perf/atama.py",
+  "cakisma = onceki_acik | (",
+  "cakisma = ("
+ ],
+ [
+  "kesit sonrası bitiş bilinirse",
+  "avukat_perf/atama.py",
+  "tablo[\"bitis_tarihi\"].where(tablo[\"bitis_tarihi\"] <= kesit)",
+  "tablo[\"bitis_tarihi\"]"
+ ],
+ [
+  "olay güven ayarı uygulanmaz",
+  "avukat_perf/tahsilat_puan.py",
+  "    r = (gerceklesen + sabit) / (beklenen + sabit)",
+  "    r = gerceklesen / beklenen if beklenen else 1.0"
+ ],
+ [
+  "bileşenler yuvarlanmadan toplanır",
+  "avukat_perf/tahsilat_puan.py",
+  "        bilesen = {\"tutar\": yuvarla(tutar),",
+  "        bilesen = {\"tutar\": tutar,"
+ ],
+ [
+  "sıklık ağırlığı tutara verilir",
+  "avukat_perf/tahsilat_puan.py",
+  "        puan = agirlikli_toplam(bilesen, tah[\"bilesen_agirliklari\"])",
+  "        puan = bilesen[\"tutar\"]"
+ ],
+ [
+  "yaş bandı sınır günü sonraki banda girmez",
+  "avukat_perf/tahsilat_evren.py",
+  "        bant = bant + (sinir <= tarih).astype(\"int64\")",
+  "        bant = bant + (sinir < tarih).astype(\"int64\")"
+ ],
+ [
+  "yeterlilik ondalık oranla sınanırsa",
+  "avukat_perf/kalite_davranis.py",
+  "yeterli = puanlanan * payda >= toplam * pay",
+  "yeterli = puanlanan / toplam >= round(pay / payda, 4)"
+ ],
+ [
+  "yön dönüşümü yapılmazsa",
+  "avukat_perf/kalite_davranis.py",
+  "olcekli.where(~ters, 100.0 - olcekli)",
+  "olcekli"
+ ],
+ [
+  "ölçeğe çevrilmezse",
+  "avukat_perf/kalite_davranis.py",
+  "olcekli = (tablo[\"puan\"] - en_dusuk) / (en_yuksek - en_dusuk) * 100.0",
+  "olcekli = tablo[\"puan\"]"
+ ],
+ [
+  "puanlanmamış sıfır sayılırsa",
+  "avukat_perf/kalite_davranis.py",
+  "puanli = pencere.dropna(subset=[\"puan\"])",
+  "puanli = pencere.fillna({\"puan\": 0.0})"
+ ],
+ [
+  "son kuralı yok sayılırsa",
+  "avukat_perf/kalite_davranis.py",
+  "if kd[\"coklu_degerlendirme\"] == \"son\":",
+  "if False:"
+ ],
+ [
+  "kesit sonrası değerlendirme alınırsa",
+  "avukat_perf/kalite_davranis.py",
+  "    tablo = tablo[tablo[\"sutun\"].notna() & icinde(tarih, kesit, kd[\"pencere_ay\"])]",
+  "    tablo = tablo[tablo[\"sutun\"].notna() & (tarih > kesit - pd.DateOffset(months=kd[\"pencere_ay\"]))]"
+ ],
+ [
+  "ölçek dışı puan denetlenmezse",
+  "avukat_perf/kalite_davranis.py",
+  "    if olcek_disi(tablo, kd).any():\n        raise",
+  "    if False:\n        raise"
+ ],
+ [
+  "eksik sütun satırı üretilmezse",
+  "avukat_perf/kalite_davranis.py",
+  "tablo = tablo.reindex(dizin)",
+  "tablo = tablo"
+ ],
+ [
+  "teyit denetimi kaldırılırsa",
+  "avukat_perf/kalite_davranis.py",
+  "    if not teyitli({\"kalite_davranis\": kd}):",
+  "    if False:"
+ ],
+ [
+  "eksik değerlendirmede puan yayımlanırsa",
+  "avukat_perf/kalite_davranis.py",
+  "\"puan\": tablo[\"mean\"].where(yeterli)",
+  "\"puan\": tablo[\"mean\"]"
+ ],
+ [
+  "tanımsız kod hesaba girerse",
+  "avukat_perf/kalite_davranis.py",
+  "tablo = tablo[tablo[\"sutun\"].notna() & icinde(",
+  "tablo = tablo[icinde("
+ ],
+ [
+  "birleşik puan yuvarlanmazsa",
+  "avukat_perf/birlesik.py",
+  "return ondalik_yuvarla(toplam)",
+  "return float(toplam)"
+ ],
+ [
+  "sütun puanı yuvarlanmazsa",
+  "avukat_perf/birlesik.py",
+  "return gecerli.assign(puan=puan.map(yuvarla))",
+  "return gecerli.assign(puan=puan)"
+ ],
+ [
+  "eksik sütunda puan yayımlanırsa",
+  "avukat_perf/birlesik.py",
+  "for (_, satir), tamam in zip(genis.iterrows(), tam)]",
+  "for (_, satir), tamam in zip(genis.fillna(0).iterrows(), tam | True)]"
+ ],
+ [
+  "ağırlık diğer sütunlara dağıtılırsa",
+  "avukat_perf/birlesik.py",
+  "birlesik = pd.Series([agirlikli_toplam(satir[etkin], agirliklar) if tamam else None",
+  "birlesik = pd.Series([agirlikli_toplam(satir[etkin].dropna() / sum(agirliklar[a] for a in satir[etkin].dropna().index), agirliklar) if satir[etkin].notna().any() else None"
+ ],
+ [
+  "ağırlıklı toplam kayan noktayla hesaplanırsa",
+  "avukat_perf/birlesik.py",
+  "toplam = sum(Decimal(repr(float(agirliklar[ad]))) * Decimal(repr(float(puan)))\n                 for ad, puan in puanlar.items())",
+  "toplam = Decimal(repr(sum(float(agirliklar[ad]) * float(puan)\n                 for ad, puan in puanlar.items())))"
+ ],
+ [
+  "yarım yukarı yerine round() kullanılırsa",
+  "avukat_perf/ortak.py",
+  "return ondalik_yuvarla(Decimal(repr(float(deger))), ondalik)",
+  "return round(float(deger), ondalik)"
+ ],
+ [
+  "açıklama sayısı yarım yukarı yuvarlanmazsa",
+  "avukat_perf/aciklama_bicim.py",
+  "    yuvarlanan = yuvarla(deger, ondalik)\n",
+  "    yuvarlanan = deger\n"
+ ],
+ [
+  "eşitlikte farklı sıra verilirse",
+  "avukat_perf/birlesik.py",
+  "rank(method=\"min\"",
+  "rank(method=\"first\""
+ ],
+ [
+  "sıralama yönü ters olursa",
+  "avukat_perf/birlesik.py",
+  "ascending=False)",
+  "ascending=True)"
+ ],
+ [
+  "not eşiği hariç sayılırsa",
+  "avukat_perf/birlesik.py",
+  "if puan >= esik:",
+  "if puan > esik:"
+ ],
+ [
+  "geçersiz sütun hesaba girerse",
+  "avukat_perf/birlesik.py",
+  "gecerli = sutun_puanlari[sutun_puanlari[\"durum\"] == \"GECERLI\"]",
+  "gecerli = sutun_puanlari.dropna(subset=[\"puan\"])"
+ ],
+ [
+  "tanımsız sütun adı denetlenmezse",
+  "avukat_perf/birlesik.py",
+  "if not sutun_puanlari[\"sutun\"].isin(SUTUNLAR).all():",
+  "if False:"
+ ],
+ [
+  "0-100 dışı puan denetlenmezse",
+  "avukat_perf/birlesik.py",
+  "(puan.isna() | (puan < 0) | (puan > 100)).any()",
+  "puan.isna().any()"
+ ],
+ [
+  "sıra yayımlanmayanlara da verilirse",
+  "avukat_perf/birlesik.py",
+  "genel_sira=birlesik.rank(",
+  "genel_sira=(genis * agirlik).sum(axis=1).rank("
+ ],
+ [
+  "K2 süre yeni atamadan başlamazsa",
+  "avukat_perf/kriter2.py",
+  "max(tarih[\"baslangic_tarihi\"], kayit[\"atama_tarihi\"])",
+  "tarih[\"baslangic_tarihi\"]"
+ ],
+ [
+  "K2 koşul denetlenmezse",
+  "avukat_perf/kriter2.py",
+  "    if (pd.isna(kayit[\"kosul_kayip_tarihi\"]) and not kosul_simdi) or \\",
+  "    if False or \\"
+ ],
+ [
+  "K2 doğrudan dava kapsama girerse",
+  "avukat_perf/kriter2.py",
+  "UYGULANAN = (\"ITIRAZ\", ARABULUCULUK)",
+  "UYGULANAN = (\"ITIRAZ\", ARABULUCULUK, \"DOGRUDAN_DAVA\")"
+ ],
+ [
+  "K2 bitiş en geç tarihten alınırsa",
+  "avukat_perf/kriter2.py",
+  "min(adaylar, key=",
+  "max(adaylar, key="
+ ],
+ [
+  "K2 atama dışı süreç ayıklanmazsa",
+  "avukat_perf/kriter2.py",
+  "if neden is None and son < bas:",
+  "if False:"
+ ],
+ [
+  "K2 sonlanan parametresi yok sayılırsa",
+  "avukat_perf/kriter2.py",
+  "k2[\"sonlanan_atamada_dusum_korunur\"])",
+  "True)"
+ ],
+ [
+  "K2 düşüm ayı uyarı ayından alınırsa",
+  "avukat_perf/kriter2.py",
+  "turuncu = bas + pd.DateOffset(months=k2[\"dusum_ay\"])",
+  "turuncu = bas + pd.DateOffset(months=k2[\"uyari_ay\"] + 1)"
+ ],
+ [
+  "süre risk tanımına iade girerse",
+  "avukat_perf/sure_puani.py",
+  "        tablo[\"dusum\"] | (tablo[\"seviye\"] == \"KAPANDI\"))",
+  "        tablo[\"dusum\"] | True)"
+ ],
+ [
+  "süre grubu branşsız olursa",
+  "avukat_perf/sure_puani.py",
+  "GRUP = [\"kriter\", \"surec\", \"brans\"]",
+  "GRUP = [\"kriter\", \"surec\"]"
+ ],
+ [
+  "süre gölge mod yok sayılırsa",
+  "avukat_perf/sure_puani.py",
+  "    golge = any(golge_kriterleri(params).values())",
+  "    golge = False"
+ ],
+ [
+  "süre kapsam eşiği uygulanmazsa",
+  "avukat_perf/sure_puani.py",
+  "if satir.kapsam < sp[\"en_az_kapsam\"]:",
+  "if False:"
+ ],
+ [
+  "süre beklenen tabanı uygulanmazsa",
+  "avukat_perf/sure_puani.py",
+  "if round(satir.e, 9) < sp[\"en_az_beklenen\"]:",
+  "if False:"
+ ],
+ [
+  "kapsamda ölçülmeyenler sayılırsa",
+  "avukat_perf/sure_puani.py",
+  "OLCULMEYEN = (\"SULH\", \"IPTAL\", \"ESAS_ONCEDEN_VAR\", \"DOSYA_YOK\")",
+  "OLCULMEYEN = ()"
+ ],
+ [
+  "süre formülünde güven sabiti yoksa",
+  "avukat_perf/sure_puani.py",
+  "r = (o + sp[\"guven_sabiti\"]) / (e + sp[\"guven_sabiti\"])",
+  "r = (o + 1) / (e + 1)"
+ ],
+ [
+  "özet pencere dışı kapanışı sayarsa",
+  "avukat_perf/sure_ozet.py",
+  "    kapanan = (seviye == \"KAPANDI\") & icinde(gun(tablo[\"olcum_sonu\"]), kesit, pencere_ay)",
+  "    kapanan = (seviye == \"KAPANDI\")"
+ ],
+ [
+  "e-posta gölge modu yok sayarsa",
+  "avukat_perf/sure_ozet.py",
+  "gonderilecek=~tablo[\"kriter\"].map(golge).astype(bool))",
+  "gonderilecek=True)"
+ ],
+ [
+  "e-posta sırası bozulursa",
+  "avukat_perf/sure_ozet.py",
+  "ascending=[True, True, False]",
+  "ascending=[True, False, False]"
+ ],
+ [
+  "portföy kapalıyı aktif sayarsa",
+  "avukat_perf/portfoy.py",
+  "aktif = tablo[tablo[\"bitis_tarihi\"].isna()]",
+  "aktif = tablo"
+ ],
+ [
+  "aylık atanamayanı kaybederse",
+  "avukat_perf/portfoy.py",
+  "strftime(\"%Y-%m\"),\n                             avukat_kodu=hareket[\"avukat_kodu\"].fillna(ATANAMAYAN))",
+  "strftime(\"%Y-%m\"),\n                             avukat_kodu=hareket[\"avukat_kodu\"])"
+ ],
+ [
+  "aylık pencere uygulanmazsa",
+  "avukat_perf/portfoy.py",
+  "    hareket = hareket[hareket[\"hareket_tarihi\"] >= ilk]",
+  "    hareket = hareket[hareket[\"hareket_tarihi\"] >= ilk - pd.DateOffset(months=12)]"
+ ],
+ [
+  "açıklama kırpmayı söylemezse",
+  "avukat_perf/aciklama_bicim.py",
+  "return \"\" if 0 <= ham <= 100 else \" (0–100 aralığına kırpıldı)\"",
+  "return \"\""
+ ],
+ [
+  "açıklama ondalık virgülü bozarsa",
+  "avukat_perf/aciklama_bicim.py",
+  "return metin.replace(\",\", \"_\").replace(\".\", \",\").replace(\"_\", \".\")",
+  "return metin"
+ ],
+ [
+  "K1 bilinmeyen esas ölçülürse",
+  "avukat_perf/kriter1.py",
+  "if pd.isna(neden) and esas is None and kayit[\"esas_tarihi_bilinmiyor\"]:",
+  "if False:"
+ ],
+ [
+  "gözlem değer değişince yeni satır ekler",
+  "avukat_perf/gozlem.py",
+  "yeni = dolu[~dolu[anahtar].isin(set(mevcut[\"anahtar\"]))]",
+  "yeni = dolu"
+ ],
+ [
+  "kaçan gece avukat aleyhine",
+  "avukat_perf/gozlem.py",
+  "ilk = kaynak.where(aralikta, onceki)",
+  "ilk = kaynak.where(aralikta, cekim)"
+ ],
+ [
+  "gözlem kaynak tarihi aralık dışında da",
+  "avukat_perf/gozlem.py",
+  "aralikta = (kaynak >= onceki) & (kaynak <= cekim)",
+  "aralikta = kaynak.notna()"
+ ],
+ [
+  "arşiv öncesi gelecek kaynak tarihi",
+  "avukat_perf/gozlem.py",
+  "ilk = kaynak.where(kaynak <= cekim)",
+  "ilk = kaynak"
+ ],
+ [
+  "iptal sonraki atamadan sonra seçilir",
+  "avukat_perf/hazirlik.py",
+  "(iptal <= sonraki)",
+  "(iptal >= sonraki)"
+ ],
+ [
+  "sulh alanı yok sayılır",
+  "avukat_perf/hazirlik.py",
+  "sulh = sulh | tablo[hz[\"sulh_alani\"]].isin(hz[\"sulh_degerleri\"])",
+  "sulh = sulh"
+ ],
+ [
+  "K2 sıfır bakiye koşulu",
+  "avukat_perf/hazirlik.py",
+  "(dosya[\"acik_bakiye\"] <= 0))",
+  "(dosya[\"acik_bakiye\"] < 0))"
+ ],
+ [
+  "kalite eşiği dahil değil",
+  "avukat_perf/kalite.py",
+  "durum = \"GECTI\" if deger <= esik else",
+  "durum = \"GECTI\" if deger < esik else"
+ ],
+ [
+  "kalite hatası uyarıya düşer",
+  "avukat_perf/kalite.py",
+  "(\"UYARI\" if uyari else \"KALDI\")",
+  "\"UYARI\""
+ ],
+ [
+  "gelecek tarih denetimi kapalı",
+  "avukat_perf/kalite.py",
+  "            ileri = int((temiz[ad].dt.normalize() > sinir).sum())",
+  "            ileri = 0"
+ ],
+ [
+  "yetim kayıt sayılmaz",
+  "avukat_perf/kalite_iliski.py",
+  "    sayi = int(yetim.sum())",
+  "    sayi = 0"
+ ],
+ [
+  "mutabakat farkı ölçülmez",
+  "avukat_perf/kalite_iliski.py",
+  "fark = abs(bizim.get(donem, 0.0) - toplam) / max(abs(toplam), 1.0)",
+  "fark = 0.0"
+ ],
+ [
+  "kalite kararı kaldıyı görmez",
+  "avukat_perf/kalite.py",
+  "kaldi = any((tablo[\"durum\"] == \"KALDI\").any() for tablo in sonuclar if tablo is not None)",
+  "kaldi = False"
+ ],
+ [
+  "dönem puanı 100 üstü geçer",
+  "avukat_perf/donem.py",
+  "(gecerli > 100)",
+  "(gecerli > 1000)"
+ ],
+ [
+  "aynı içerik yeniden yayımlanır",
+  "avukat_perf/donem.py",
+  "if ayni_kural and _icerik(son).equals(_icerik(yeni)):",
+  "if False:"
+ ],
+ [
+  "düzeltme sürümü artmaz",
+  "avukat_perf/donem.py",
+  "surum = int(onceki[\"yayin_surumu\"].max()) + 1",
+  "surum = int(onceki[\"yayin_surumu\"].max())"
+ ],
+ [
+  "API 429 yeniden denenmez",
+  "hat/api.py",
+  "(hata.code < 500 and hata.code != 429)",
+  "(hata.code < 500)"
+ ],
+ [
+  "API bearer başlığı bozuk",
+  "hat/api_kimlik.py",
+  "return {\"Authorization\": \"Bearer \" + deger}",
+  "return {\"Authorization\": \"Bearer\" + deger}"
+ ],
+ [
+  "API kısa sayfada durur (sunucu sayfa boyutunu kısıtlarsa kayıt kaybolur)",
+  "hat/api_yanit.py",
+  "or not parca or",
+  "or len(parca) < sayfalama.get(\"boyut\", 1000) or"
+ ],
+ [
+  "API ofset ilerlemez",
+  "hat/api.py",
+  "sayfa, ofset = sayfa + 1, ofset + len(parca)",
+  "sayfa, ofset = sayfa + 1, ofset"
+ ],
+ [
+  "TR sayı biçimi uygulanmaz",
+  "hat/kaynak.py",
+  "tablo[alan] = _sayi(tablo[alan], ayar[\"sayi_bicimi\"])",
+  "tablo[alan] = tablo[alan]"
+ ],
+ [
+  "tarih biçimi uygulanmaz",
+  "hat/kaynak.py",
+  "tablo[alan] = _tarih(tablo[alan], ayar[\"tarih_bicimi\"])",
+  "tablo[alan] = tablo[alan]"
+ ],
+ [
+  "aynı gün yeniden çalışmada taban önceki gündür",
+  "hat/gecmis.py",
+  "    secili = secili[secili[\"_bas\"] < pd.Timestamp(once)].sort_values([\"_bas\", \"_gun\"])",
+  "    secili = secili[secili[\"_gun\"] < pd.Timestamp(once).normalize()].sort_values([\"_bas\", \"_gun\"])"
+ ],
+ [
+  "başarısız çekim son başarılı sayılır",
+  "hat/gecmis.py",
+  "    secili = kayit[(kayit[\"kaynak\"] == kaynak) & (kayit[\"durum\"] == \"BASARILI\")]",
+  "    secili = kayit[(kayit[\"kaynak\"] == kaynak) & (kayit[\"durum\"] != \"\")]"
+ ],
+ [
+  "kalite kaldıysa da hesaplar",
+  "hat/akis.py",
+  "if karar == \"GECTI\":",
+  "if karar != \"KAYNAK_BEKLENIYOR\":"
+ ],
+ [
+  "arşiv üzerine yazar",
+  "hat/arsiv.py",
+  "if ortam.arsiv_var(veri_yolu):",
+  "if False:"
+ ],
+ [
+  "değerlendirme teyit bekleme nedeni kaybolur",
+  "hat/hesap.py",
+  "durum[\"kalite_davranis\"] = \"TEYIT_BEKLIYOR\"",
+  "durum[\"kalite_davranis\"] = \"KAYNAK_BEKLENIYOR\""
+ ],
+ [
+  "sözleşme sütunu eksik",
+  "arayuz/sozlesme_ortak.py",
+  "\"durum\", \"arsiv_yolu\"]}, [\"kaynak\"",
+  "\"durum\"]}, [\"kaynak\""
+ ],
+ [
+  "gerekçeli dışlama silinir",
+  "arayuz/sozlesme_dislanan.py",
+  "\"sonuc_tahsilat_aylik.brans\": \"aylık grafikte branşlar toplanır\",",
+  ""
+ ],
+ [
+  "süre listesi sırası bozulur",
+  "arayuz/temel.py",
+  "SEVIYE_SIRASI = {\"KIRMIZI\": 0, \"TURUNCU\": 1,",
+  "SEVIYE_SIRASI = {\"KIRMIZI\": 1, \"TURUNCU\": 0,"
+ ],
+ [
+  "süre filtresi uygulanmaz",
+  "arayuz/sunum_sure.py",
+  "tum = tum[tum[sutun] == secim[ad]]",
+  "tum = tum"
+ ],
+ [
+  "genel tahsilat oranı ters",
+  "arayuz/sunum.py",
+  "oran(topla(grup, \"atfedilen\"), topla(grup, \"rucu_toplami\"))",
+  "oran(topla(grup, \"rucu_toplami\"), topla(grup, \"atfedilen\"))"
+ ],
+ [
+  "parametre metni Python biçimi",
+  "arayuz/sunum_kural.py",
+  "return \"Evet\" if deger else \"Hayır\"",
+  "return str(deger)"
+ ],
+ [
+  "arayüz alanı çizilmez",
+  "../webapp/uygulama.js",
+  "hucre(bos(al(r, \"arsiv_yolu\")) ? \"<span class='ikincil'>—</span>\" : ipucuRozeti(\"\", \"Arşivde\",\n          al(r, \"arsiv_yolu\")))",
+  "hucre(\"\")"
+ ],
+ [
+  "arayüze rakam yazılır",
+  "../webapp/index.html",
+  "<h1>Veri Durumu</h1>",
+  "<h1>Veri Durumu (son 30 gün)</h1>"
+ ],
+ [
+  "okuma hatası gece çökertir",
+  "hat/okuma.py",
+  "        except Exception as hata:  # bağlantı, yetki, arşiv ya da biçim: kayda geçer, gece durur",
+  "        except ZeroDivisionError as hata:"
+ ],
+ [
+  "okuma hatası kalite sonucuna yazılmaz",
+  "hat/okuma.py",
+  "            sonuclar.append(kalite.cekim_hatasi(ad, metin).assign(calisma_kimligi=kimlik))\n",
+  ""
+ ],
+ [
+  "zorunlu kaynak hatası beklemeye düşer",
+  "hat/akis.py",
+  "    if eksik and karar != \"KALDI\":",
+  "    if eksik:"
+ ],
+ [
+  "üretilen tablolar kaydedilmez",
+  "hat/akis.py",
+  "    yazilan = model.yaz(ortam, mdl, sonuc, kimlik)\n",
+  "    yazilan = model.yaz(ortam, mdl, sonuc, kimlik) and {}\n"
+ ],
+ [
+  "sunucu saati kullanılır",
+  "hat/calisma.py",
+  "    return pd.Timestamp.now(tz=SAAT_DILIMI).tz_localize(None)",
+  "    return pd.Timestamp.now(tz=\"UTC\").tz_localize(None)"
+ ],
+ [
+  "dönem sonu bayat modelle yayımlar",
+  "avukat_perf/donem.py",
+  "    eski = son_cekim is None or pd.Timestamp(son_cekim).normalize() <= kesit(donem)",
+  "    eski = son_cekim is None"
+ ],
+ [
+  "önceki dönem yanlış ay",
+  "avukat_perf/donem.py",
+  "    return (pd.Timestamp(tarih).normalize().replace(day=1) - pd.Timedelta(days=1)).strftime(",
+  "    return (pd.Timestamp(tarih).normalize().replace(day=1)).strftime("
+ ],
+ [
+  "bayat sonuç tablosu gösterilir",
+  "arayuz/temel.py",
+  "    return {ad: mantiksal(suz(ad, tablo)) for ad, tablo in tablolar.items()}",
+  "    return tablolar"
+ ],
+ [
+  "oauth2 kapsamı gönderilmez",
+  "hat/api_kimlik.py",
+  "        form[\"scope\"] = kimlik[\"kapsam\"]",
+  "        pass"
+ ],
+ [
+  "oauth2 gövde doğrulaması kimlik göndermez",
+  "hat/api_kimlik.py",
+  "    form.update({} if basic else {\"client_id\": istemci, \"client_secret\": sir})",
+  "    form.update({})"
+ ],
+ [
+  "Dataiku tarihi saat dilimli kalır",
+  "hat/dataiku_ortam.py",
+  "            tablo[sutun] = tablo[sutun].dt.tz_convert(\"UTC\").dt.tz_localize(None)",
+  "            pass"
+ ],
+ [
+  "Dataiku türleri pandas tahminiyle okunur",
+  "hat/dataiku_ortam.py",
+  "    for secenek in ({\"infer_with_pandas\": False},",
+  "    for secenek in ({},"
+ ],
+ [
+  "Dataiku eksik tablo hata verir",
+  "hat/dataiku_ortam.py",
+  "if not veri_kumesi.read_schema(raise_if_empty=False):",
+  "if not veri_kumesi.read_schema():"
+ ],
+ [
+  "pandas 2 karışık tarih biçimi",
+  "avukat_perf/ortak.py",
+  "tarih = pd.to_datetime(seri, errors=kip, **(KARISIK_BICIM if seri.dtype == object else {}))",
+  "tarih = pd.to_datetime(seri, errors=kip)"
+ ],
+ [
+  "boş tablo birleştirmeye girer",
+  "avukat_perf/ortak.py",
+  "    dolu = [tablo for tablo in tablolar if tablo is not None and not tablo.empty]",
+  "    dolu = [tablo for tablo in tablolar if tablo is not None]"
+ ],
+ [
+  "gölge mod bekleme sayılmaz",
+  "arayuz/sunum.py",
+  "BEKLEME = (\"KAYNAK_BEKLENIYOR\", \"TEYIT_BEKLIYOR\", \"GOLGE_MOD\")",
+  "BEKLEME = (\"KAYNAK_BEKLENIYOR\", \"TEYIT_BEKLIYOR\")"
+ ],
+ [
+  "sütun beklemesi tümünü ister",
+  "arayuz/sunum.py",
+  "        bekleme = bekleyen[\"durum\"].value_counts().index[0] if len(bekleyen) and \\\n            gecerli.empty else None",
+  "        bekleme = bekleyen[\"durum\"].iloc[0] if len(bekleyen) == len(parca) and \\\n            len(parca) else None"
+ ],
+ [
+  "tahsilat grubu tek genel oran olursa (branş yanlılığı)",
+  "avukat_perf/tahsilat.py",
+  "grup = list(tah[\"gruplama\"])",
+  "grup = list(tah[\"gruplama\"])[:0] or [\"_tek\"]; dosyalar = dosyalar.assign(_tek=0)"
+ ],
+ [
+  "tahsilat elde tutma payı yerine tam dosya sayılırsa",
+  "avukat_perf/tahsilat.py",
+  "pay = pay.assign(maruziyet=pay[\"pay\"] * pay[\"rucu_tutari\"])",
+  "pay = pay.assign(pay=1.0, maruziyet=pay[\"rucu_tutari\"])"
+ ],
+ [
+  "dönemi aralıktan önce biten avukat paya girerse (RFM sıklığı düşer)",
+  "avukat_perf/atama.py",
+  "tablo = tablo[tablo[\"gun\"] > 0]",
+  "tablo = tablo[tablo[\"gun\"] >= 0]"
+ ],
+ [
+  "K2 koşul kesitten sonra kalkınca kesitteki düşüm silinir",
+  "avukat_perf/kriter2.py",
+  "(pd.isna(kayit[\"kosul_kayip_tarihi\"]) and not kosul_simdi)",
+  "(tarih[\"kosul_kayip_tarihi\"] is None and not kosul_simdi)"
+ ],
+ [
+  "arşiv öncesi esas sonraki atamada da bilinmiyor sayılır",
+  "avukat_perf/kriter1.py",
+  "onceden = not pd.isna(gorulme) and gorulme < atama",
+  "onceden = False"
+ ],
+ [
+  "hatalı iptal gerçek dönemi keser",
+  "avukat_perf/hazirlik.py",
+  "sayilan = ~sulh & ~(iptal.notna() & hatali)",
+  "sayilan = ~sulh"
+ ],
+ [
+  "boş (sıfır günlük) dönem ayıklanmaz",
+  "avukat_perf/hazirlik.py",
+  "tablo = tablo.loc[~bos, DONEM_SUTUNLARI].reset_index(drop=True)",
+  "tablo = tablo.loc[:, DONEM_SUTUNLARI].reset_index(drop=True)"
+ ],
+ [
+  "aynı gün kayıtlarında iptal edilen sona sıralanır",
+  "avukat_perf/hazirlik.py",
+  "\"iptal_tarihi\",\n                                   \"atama_ref\"], na_position=\"last\"",
+  "\"iptal_tarihi\",\n                                   \"atama_ref\"], na_position=\"first\""
+ ],
+ [
+  "kural değişikliği yeni sürüm açmaz",
+  "avukat_perf/donem.py",
+  "ayni_kural = set(son[\"hesap_surumu\"]) == {ek_bilgi[\"hesap_surumu\"]}",
+  "ayni_kural = True"
+ ],
+ [
+  "değişmeyen yayın dönem tablosunu yeniden yazar",
+  "hat/donem_akisi.py",
+  "        if yayin != \"DEGISMEDI\":",
+  "        if True:"
+ ],
+ [
+  "yarım kalan sürüm temizlenmez",
+  "avukat_perf/donem.py",
+  "kalan = mevcut[~((mevcut[\"donem\"] == donem) & (mevcut[\"yayin_surumu\"] == surum))]",
+  "kalan = mevcut"
+ ],
+ [
+  "unutulan dönem değişkeni yeni ayı engeller",
+  "hat/donem_akisi.py",
+  "if onceki not in donemler and (not degisken or onceki not in yayimlanan):",
+  "if not degisken:"
+ ],
+ [
+  "dönem sonu parametreyi doğrulamaz",
+  "hat/donem_akisi.py",
+  "    dogrula_veya_dur(params)\n",
+  ""
+ ],
+ [
+  "dava takip kalkınca olay birleştirme çöker",
+  "hat/akis.py",
+  "    if mevcut is not None and celiski:",
+  "    if mevcut is not None:"
+ ],
+ [
+  "hesap hatası kayda geçmez",
+  "hat/akis.py",
+  "            calisma.kaydet(ortam, onceki, kayitlar, \"KALDI\", ozet)\n",
+  ""
+ ],
+ [
+  "geniş değerlendirmede ham satır sayılır",
+  "hat/okuma.py",
+  "satir_sayisi=len(normal)",
+  "satir_sayisi=len(ham)"
+ ],
+ [
+  "geçici okuma hatası geçmişi siler",
+  "hat/dataiku_ortam.py",
+  "        veri_kumesi = self._dataiku.Dataset(ad)\n        if not veri_kumesi.read_schema(raise_if_empty=False):\n            return None",
+  "        veri_kumesi = self._dataiku.Dataset(ad)\n        try:\n            veri_kumesi.read_schema()\n        except Exception:\n            return None"
+ ],
+ [
+  "ayar dosyasındaki BOM çökertir",
+  "hat/dataiku_ortam.py",
+  "akis.read().decode(\"utf-8-sig\")",
+  "akis.read().decode(\"utf-8\")"
+ ],
+ [
+  "tr sayı biçimi sayısal değeri bozar",
+  "hat/kaynak.py",
+  "        return deger\n    return seri.map(cevir)",
+  "        return float(str(deger).replace(\".\", \"\")) if isinstance(deger, float) else deger\n    return seri.map(cevir)"
+ ],
+ [
+  "boş API yanıtı zorunlu sütun hatası verir",
+  "hat/kaynak.py",
+  "    if ham.empty and len(ham.columns) == 0:\n        return pd.DataFrame(columns=sema.alanlar(ad))\n",
+  ""
+ ],
+ [
+  "aynı sayfa tekrarı fark edilmez",
+  "hat/api.py",
+  "        if parca and parca == onceki:",
+  "        if False:"
+ ],
+ [
+  "imleç tekrarı fark edilmez",
+  "hat/api.py",
+  "            if yeni and yeni == imlec:",
+  "            if False:"
+ ],
+ [
+  "kopan bağlantı yeniden denenmez",
+  "hat/api.py",
+  "YENIDEN_DENENEN = (urllib.error.URLError, ZAMAN_ASIMI, ConnectionError, HTTPException)",
+  "YENIDEN_DENENEN = (urllib.error.URLError, ZAMAN_ASIMI)"
+ ],
+ [
+  "toplam yolu dikkate alınmaz",
+  "hat/api.py",
+  "            if toplam is not None and len(kayitlar) != toplam:",
+  "            if False:"
+ ],
+ [
+  "Türkçe biçimli metin sayı yalnız uyarı",
+  "avukat_perf/kalite.py",
+  "            sonuclar.append(satir(kaynak, \"SAYI_BICIMI:\" + ad, int(yerel.sum()),\n",
+  "            sonuclar.append(satir(kaynak, \"SAYI_BICIMI:\" + ad, int(yerel.sum()), uyari=True,\n"
+ ],
+ [
+  "isteğe bağlı boş tablo geceyi durdurur",
+  "avukat_perf/kalite.py",
+  "    bos_uyari = tanim.get(\"istege_bagli\") and not tanim.get(\"gozlem\") and not onceki_satir",
+  "    bos_uyari = False"
+ ],
+ [
+  "küçük tabloda sapma denetlenir",
+  "avukat_perf/kalite.py",
+  "if onceki_satir and onceki_satir >= params[\"kalite\"][\"sapma_en_az_satir\"]:",
+  "if onceki_satir:"
+ ],
+ [
+  "anahtar biçimi tümden farklıyken yalnız uyarı",
+  "avukat_perf/kalite_iliski.py",
+  "    hepsi = 0 < len(alt) == sayi",
+  "    hepsi = False"
+ ],
+ [
+  "ISO dışı tarih tahmin edilir",
+  "avukat_perf/ortak.py",
+  "bozuk = sayi | (metin & ~seri.where(metin, \"\").astype(str).str.match(ISO_TARIH))",
+  "bozuk = sayi"
+ ],
+ [
+  "sayı tarih (epoch) kabul edilir",
+  "avukat_perf/ortak.py",
+  "    if pd.api.types.is_numeric_dtype(seri) and not pd.api.types.is_bool_dtype(seri):\n        bozuk = seri.notna()",
+  "    if pd.api.types.is_numeric_dtype(seri) and not pd.api.types.is_bool_dtype(seri):\n        bozuk = seri.isna()"
+ ],
+ [
+  "karışık saat dilimli tarih çökertir",
+  "avukat_perf/ortak.py",
+  "    if seri.dtype == object and seri.map(_dilimli_metin).any():",
+  "    if False:"
+ ],
+ [
+  "hareket eşleşmeyince avukat kodu sayı türüne döner",
+  "avukat_perf/atama.py",
+  "    return tablo.assign(avukat_kodu=pd.Series(tablo.index.map(avukat), index=tablo.index,\n                                              dtype=object))",
+  "    return tablo.assign(avukat_kodu=tablo.index.map(avukat))"
+ ],
+ [
+  "süre puanında sıfır güven sabiti kabul edilir",
+  "avukat_perf/params.py",
+  "    if sure[\"guven_sabiti\"] <= 0 or sure[\"egim\"] <= 0",
+  "    if False"
+ ],
+ [
+  "yeterlilik ondalık oranla kabul edilir",
+  "avukat_perf/params_kural.py",
+  "gecerli = len(oran) == 2 and all(tur_uygun(sayi, \"tam\") for sayi in oran)",
+  "gecerli = len(oran) == 2 and all(tur_uygun(sayi, \"sayi\") for sayi in oran)"
+ ],
+ [
+  "şerit kesiti başarısız geceden alınır",
+  "arayuz/sunum_ortak.py",
+  "    son = gecmis.son_basarili_gece(kayit)\n",
+  "    son = gecmis.son_basarili_gece(None if kayit is None else kayit.assign(\n        durum=\"GECTI\", uretilen=\"x\"))\n"
+ ],
+ [
+  "kural değişikliği ekranda söylenmez",
+  "arayuz/sunum_ortak.py",
+  "kural_degisti=not hatalar and isinstance(surum, str)",
+  "kural_degisti=False and isinstance(surum, str)"
+ ],
+ [
+  "süre sayacı yalnız gösterilenleri sayar",
+  "arayuz/sunum_sure.py",
+  "    sonuc[\"sure.filtre\"] = [{\"toplam\": len(tum), \"gosterilen\": len(liste),",
+  "    sonuc[\"sure.filtre\"] = [{\"toplam\": len(liste), \"gosterilen\": len(liste),"
+ ],
+ [
+  "son olaylar yalnız gösterilen dönemlerden",
+  "arayuz/sunum_sure.py",
+  "    yeni = eslesen(tum).sort_values",
+  "    yeni = eslesen(liste).sort_values"
+ ],
+ [
+  "avukat seçicisi filtrelenmiş listeden",
+  "arayuz/sunum_sure.py",
+  "    avukatlar = sorted(olculen.dropna().unique())",
+  "    avukatlar = sorted(tum[\"avukat_kodu\"].dropna().unique())"
+ ],
+ [
+  "kayan nokta artığı eşikte avukatı düşürür",
+  "avukat_perf/tahsilat_puan.py",
+  "if round(n, 9) < tah[\"en_az_olgun_dosya\"]:",
+  "if n < tah[\"en_az_olgun_dosya\"]:"
+ ],
+ [
+  "yıllık aynı dönem kesit gününü dışlar",
+  "avukat_perf/portfoy.py",
+  "(tarih.dt.day <= son_gun))",
+  "(tarih.dt.day < son_gun))"
+ ],
+ [
+  "yıllık değişim önceki yılın tamamına göre",
+  "avukat_perf/portfoy.py",
+  "onceki = tablo[tablo[\"yil\"] == kesit.year - 1].set_index(\"avukat_kodu\")[\"ayni_donem_tutar\"]",
+  "onceki = tablo[tablo[\"yil\"] == kesit.year - 1].set_index(\"avukat_kodu\")[\"tutar\"]"
+ ],
+ [
+  "yıllıkta tahsilatsız yıl sıfır sayılmaz",
+  "avukat_perf/portfoy.py",
+  "tablo = tablo.reindex(dizin, fill_value=0).reset_index()",
+  "tablo = tablo.reset_index()"
+ ],
+ [
+  "yıllıkta dosya tablosu dışı hareket sayılır",
+  "avukat_perf/portfoy.py",
+  "hareket = hareket[hareket[\"dosya_no\"].isin(dosya[\"dosya_no\"]) &",
+  "hareket = hareket[hareket[\"dosya_no\"].notna() &"
+ ],
+ [
+  "mevcut alanlarda boş puan sayılır",
+  "avukat_perf/kalite_davranis.py",
+  "secili = tablo[\"alt_baslik\"].isin(kd[\"mevcut_alanlar\"]) & tablo[\"puan\"].notna() & \\",
+  "secili = tablo[\"alt_baslik\"].isin(kd[\"mevcut_alanlar\"]) & \\"
+ ],
+ [
+  "mevcut alanlar ölçek teyidini bekler",
+  "hat/hesap.py",
+  "    sonuc[\"sonuc_mevcut_degerlendirme\"] = kalite_davranis.mevcut_alanlar(\n        model[\"degerlendirme\"], kesit, params)\n",
+  ""
+ ],
+ [
+  "değerlendirmede yinelenen anahtar geceyi durdurur",
+  "avukat_perf/kalite.py",
+  "uyari=not tanim[\"anahtar\"] or tanim.get(\"yinelenen_uyari\", False)))",
+  "uyari=not tanim[\"anahtar\"]))"
+ ],
+ [
+  "yıllık atanamayanı kaybederse",
+  "avukat_perf/portfoy.py",
+  "avukat_kodu=hareket[\"avukat_kodu\"].fillna(ATANAMAYAN))\n    tablo = hareket.groupby([\"avukat_kodu\", \"yil\"])",
+  "avukat_kodu=hareket[\"avukat_kodu\"])\n    tablo = hareket.groupby([\"avukat_kodu\", \"yil\"])"
+ ],
+ [
+  "tarihi bilinmeyen dava cezalandırılır",
+  "avukat_perf/kriter2.py",
+  "neden = _baslangic_nedeni(kayit, tarih, k2) or _dava_nedeni(kayit, tarih)",
+  "neden = _baslangic_nedeni(kayit, tarih, k2)"
+ ],
+ [
+  "atamadan önce görülen dava önceden var sayılmaz",
+  "avukat_perf/kriter2.py",
+  "return \"DAVA_ONCEDEN_VAR\" if gorulme < kayit[\"atama_tarihi\"] else \"DAVA_TARIHI_BILINMIYOR\"",
+  "return \"DAVA_TARIHI_BILINMIYOR\""
+ ],
+ [
+  "tarihi bilinmeyen dava kaydı aktarılmaz",
+  "avukat_perf/hazirlik.py",
+  "tablo[\"dava_gorulme\"] = tablo[\"dosya_no\"].map(gozlem.bilinmeyen_esle(dava_gozlem))",
+  "tablo[\"dava_gorulme\"] = pd.NaT"
+ ],
+ [
+  "eksik kriterle süre puanı üretilir",
+  "hat/hesap_sure.py",
+  "    if k1 is None or k2 is None:",
+  "    if False:"
+ ],
+ [
+  "yedek yolda gölge zorlanmaz",
+  "hat/hesap_sure.py",
+  "if not model.get(\"golge_zorunlu\") or params[\"uyari\"].get(\"golge_k1\"):",
+  "if True:"
+ ],
+ [
+  "yedek yol kayda geçmez",
+  "hat/model.py",
+  "             \"golge_zorunlu\": tablolar.get(\"esas_goruntu\") is None and",
+  "             \"golge_zorunlu\": False and"
+ ],
+ [
+  "sonuç tabloları etiketlenmez",
+  "hat/model.py",
+  "ortam.tablo_yaz(ad, yazilacak[ad].assign(calisma_kimligi=kimlik))",
+  "ortam.tablo_yaz(ad, yazilacak[ad])"
+ ],
+ [
+  "arayüz başka gecenin tablosunu gösterir",
+  "arayuz/temel.py",
+  "        uygun = ad in uretilen and model.etiket_uygun(tablo, kimlik, uretilen[ad])",
+  "        uygun = ad in uretilen"
+ ],
+ [
+  "dönem sonu başka gecenin modelini kullanır",
+  "hat/model.py",
+  "        if tablo is None or not etiket_uygun(tablo, kimlik, uretilen[ad]):",
+  "        if tablo is None:"
+ ],
+ [
+  "gruplamada tutar bandı varsayılır",
+  "hat/hesap.py",
+  "        if sutun in grup_t.columns:",
+  "        if True:"
+ ],
+ [
+  "şerit yedek yolun gölgesini göstermez",
+  "arayuz/sunum_ortak.py",
+  "        k1 = k2 or dogru_mu(son.get(\"golge_zorunlu\"))",
+  "        k1 = k2"
+ ],
+ [
+  "hiç başarılı gece yokken sonuçlar gösterilir",
+  "arayuz/temel.py",
+  "        uygun = ad in uretilen and model.etiket_uygun(tablo, kimlik, uretilen[ad])",
+  "        uygun = not uretilen or (ad in uretilen and model.etiket_uygun(tablo, kimlik, uretilen[ad]))"
+ ],
+ [
+  "bayrak olayı başarılı gecelerle süzülmez",
+  "arayuz/temel.py",
+  "return butunluk.basarili_satirlar(tablo, kayit)",
+  "return tablo"
+ ],
+ [
+  "başarısız gecenin olayı birleştirmeye girer",
+  "hat/akis.py",
+  "mevcut = butunluk.basarili_satirlar(ham, onceki_kayit)",
+  "mevcut = ham"
+ ],
+ [
+  "olay tabloları sonuçlardan önce yazılır",
+  "hat/model.py",
+  "etiketli = sorted(ad for ad in yazilacak if ad.startswith((\"sonuc_\", \"model_\")))",
+  "etiketli = sorted(yazilacak)"
+ ],
+ [
+  "yayımlanmış birleşik sürüm yeniden yazılır",
+  "hat/donem_akisi.py",
+  "    if secili is not None and set(secili[\"avukat_kodu\"])",
+  "    if False and set(secili[\"avukat_kodu\"])"
+ ],
+ [
+  "birleşik dönem tablosu yazılmaz",
+  "hat/donem_akisi.py",
+  "    ortam.tablo_yaz(\"birlesik_donem\", tablo)\n",
+  ""
+ ],
+ [
+  "birleşik sürüm yayından önce yazılır",
+  "hat/donem_akisi.py",
+  "        if yayin != \"DEGISMEDI\":\n            ortam.tablo_yaz(\"puan_donem\", puan_donem)\n        uretilen = \"puan_donem={},birlesik_donem={}\".format(\n            len(puan_donem), _birlesik_tamamla(ortam, puan_donem, donem_adi, params))",
+  "        birlesik_sayi = _birlesik_tamamla(ortam, puan_donem, donem_adi, params)\n        if yayin != \"DEGISMEDI\":\n            ortam.tablo_yaz(\"puan_donem\", puan_donem)\n        uretilen = \"puan_donem={},birlesik_donem={}\".format(len(puan_donem), birlesik_sayi)"
+ ],
+ [
+  "birleşik tamamlamada son sürüm yerine ilk sürüm denetlenir",
+  "hat/donem_akisi.py",
+  "son = donem.son_surum(puan_donem[puan_donem[\"donem\"] == donem_adi])",
+  "son = puan_donem[puan_donem[\"donem\"] == donem_adi]"
+ ],
+ [
+  "yarım yazılmış birleşik sürüm tamamlanmaz",
+  "hat/donem_akisi.py",
+  "set(secili[\"avukat_kodu\"]) == set(son[\"avukat_kodu\"]) and set(",
+  "True and set("
+ ],
+ [
+  "yayın karşılaştırması altı ondalıkta",
+  "avukat_perf/donem.py",
+  "puan=secili[\"puan\"].astype(float).map(yuvarla)",
+  "puan=secili[\"puan\"].astype(float).round(6)"
+ ],
+ [
+  "string türündeki tarih denetlenmez",
+  "avukat_perf/ortak.py",
+  "    elif not pd.api.types.is_datetime64_any_dtype(seri):\n        seri = seri.astype(object).where(seri.notna(), None)  # string türü de denetlenir\n",
+  "    elif seri.dtype == object:\n"
+ ],
+ [
+  "NaN parametre doğrulamadan geçer",
+  "avukat_perf/params.py",
+  "    hatalar = _yapi_hatalari(params) + _sonlu_olmayanlar(params)",
+  "    hatalar = _yapi_hatalari(params)"
+ ],
+ [
+  "bir yıllık gösterimde önceki yıl hesaplanmaz",
+  "avukat_perf/portfoy.py",
+  "kesit.year - max(gosterilen, 2) + 1",
+  "kesit.year - gosterilen + 1"
+ ],
+ [
+  "gereken değerlendirme sayısı aşağı yuvarlanır",
+  "avukat_perf/kalite_davranis.py",
+  "\"gereken\": -(-toplam * pay // payda),",
+  "\"gereken\": toplam * pay // payda,"
+ ],
+ [
+  "süre listesi penceresi kesitten kurulmaz",
+  "avukat_perf/sure_ozet.py",
+  "        tarih, kesit, pencere_ay, haric, degerlendirmeler.get(\"kriter\"))",
+  "        tarih, kesit, pencere_ay * 3, haric, degerlendirmeler.get(\"kriter\"))"
+ ],
+ [
+  "başka kimlikli birleşik sürüm kabul edilir",
+  "hat/donem_akisi.py",
+  " and set(\n            zip(secili[\"calisma_kimligi\"].astype(str), secili[\"hesap_surumu\"].astype(str))) == {\n            (str(bilgi[\"calisma_kimligi\"]), str(bilgi[\"hesap_surumu\"]))}:",
+  ":"
+ ],
+ [
+  "dönem sonu hazırlık sürümünü denetlemez",
+  "hat/donem_kayit.py",
+  "    fark = int(isinstance(kayitli, str) and kayitli != hazirlik_surumu(params))",
+  "    fark = 0"
+ ],
+ [
+  "dönem tablosunda satır kaybı denetlenmez",
+  "hat/donem_akisi.py",
+  "    butunluk.veri_kaybi(onceki, eski, \"DONEM_SONU\")  # kesik yayın tablosu: çalışma durur\n",
+  ""
+ ],
+ [
+  "gözlem tablosunda satır kaybı denetlenmez",
+  "hat/model.py",
+  "    butunluk.veri_kaybi(onceki_kayit, mevcut)\n",
+  ""
+ ],
+ [
+  "bekleme eksikken Kriter 1 hesaplanır",
+  "hat/hesap_sure.py",
+  "    if esas is not None and not model.get(\"bekleme_eksik\"):",
+  "    if esas is not None:"
+ ],
+ [
+  "gölge dönemindeki düşüm puana girer",
+  "hat/hesap_sure.py",
+  "    haric = {kriter: [] if golge[kriter] else araliklar.get(kriter) or []",
+  "    haric = {kriter: []"
+ ],
+ [
+  "etiket denetimi satır sayısına bakmaz",
+  "hat/model.py",
+  "    if sayi is not None and len(tablo) != sayi:\n        return False\n",
+  ""
+ ],
+ [
+  "bayrak olayında satır kaybı denetlenmez",
+  "hat/akis.py",
+  "    butunluk.veri_kaybi(onceki_kayit, {\"bayrak_olay\": ham})\n",
+  ""
+ ],
+ [
+  "çalışma kaydında satır kaybı denetlenmez",
+  "hat/akis.py",
+  "        butunluk.veri_kaybi(onceki, {\"calisma_kaydi\": onceki}, tur)\n",
+  "        pass\n"
+ ],
+ [
+  "yeni ilişki denetimleri çalışmaz",
+  "hat/okuma.py",
+  "             (\"ESAS_DOSYA\", \"esas_goruntu\", \"dosya\", \"dosya_no\", True),\n",
+  ""
+ ],
+ [
+  "mutabakat süzülmemiş hareketle yapılır",
+  "hat/okuma.py",
+  "    hareket = hazirlik.tahsilat_hareketleri(tablolar[\"tahsilat_hareketi\"], params[\"hazirlik\"])",
+  "    hareket = tablolar[\"tahsilat_hareketi\"]"
+ ],
+ [
+  "elde tutma payı ilk atamadan bölünmez",
+  "avukat_perf/atama.py",
+  "    bolen = ((tek_gun(kesit) + BIR_GUN - tablo[\"ilk\"]).dt.days if payda == \"ilk_atamadan\"",
+  "    bolen = ((tek_gun(kesit) + BIR_GUN - tablo[\"ilk\"]).dt.days if payda == \"yok\""
+ ],
+ [
+  "gölge gecesi baştan itibaren bütün günleri kapsar",
+  "hat/gecmis.py",
+  "            araliklar.append((onceki, gun))",
+  "            araliklar.append((None, gun))"
+ ],
+ [
+  "satır kaybı eşitlikte de durur",
+  "hat/butunluk.py",
+  "okunan < beklenen[ad]",
+  "okunan <= beklenen[ad]"
+ ],
+ [
+  "teyit listesi doğrulanmaz",
+  "avukat_perf/params.py",
+  "    return hatalar if hatalar else _teyit_hatalari(params) + _kural_hatalari(params)",
+  "    return hatalar if hatalar else _kural_hatalari(params)"
+ ],
+ [
+  "isteğe bağlı sütun zorunlu sayılır",
+  "avukat_perf/kalite.py",
+  "eksik = [ad for ad, _, zorunlu in tanim[\"alanlar\"] if zorunlu and ad not in tablo.columns]",
+  "eksik = [ad for ad, _, zorunlu in tanim[\"alanlar\"] if ad not in tablo.columns]"
+ ],
+ [
+  "boş metin dolu sayılır",
+  "avukat_perf/kalite.py",
+  "    temiz = temiz.apply(bos_metin)\n",
+  ""
+ ],
+ [
+  "bekleme ters tarihi geçer",
+  "avukat_perf/kalite_tarih.py",
+  "sonuc.append((\"TERS_TARIH\", _sayi(temiz[\"bitis\"] < temiz[\"baslangic\"]), False,",
+  "sonuc.append((\"TERS_TARIH\", 0, False,"
+ ],
+ [
+  "yer tutucu tarih geçer",
+  "avukat_perf/kalite_tarih.py",
+  "sonuc.append((\"ESKI_TARIH:\" + ad, _sayi(temiz[ad] < en_eski), False,",
+  "sonuc.append((\"ESKI_TARIH:\" + ad, 0, False,"
+ ],
+ [
+  "bilinmeyen branş uyarı vermez",
+  "avukat_perf/kalite_alan.py",
+  "sonuc.append((\"DEGER:brans\", _sayi(bilinmeyen), False,",
+  "sonuc.append((\"DEGER:brans\", 0, False,"
+ ],
+ [
+  "ölçek dışı puan kapıda geçer",
+  "avukat_perf/kalite_alan.py",
+  "sonuc.append((\"OLCEK:puan\", _sayi(olcek_disi(temiz, kd)), False,",
+  "sonuc.append((\"OLCEK:puan\", 0, False,"
+ ],
+ [
+  "kapsam dışı atama anahtar denetimine girer",
+  "avukat_perf/atama.py",
+  "anahtar_kontrol(tablo[tablo[\"kapsam_disi_nedeni\"].isna()], ANAHTAR, \"atamalar\")",
+  "anahtar_kontrol(tablo, ANAHTAR, \"atamalar\")"
+ ],
+ [
+  "boş bakiye Kriter 2 koşulunu bozar",
+  "avukat_perf/kriter2.py",
+  "return rucu_kodu != kod or bool(pd.notna(acik_bakiye) and acik_bakiye <= 0)",
+  "return rucu_kodu != kod or not (acik_bakiye > 0)"
+ ],
+ [
+  "süre yeterli veri dönem sayar",
+  "avukat_perf/sure_puani.py",
+  "yeterli=tablo[\"risk_dosya\"] >= sp[\"yeterli_dosya\"])",
+  "yeterli=tablo[\"risk_donemi\"] >= sp[\"yeterli_dosya\"])"
+ ],
+ [
+  "arabuluculuk başlangıcı en erken gün",
+  "avukat_perf/gozlem.py",
+  "deger = ilk.where(kaynak, pd.to_datetime(tablo[\"ilk_gorulme\"]))",
+  "deger = ilk"
+ ],
+ [
+  "kayan nokta artığı beklenen sayılır",
+  "avukat_perf/tahsilat_puan.py",
+  "if beklenen < YARIM_KURUS:",
+  "if beklenen <= 0:"
+ ],
+ [
+  "Türkçe sayı kalıba bakmadan çevrilir",
+  "hat/kaynak.py",
+  "if isinstance(deger, str) and re.match(kalip, deger):",
+  "if isinstance(deger, str) and re.match(r\"^[\\d.,\\s-]+$\", deger):"
+ ],
+ [
+  "mutabakat dönem biçimi çevrilmez",
+  "avukat_perf/kalite_iliski.py",
+  "rapor_toplam[\"donem\"].map(_donem)).sum()",
+  "rapor_toplam[\"donem\"]).sum()"
+ ],
+ [
+  "hareket kimliği tekrarı geçer",
+  "avukat_perf/kalite_alan.py",
+  "cift = kimlik.notna() & kimlik.duplicated(keep=False)",
+  "cift = kimlik.notna() & kimlik.isna()"
+ ],
+ [
+  "boş bakiye uyarısı verilmez",
+  "avukat_perf/kalite_alan.py",
+  "sonuc.append((\"BOS_BAKIYE\", _sayi(bos), True,",
+  "sonuc.append((\"BOS_BAKIYE\", 0, True,"
+ ],
+ [
+  "ek ayar varsayılanı ezmez",
+  "hat/ayar.py",
+  "            sonuc[anahtar] = copy.deepcopy(deger)",
+  "            sonuc.setdefault(anahtar, copy.deepcopy(deger))"
+ ],
+ [
+  "ek ayar derin birleştirilmez",
+  "hat/ayar.py",
+  "        if isinstance(deger, dict) and isinstance(sonuc.get(anahtar), dict) \\\n",
+  "        if False and isinstance(deger, dict) \\\n"
+ ],
+ [
+  "ek ayar dosyası okunmaz",
+  "hat/ayar.py",
+  "ortam.ayar_oku_varsa(ad + \"_ek.json\"))",
+  "None)"
+ ],
+ [
+  "sistem ayarı kaynağa geçmez",
+  "hat/ayar.py",
+  "    ayar = birlestir(ayarlar.get(\"sistemler\", {}).get(sistem, {}),",
+  "    ayar = birlestir({},"
+ ],
+ [
+  "sistem ayarı kaynak ayarını ezer",
+  "hat/ayar.py",
+  "birlestir(ayarlar.get(\"sistemler\", {}).get(sistem, {}),\n                     ayarlar.get(\"kaynaklar\", {}).get(ad, {}))",
+  "birlestir(ayarlar.get(\"kaynaklar\", {}).get(ad, {}),\n                     ayarlar.get(\"sistemler\", {}).get(sistem, {}))"
+ ],
+ [
+  "adres kökünün sonundaki eğik çizgi kalır",
+  "hat/ayar.py",
+  "str(api.get(\"adres_koku\") or \"\").rstrip(\"/\")",
+  "str(api.get(\"adres_koku\") or \"\")"
+ ],
+ [
+  "kaynağın kendi adresi kökle ezilir",
+  "hat/ayar.py",
+  "    if api and not api.get(\"adres\") and api.get(\"yol\") is not None:",
+  "    if api and api.get(\"yol\") is not None:"
+ ],
+ [
+  "yer tutucu adresle api kabul edilir",
+  "hat/ayar.py",
+  "    if ayar[\"yontem\"] == \"api\" and YER_TUTUCU in str(deger):",
+  "    if False:"
+ ],
+ [
+  "sistem düzeyinde tam adres kabul edilir",
+  "hat/ayar.py",
+  "        if (blok.get(\"api\") or {}).get(\"adres\"):",
+  "        if False:"
+ ],
+ [
+  "bilinmeyen ayar anahtarı geçer",
+  "hat/ayar_alan.py",
+  "            if not ad.startswith(\"_\") and ad not in izinli]",
+  "            if False]"
+ ],
+ [
+  "bilinmeyen sistem geçer",
+  "hat/ayar.py",
+  "            hatalar.append(\"sistemler: bilinmeyen sistem \" + sistem)\n            continue",
+  "            continue"
+ ],
+ [
+  "tanımsız kaynak geçer",
+  "hat/ayar.py",
+  "            hatalar.append(\"kaynaklar: tanımsız kaynak \" + ad)\n",
+  "            pass\n"
+ ],
+ [
+  "geçersiz yöntem geçer",
+  "hat/ayar.py",
+  "    if ayar[\"yontem\"] not in YONTEMLER:",
+  "    if False:"
+ ],
+ [
+  "yönteme gereken alan denetlenmez",
+  "hat/ayar.py",
+  "    if not deger:\n",
+  "    if False:\n"
+ ],
+ [
+  "gece kaynak ayarını doğrulamaz",
+  "hat/akis.py",
+  "    ayar.dogrula_veya_dur(ayarlar)\n",
+  "\n"
+ ],
+ [
+  "bilinmeyen parametre anahtarı geçer",
+  "avukat_perf/params.py",
+  "            if not str(ad).startswith(\"_\") and ad not in izinli]",
+  "            if False]"
+ ],
+ [
+  "Not Geçmişi her dönemin ilk sürümünü gösterir",
+  "arayuz/sunum_avukat.py",
+  "gecmis = secili(donem.son_surum(birlesik_donem), \"avukat_kodu\", kod)",
+  "gecmis = secili(birlesik_donem[birlesik_donem[\"yayin_surumu\"] == 1], \"avukat_kodu\", kod)"
+ ],
+ [
+  "yeni birleşik sürüm önceki dönem satırını ezer",
+  "avukat_perf/donem.py",
+  "    kalan = mevcut[~((mevcut[\"donem\"] == donem) & (mevcut[\"yayin_surumu\"] == surum))]",
+  "    kalan = mevcut[~(mevcut[\"donem\"] == donem)]"
+ ],
+ [
+  "son sürüm seçimi bütün tablonun en büyük sürümünü alır",
+  "avukat_perf/donem.py",
+  "    en_son = tablo.groupby(\"donem\")[\"yayin_surumu\"].transform(\"max\")",
+  "    en_son = tablo[\"yayin_surumu\"].max()"
+ ],
+ [
+  "toplam_ile_dur dikkate alınmaz",
+  "hat/api_yanit.py",
+  "durdur and okunan >= toplam)",
+  "False)"
+ ],
+ [
+  "aynı günün ilk çekimi taban olur",
+  "hat/gecmis.py",
+  ".sort_values([\"_bas\", \"_gun\"])",
+  ".sort_values([\"_gun\"], kind=\"mergesort\")"
+ ],
+ [
+  "sütun tamlığı yalnız sayıya bakar",
+  "avukat_perf/donem.py",
+  "    kume = tablo.groupby(\"avukat_kodu\")[\"sutun\"].agg(lambda s: frozenset(s))\n    eksik_sutun = int((kume != frozenset(SUTUNLAR)).sum())",
+  "    kume = tablo.groupby(\"avukat_kodu\")[\"sutun\"].nunique()\n    eksik_sutun = int((kume != len(SUTUNLAR)).sum())"
+ ],
+ [
+  "uyarı günü oto dışı düşümle karşılaştırılmaz",
+  "avukat_perf/params.py",
+  "    elif k1[\"uyari_gun\"] >= en_kisa_ay_suresi(k1[\"dusum_ay_diger\"]):",
+  "    elif False:"
+ ],
+ [
+  "sıfır rücu tutarı uyarısı verilmez",
+  "avukat_perf/kalite_alan.py",
+  "_sayi(temiz[\"rucu_tutari\"] == 0)",
+  "0"
+ ],
+ [
+  "süre yeterli veri sınırda sağlanmaz",
+  "avukat_perf/sure_puani.py",
+  "yeterli=tablo[\"risk_dosya\"] >= sp[\"yeterli_dosya\"])",
+  "yeterli=tablo[\"risk_dosya\"] > sp[\"yeterli_dosya\"])"
+ ],
+ [
+  "süre beklenen tabanı sınırda geçmez",
+  "avukat_perf/sure_puani.py",
+  "    if round(satir.e, 9) < sp[\"en_az_beklenen\"]:",
+  "    if round(satir.e, 9) <= sp[\"en_az_beklenen\"]:"
+ ],
+ [
+  "süre beklenen kaba yuvarlanır",
+  "avukat_perf/sure_puani.py",
+  "round(satir.e, 9)",
+  "round(satir.e, 1)"
+ ],
+ [
+  "süre beklenen yuvarlama koruması kaldırılır",
+  "avukat_perf/sure_puani.py",
+  "round(satir.e, 9)",
+  "satir.e"
+ ],
+ [
+  "süre kapsam tabanı sınırda geçmez",
+  "avukat_perf/sure_puani.py",
+  "    if satir.kapsam < sp[\"en_az_kapsam\"]:",
+  "    if satir.kapsam <= sp[\"en_az_kapsam\"]:"
+ ],
+ [
+  "pencere kesit günü dışarıda",
+  "avukat_perf/pencere.py",
+  "    return (tarih > bas) & (tarih <= son)",
+  "    return (tarih > bas) & (tarih < son)"
+ ],
+ [
+  "pencere ilk günü dahil",
+  "avukat_perf/pencere.py",
+  "    return (tarih > bas) & (tarih <= son)",
+  "    return (tarih >= bas) & (tarih <= son)"
+ ],
+ [
+  "gölge aralığının son günü canlı sayılır",
+  "avukat_perf/pencere.py",
+  "        icinde = tarih <= ust",
+  "        icinde = tarih < ust"
+ ],
+ [
+  "gölge günündeki düşüm uygulandı yazılır",
+  "avukat_perf/sure_ozet.py",
+  "    golgede = ~aralik_disinda(tarih, haric, degerlendirmeler.get(\"kriter\")) & tarih.notna()",
+  "    golgede = tarih.isna() & tarih.notna()"
+ ],
+ [
+  "süre kapsamı pencere başını yok sayar",
+  "avukat_perf/sure_puani.py",
+  "    tablo = k1_degerlendirme[icinde(atama, kesit, pencere_ay) & ~neden.isin(OLCULMEYEN)]",
+  "    tablo = k1_degerlendirme[(atama <= pd.Timestamp(kesit)) & ~neden.isin(OLCULMEYEN)]"
+ ],
+ [
+  "süre kapsamı kesit sonrasını alır",
+  "avukat_perf/sure_puani.py",
+  "    tablo = k1_degerlendirme[icinde(atama, kesit, pencere_ay) & ~neden.isin(OLCULMEYEN)]",
+  "    tablo = k1_degerlendirme[(atama > pd.Timestamp(kesit) - pd.DateOffset(months=pencere_ay)) & ~neden.isin(OLCULMEYEN)]"
+ ],
+ [
+  "koşul dışı dönem risk sayılır",
+  "avukat_perf/sure_puani.py",
+  "(tablo[\"seviye\"] == \"KAPANDI\")",
+  "tablo[\"seviye\"].isin([\"KAPANDI\", \"KOSUL_DISI\"])"
+ ],
+ [
+  "süre grubu süreçsiz olursa",
+  "avukat_perf/sure_puani.py",
+  "GRUP = [\"kriter\", \"surec\", \"brans\"]",
+  "GRUP = [\"kriter\", \"brans\"]"
+ ],
+ [
+  "Kriter 2 süreci süre girdisine taşınmaz",
+  "hat/hesap_sure.py",
+  "surec=k2[\"surec_turu\"]",
+  "surec=\"DAVA_ACMA\""
+ ],
+ [
+  "Kriter 2 koşul kaybı ölçümü bitirmez",
+  "avukat_perf/kriter2.py",
+  "(tarih[\"kosul_kayip_tarihi\"], \"KOSUL_DISI\")]",
+  "(None, \"KOSUL_DISI\")]"
+ ],
+ [
+  "ortalama süre penceresi atama tarihine göre",
+  "avukat_perf/sure_ozet.py",
+  "icinde(gun(tablo[\"olcum_sonu\"]), kesit, pencere_ay)",
+  "icinde(gun(tablo[\"atama_tarihi\"]), kesit, pencere_ay)"
+ ],
+ [
+  "ortalama süre pencere dışı kapanışı alır",
+  "avukat_perf/sure_ozet.py",
+  "tablo[\"sure_gun\"].astype(float).where(kapanan)",
+  "tablo[\"sure_gun\"].astype(float).where(seviye == \"KAPANDI\")"
+ ],
+ [
+  "mevcut alan penceresi başsız",
+  "avukat_perf/kalite_davranis.py",
+  "        icinde(tarih, kesit, kd[\"pencere_ay\"])",
+  "        (tarih <= kesit)"
+ ],
+ [
+  "mevcut alan penceresi parametreyi okumaz",
+  "avukat_perf/kalite_davranis.py",
+  "        icinde(tarih, kesit, kd[\"pencere_ay\"])",
+  "        icinde(tarih, kesit, 12)"
+ ],
+ [
+  "mevcut alan penceresi kesit sonrasını alır",
+  "avukat_perf/kalite_davranis.py",
+  "        icinde(tarih, kesit, kd[\"pencere_ay\"])",
+  "        (tarih > kesit - pd.DateOffset(months=kd[\"pencere_ay\"]))"
+ ],
+ [
+  "süre risk penceresi kesit sonrasını alır",
+  "avukat_perf/sure_puani.py",
+  "    secili = icinde(esik, kesit, pencere_ay, haric, degerlendirmeler[\"kriter\"]) & (",
+  "    secili = (icinde(esik, kesit, pencere_ay, haric, degerlendirmeler[\"kriter\"]) | (esik > pd.Timestamp(kesit))) & ("
+ ],
+ [
+  "süre dosya tabanı dönem sayar",
+  "avukat_perf/sure_puani.py",
+  "risk_dosya=(\"dosya_no\", \"nunique\")",
+  "risk_dosya=(\"dosya_no\", \"size\")"
+ ],
+ [
+  "süre risk koşul dışı düşümü atar",
+  "avukat_perf/sure_puani.py",
+  "        tablo[\"dusum\"] | (tablo[\"seviye\"] == \"KAPANDI\"))",
+  "        (tablo[\"dusum\"] & (tablo[\"seviye\"] != \"KOSUL_DISI\")) | (tablo[\"seviye\"] == \"KAPANDI\"))"
+ ],
+ [
+  "mevcut alan son değerlendirme ilk tarih",
+  "avukat_perf/kalite_davranis.py",
+  "son_degerlendirme=(\"degerlendirme_tarihi\", \"max\")",
+  "son_degerlendirme=(\"degerlendirme_tarihi\", \"min\")"
+ ],
+ [
+  "koşul görüntüsü kapanış kodunu saymaz",
+  "avukat_perf/hazirlik.py",
+  "    kayip = kod.isin(k2[\"kapanis_kodlari\"]) | ((kod == k2[\"rucu_kodu\"]) &",
+  "    kayip = False | ((kod == k2[\"rucu_kodu\"]) &"
+ ],
+ [
+  "koşul görüntüsü atama öncesi kodu kapanış sayar",
+  "avukat_perf/hazirlik.py",
+  "kod.isin(k2[\"kapanis_kodlari\"])",
+  "(kod != k2[\"rucu_kodu\"])"
+ ],
+ [
+  "koşul kaybı en geç olası günden alınır",
+  "avukat_perf/hazirlik.py",
+  "    tablo[\"kosul_kayip_tarihi\"] = tablo[\"dosya_no\"].map(gozlem.tarih_esle(kosul_gozlem))",
+  "    tablo[\"kosul_kayip_tarihi\"] = tablo[\"dosya_no\"].map(gozlem.baslangic_esle(kosul_gozlem))"
+ ],
+ [
+  "koşul kaybından sonra atanan avukat ölçülür",
+  "avukat_perf/kriter2.py",
+  "                \"KOSUL_DISI\": \"KOSUL_SAGLANMIYOR\"}",
+  "                \"KOSUL_DISI\": None}"
+ ],
+ [
+  "K1 bitiş günü girilen esas SONLANDI sayılır",
+  "avukat_perf/kriter1.py",
+  "    if esas is not None and (bitis is None or esas <= bitis):",
+  "    if esas is not None and (bitis is None or esas < bitis):"
+ ],
+ [
+  "K1 atama günü girilen esas önceden var sayılır",
+  "avukat_perf/kriter1.py",
+  "and esas < atama",
+  "and esas <= atama"
+ ],
+ [
+  "K2 atama günü girilen dava önceden var sayılır",
+  "avukat_perf/kriter2.py",
+  "    if neden is None and son < bas:",
+  "    if neden is None and son <= bas:"
+ ],
+ [
+  "K2 atama günü görülen tarihsiz dava önceden var sayılır",
+  "avukat_perf/kriter2.py",
+  "\"DAVA_ONCEDEN_VAR\" if gorulme < kayit[\"atama_tarihi\"]",
+  "\"DAVA_ONCEDEN_VAR\" if gorulme <= kayit[\"atama_tarihi\"]"
+ ],
+ [
+  "K2 aynı gün bitişte atama bitişi davadan önce gelir",
+  "avukat_perf/kriter2.py",
+  "    adaylar = [(tarih[\"dava_ilk_giris\"], \"KAPANDI\"), (tarih[\"bitis_tarihi\"], \"SONLANDI\"),",
+  "    adaylar = [(tarih[\"bitis_tarihi\"], \"SONLANDI\"), (tarih[\"dava_ilk_giris\"], \"KAPANDI\"),"
+ ],
+ [
+  "K2 kırmızı düşümden bir ay sonra",
+  "avukat_perf/bayrak.py",
+  "pd.offsets.MonthBegin(1)",
+  "pd.DateOffset(months=1)"
+ ],
+ [
+  "K2 ayın ilk günü düşümde kırmızı aynı gün",
+  "avukat_perf/bayrak.py",
+  "pd.offsets.MonthBegin(1)",
+  "pd.offsets.MonthBegin(0)"
+ ],
+ [
+  "K2 düşüm tarihi ölçüm sonundan alınır",
+  "avukat_perf/kriter2.py",
+  "dusum=dusum, dusum_tarihi=turuncu if dusum else None,",
+  "dusum=dusum, dusum_tarihi=son if dusum else None,"
+ ],
+ [
+  "kesit günü başlayan atama dönemlere girmez",
+  "avukat_perf/atama.py",
+  "    secili = tablo[\"kapsam_disi_nedeni\"].isna() & (tablo[\"atama_tarihi\"] <= kesit)",
+  "    secili = tablo[\"kapsam_disi_nedeni\"].isna() & (tablo[\"atama_tarihi\"] < kesit)"
+ ],
+ [
+  "saatli atama kesit günü dönemlere girmez",
+  "avukat_perf/atama.py",
+  "    secili = tablo[\"kapsam_disi_nedeni\"].isna() & (tablo[\"atama_tarihi\"] <= kesit)",
+  "    secili = tablo[\"kapsam_disi_nedeni\"].isna() & (pd.to_datetime(atamalar[\"atama_tarihi\"]) <= kesit)"
+ ],
+ [
+  "kesit günü biten dönemin bitişi bilinmez sayılır",
+  "avukat_perf/atama.py",
+  "tablo[\"bitis_tarihi\"].where(tablo[\"bitis_tarihi\"] <= kesit)",
+  "tablo[\"bitis_tarihi\"].where(tablo[\"bitis_tarihi\"] < kesit)"
+ ],
+ [
+  "K1 kesit günü başlayan atama sonuca girmez",
+  "avukat_perf/kriter1.py",
+  "    tablo = tablo[tablo[\"atama_tarihi\"] <= kesit].reset_index(drop=True)",
+  "    tablo = tablo[tablo[\"atama_tarihi\"] < kesit].reset_index(drop=True)"
+ ],
+ [
+  "K2 aynı gün koşul kaybı atama bitişinden önce gelir",
+  "avukat_perf/kriter2.py",
+  "    adaylar = [(tarih[\"dava_ilk_giris\"], \"KAPANDI\"), (tarih[\"bitis_tarihi\"], \"SONLANDI\"),\n               (tarih[\"kosul_kayip_tarihi\"], \"KOSUL_DISI\")]",
+  "    adaylar = [(tarih[\"dava_ilk_giris\"], \"KAPANDI\"), (tarih[\"kosul_kayip_tarihi\"], \"KOSUL_DISI\"),\n               (tarih[\"bitis_tarihi\"], \"SONLANDI\")]"
+ ],
+ [
+  "K2 kesit günündeki tarih bilinmez sayılır",
+  "avukat_perf/kriter2.py",
+  "    tarih = {ad: kayit[ad] if kayit[ad] <= kesit else None",
+  "    tarih = {ad: kayit[ad] if kayit[ad] < kesit else None"
+ ],
+ [
+  "K2 sonlanan dönemde düşüm parametresi koşul kaybına da uygulanır",
+  "avukat_perf/bayrak.py",
+  "    if kapanis == \"SONLANDI\" and not sonlananda_korunur:",
+  "    if kapanis in (\"SONLANDI\", \"KOSUL_DISI\") and not sonlananda_korunur:"
+ ],
+ [
+  "kesit ertesi başlayan atama dönemlere girer",
+  "avukat_perf/atama.py",
+  "    secili = tablo[\"kapsam_disi_nedeni\"].isna() & (tablo[\"atama_tarihi\"] <= kesit)",
+  "    secili = tablo[\"kapsam_disi_nedeni\"].isna() & (tablo[\"atama_tarihi\"] <= kesit + BIR_GUN)"
+ ],
+ [
+  "K2 eşik günü hariç",
+  "avukat_perf/bayrak.py",
+  "    olusan = [bayrak for bayrak in BAYRAKLAR if esik[bayrak] <= son]",
+  "    olusan = [bayrak for bayrak in BAYRAKLAR if esik[bayrak] < son]"
+ ],
+ [
+  "K2 yalnız kırmızı günü hariç",
+  "avukat_perf/bayrak.py",
+  "    olusan = [bayrak for bayrak in BAYRAKLAR if esik[bayrak] <= son]",
+  "    olusan = [b for b in BAYRAKLAR if esik[b] < son or (b != \"KIRMIZI\" and esik[b] <= son)]"
+ ],
+ [
+  "bitiş günündeki hareket eski avukata da yazılır",
+  "avukat_perf/atama.py",
+  "(tarih < eslesme[\"bitis_tarihi\"]))",
+  "(tarih <= eslesme[\"bitis_tarihi\"]))"
+ ],
+ [
+  "koşul kaybı günü bilinse de bugünkü koşula bakılır",
+  "avukat_perf/kriter2.py",
+  "    if (pd.isna(kayit[\"kosul_kayip_tarihi\"]) and not kosul_simdi) or \\",
+  "    if (not kosul_simdi) or \\"
+ ],
+ [
+  "K2 kırmızı ölçüm sonundan bağımsız",
+  "avukat_perf/bayrak.py",
+  "    olusan = [bayrak for bayrak in BAYRAKLAR if esik[bayrak] <= son]",
+  "    olusan = [b for b in BAYRAKLAR if esik[b] <= son or b == \"KIRMIZI\" and esik[\"TURUNCU\"] <= son]"
+ ],
+ [
+  "son başarılı gece en eskiyi alırsa",
+  "hat/gecmis.py",
+  "return None if gece is None or gece.empty else gece.iloc[-1]",
+  "return None if gece is None or gece.empty else gece.iloc[0]"
+ ],
+ [
+  "başarılı geceler zamana göre sıralanmazsa",
+  "hat/gecmis.py",
+  "return secili.assign(_bas=pd.to_datetime(secili[\"baslangic\"])).sort_values(\"_bas\")",
+  "return secili.assign(_bas=pd.to_datetime(secili[\"baslangic\"]))"
+ ],
+ [
+  "kalan gece başarılı sayılırsa",
+  "hat/gecmis.py",
+  "kayit[\"uretilen\"].notna() & (kayit[\"durum\"] == \"GECTI\")]",
+  "kayit[\"uretilen\"].notna()]"
+ ],
+ [
+  "uretilen boş özet başarılı sayılırsa",
+  "hat/gecmis.py",
+  "kayit[\"uretilen\"].notna() & (kayit[\"durum\"] == \"GECTI\")]",
+  "(kayit[\"durum\"] == \"GECTI\")]"
+ ],
+ [
+  "dönem sonu gecelik sayılırsa",
+  "hat/gecmis.py",
+  "secili = kayit[(kayit[\"kaynak\"] == OZET) & (kayit[\"tur\"] == tur) &",
+  "secili = kayit[(kayit[\"kaynak\"] == OZET) &"
+ ],
+ [
+  "son başarılı çekim KALDI satırını da alırsa",
+  "hat/gecmis.py",
+  "secili = kayit[(kayit[\"kaynak\"] == kaynak) & (kayit[\"durum\"] == \"BASARILI\")]",
+  "secili = kayit[(kayit[\"kaynak\"] == kaynak)]"
+ ],
+ [
+  "uyarı günü sıfır olabilirse",
+  "avukat_perf/params.py",
+  "if not 0 < k1[\"uyari_gun\"] < k1[\"dusum_gun_oto\"]:",
+  "if not 0 <= k1[\"uyari_gun\"] < k1[\"dusum_gun_oto\"]:"
+ ],
+ [
+  "oto dışı düşüm ayı sıfır olabilirse",
+  "avukat_perf/params.py",
+  "if k1[\"dusum_ay_diger\"] <= 0:",
+  "if k1[\"dusum_ay_diger\"] < 0:"
+ ],
+ [
+  "Kriter 2 düşüm ayı uyarı ayına eşit olabilirse",
+  "avukat_perf/params.py",
+  "if not 0 < k2[\"uyari_ay\"] < k2[\"dusum_ay\"]:",
+  "if not 0 < k2[\"uyari_ay\"] <= k2[\"dusum_ay\"]:"
+ ],
+ [
+  "kapsam oranı yüzde olarak kabul edilirse",
+  "avukat_perf/params.py",
+  "if not 0 < sure[\"en_az_kapsam\"] <= 1:",
+  "if not 0 < sure[\"en_az_kapsam\"] <= 100:"
+ ],
+ [
+  "ağırlık oranı sınırı denetlenmez",
+  "avukat_perf/agirlik.py",
+  "        1 / ORAN_SINIRI <= oran <= ORAN_SINIRI",
+  "        oran > 0"
+ ],
+ [
+  "tutarsız karşılaştırma kabul edilir",
+  "avukat_perf/agirlik.py",
+  "    if oran > EN_COK_TUTARSIZLIK:",
+  "    if oran > 1.0:"
+ ],
+ [
+  "eksik karşılaştırma çifti denetlenmez",
+  "avukat_perf/agirlik.py",
+  "    if eksik and not hatalar:",
+  "    if False:"
+ ],
+ [
+  "birleşik puan koşulu eksikken geçerse",
+  "avukat_perf/agirlik.py",
+  "if params.get(\"birlesik_puan_kosulu\") != \"tum_sutunlar\":",
+  "if params.get(\"birlesik_puan_kosulu\") not in (\"tum_sutunlar\", None):"
+ ],
+ [
+  "süre puanı beklenen tabanı eksi olabilirse",
+  "avukat_perf/params.py",
+  "or sure[\"en_az_beklenen\"] < 0:",
+  "or sure[\"en_az_beklenen\"] < -1:"
+ ],
+ [
+  "oto branşları null olabilirse",
+  "avukat_perf/params_sema.py",
+  "\"oto_branslar\": \"liste\"",
+  "\"oto_branslar\": \"liste_veya_bos\""
+ ],
+ [
+  "not ölçeği 100 üstü eşiği kabul ederse",
+  "avukat_perf/params_kural.py",
+  "esikler[0] > 100",
+  "esikler[0] > 101"
+ ],
+ [
+  "son not eşiği 0 olmak zorunda değilse",
+  "avukat_perf/params_kural.py",
+  "or esikler[-1] != 0:",
+  "or esikler[-1] > 1:"
+ ],
+ [
+  "eksi mutabakat toleransı kabul edilirse",
+  "avukat_perf/params_veri.py",
+  "not 0 <= kal[\"mutabakat_tolerans\"] < 1",
+  "not -1 <= kal[\"mutabakat_tolerans\"] < 1"
+ ],
+ [
+  "yeterlilik payı sıfır olabilirse",
+  "avukat_perf/params_kural.py",
+  "if not gecerli or not 0 < oran[0] <= oran[1]:",
+  "if not gecerli or not 0 <= oran[0] <= oran[1]:"
+ ],
+ [
+  "tahsilat güven sabiti eksi olabilirse",
+  "avukat_perf/params_tahsilat.py",
+  "tah[\"guven_sabiti\"] < 0",
+  "tah[\"guven_sabiti\"] < -1"
+ ],
+ [
+  "dönem kontrolü boş geçerli puanı görmezse",
+  "avukat_perf/donem.py",
+  "aralik_disi = int((gecerli.isna() | (gecerli < 0) | (gecerli > 100)).sum())",
+  "aralik_disi = int(((gecerli < 0) | (gecerli > 100)).sum())"
+ ],
+ [
+  "dönem kontrolü küçük eksi puanı görmezse",
+  "avukat_perf/donem.py",
+  "(gecerli < 0)",
+  "(gecerli < -1)"
+ ],
+ [
+  "dönem kontrolü 100 üstünü geç görürse",
+  "avukat_perf/donem.py",
+  "(gecerli > 100)",
+  "(gecerli > 101)"
+ ],
+ [
+  "dönem kontrolü geçersiz satırın boş puanını sayarsa",
+  "avukat_perf/donem.py",
+  "gecerli = tablo[tablo[\"durum\"] == \"GECERLI\"][\"puan\"]",
+  "gecerli = tablo[\"puan\"]"
+ ],
+ [
+  "yinelenen yalnız tam aynı satırda aranırsa",
+  "avukat_perf/donem.py",
+  "yinelenen = int(tablo.duplicated([\"avukat_kodu\", \"donem\", \"sutun\"]).sum())",
+  "yinelenen = int(tablo.duplicated().sum())"
+ ],
+ [
+  "yinelenen anahtarında dönem yoksa",
+  "avukat_perf/donem.py",
+  "tablo.duplicated([\"avukat_kodu\", \"donem\", \"sutun\"])",
+  "tablo.duplicated([\"avukat_kodu\", \"sutun\"])"
+ ],
+ [
+  "beklenen sıfırken avukat oranı sonsuz yazılırsa",
+  "avukat_perf/tahsilat_puan.py",
+  "oran=(tablo[\"gerceklesen\"] / tablo[\"beklenen\"]).where(tablo[\"beklenen\"] >= YARIM_KURUS),",
+  "oran=(tablo[\"gerceklesen\"] / tablo[\"beklenen\"]),"
+ ],
+ [
+  "beklenen sıfır koruması yoksa",
+  "avukat_perf/tahsilat_puan.py",
+  "if beklenen < YARIM_KURUS:",
+  "if beklenen < 0:"
+ ],
+ [
+  "mutabakat farkı mutlak alınmazsa",
+  "avukat_perf/kalite_iliski.py",
+  "fark = abs(bizim.get(donem, 0.0) - toplam) / max(abs(toplam), 1.0)",
+  "fark = (bizim.get(donem, 0.0) - toplam) / max(abs(toplam), 1.0)"
+ ],
+ [
+  "mutabakat paydası küçük toplamda 1 değilse",
+  "avukat_perf/kalite_iliski.py",
+  "/ max(abs(toplam), 1.0)",
+  "/ max(abs(toplam), 0.01)"
+ ],
+ [
+  "mutabakat toleransı parametreden gelmezse",
+  "avukat_perf/kalite_iliski.py",
+  "params[\"kalite\"][\"mutabakat_tolerans\"],",
+  "0.005,"
+ ],
+ [
+  "tahsilat eğimi sıfır olabilirse (ek; önce bu dosyadan kaçıyordu, test güçlendirildi)",
+  "avukat_perf/params_tahsilat.py",
+  "or tah[\"egim\"] <= 0:",
+  "or tah[\"egim\"] < 0:"
+ ],
+ [
+  "mutabakat toleransı 1 de kabul edilirse (ek)",
+  "avukat_perf/params_veri.py",
+  "not 0 <= kal[\"mutabakat_tolerans\"] < 1",
+  "not 0 <= kal[\"mutabakat_tolerans\"] <= 1"
+ ],
+ [
+  "Kriter 2 uyarı ayı sıfır olabilirse (ek)",
+  "avukat_perf/params.py",
+  "if not 0 < k2[\"uyari_ay\"] < k2[\"dusum_ay\"]:",
+  "if not 0 <= k2[\"uyari_ay\"] < k2[\"dusum_ay\"]:"
+ ],
+ [
+  "not eşikleri eşit olabilirse (ek; bu dosya kaçırır, tests/test_params.py yakalar)",
+  "avukat_perf/params_kural.py",
+  "azalan = all(ust > alt for ust, alt in zip(esikler, esikler[1:]))",
+  "azalan = all(ust >= alt for ust, alt in zip(esikler, esikler[1:]))"
+ ],
+ [
+  "süre puanı yeterli dosya sıfır olabilirse (ek; bu dosya kaçırır, tests/test_params.py yakalar)",
+  "avukat_perf/params.py",
+  "sure[\"yeterli_dosya\"] < 1",
+  "sure[\"yeterli_dosya\"] < 0"
+ ],
+ [
+  "süre güven sabiti sıfır olabilirse (ek; bu dosya kaçırır, tests/test_params.py yakalar)",
+  "avukat_perf/params.py",
+  "if sure[\"guven_sabiti\"] <= 0 or",
+  "if sure[\"guven_sabiti\"] < 0 or"
+ ],
+ [
+  "son başarılı çekim kaynağa bakmazsa (ek)",
+  "hat/gecmis.py",
+  "secili = kayit[(kayit[\"kaynak\"] == kaynak) & (kayit[\"durum\"] == \"BASARILI\")]",
+  "secili = kayit[(kayit[\"durum\"] == \"BASARILI\")]"
+ ],
+ [
+  "son başarılı çekim başlangıç anını döndürürse (ek)",
+  "hat/gecmis.py",
+  "return pd.Timestamp(en_son[\"cekim_tarihi\"]), int(float(en_son[\"satir_sayisi\"]))",
+  "return pd.Timestamp(en_son[\"baslangic\"]), int(float(en_son[\"satir_sayisi\"]))"
+ ],
+ [
+  "geceler çekim gününe göre sıralanırsa (ek)",
+  "hat/gecmis.py",
+  "return secili.assign(_bas=pd.to_datetime(secili[\"baslangic\"])).sort_values(\"_bas\")",
+  "return secili.assign(_bas=pd.to_datetime(secili[\"cekim_tarihi\"])).sort_values(\"_bas\")"
+ ],
+ [
+  "gece sırası ters dönerse (ek)",
+  "hat/gecmis.py",
+  ".sort_values(\"_bas\")",
+  ".sort_values(\"_bas\", ascending=False)"
+ ],
+ [
+  "son sayılar dönem sonunda geceyi okursa (ek)",
+  "hat/gecmis.py",
+  "secili = basarili_calismalar(kayit, tur)",
+  "secili = basarili_calismalar(kayit)"
+ ],
+ [
+  "eski kayıtta uretilen yoksa hepsi alınırsa (ek)",
+  "hat/gecmis.py",
+  "if kayit is None or kayit.empty or \"uretilen\" not in kayit.columns:",
+  "if kayit is None or kayit.empty:"
+ ],
+ [
+  "mutabakat raporsuz ayı hesaplanan 0 saymazsa (ek)",
+  "avukat_perf/kalite_iliski.py",
+  "fark = abs(bizim.get(donem, 0.0) - toplam)",
+  "fark = abs(bizim.get(donem, toplam) - toplam)"
+ ],
+ [
+  "mutabakat farkı iki ondalığa yuvarlanırsa (ek)",
+  "avukat_perf/kalite_iliski.py",
+  "round(fark, 6)",
+  "round(fark, 2)"
+ ],
+ [
+  "mutabakat yalnız fazla tahsilatı görürse (ek)",
+  "avukat_perf/kalite_iliski.py",
+  "fark = abs(bizim.get(donem, 0.0) - toplam) / max(abs(toplam), 1.0)",
+  "fark = max(bizim.get(donem, 0.0) - toplam, 0.0) / max(abs(toplam), 1.0)"
+ ],
+ [
+  "mutabakat paydası eksi toplamda mutlak alınmazsa (ek)",
+  "avukat_perf/kalite_iliski.py",
+  "/ max(abs(toplam), 1.0)",
+  "/ max(toplam, 1.0)"
+ ],
+ [
+  "dönem kontrolü yalnız 100 üstünü görürse (ek)",
+  "avukat_perf/donem.py",
+  "aralik_disi = int((gecerli.isna() | (gecerli < 0) | (gecerli > 100)).sum())",
+  "aralik_disi = int((gecerli.isna() | (gecerli > 100)).sum())"
+ ],
+ [
+  "çalışma zamanı sunucunun yerel saati",
+  "hat/calisma.py",
+  "    return pd.Timestamp.now(tz=SAAT_DILIMI).tz_localize(None)",
+  "    return pd.Timestamp.now()"
+ ],
+ [
+  "çalışma zamanı saat dilimli döner",
+  "hat/calisma.py",
+  "    return pd.Timestamp.now(tz=SAAT_DILIMI).tz_localize(None)",
+  "    return pd.Timestamp.now(tz=SAAT_DILIMI)"
+ ],
+ [
+  "çalışma zamanı tz_convert(None) ile UTC'ye iner",
+  "hat/calisma.py",
+  "    return pd.Timestamp.now(tz=SAAT_DILIMI).tz_localize(None)",
+  "    return pd.Timestamp.now(tz=SAAT_DILIMI).tz_convert(None)"
+ ],
+ [
+  "avukat kartı istenen kodu yok sayar",
+  "arayuz/sunum_avukat.py",
+  "    kod = kod if kod in set(liste[\"avukat_kodu\"]) else liste[\"avukat_kodu\"].iloc[0]",
+  "    kod = liste[\"avukat_kodu\"].iloc[0]"
+ ],
+ [
+  "listede olmayan kod boş kart verir",
+  "arayuz/sunum_avukat.py",
+  "    kod = kod if kod in set(liste[\"avukat_kodu\"]) else liste[\"avukat_kodu\"].iloc[0]",
+  "    kod = kod or liste[\"avukat_kodu\"].iloc[0]"
+ ],
+ [
+  "kart aylık tahsilatı bütün avukatlardan toplar",
+  "arayuz/sunum_avukat.py",
+  "aylik, secili(aylik, \"avukat_kodu\", kod), [\"tutar\", \"hareket_sayisi\"]))",
+  "aylik, aylik, [\"tutar\", \"hareket_sayisi\"]))"
+ ],
+ [
+  "kart başlığı listenin ilk avukatı",
+  "arayuz/sunum_avukat.py",
+  "    baslik = liste[liste[\"avukat_kodu\"] == kod].assign(",
+  "    baslik = liste.head(1).assign("
+ ],
+ [
+  "süre listesi sınırı sıralamadan önce",
+  "arayuz/sunum_sure.py",
+  "    liste = seviye_sirala(tum).head(EN_COK)",
+  "    liste = seviye_sirala(tum.head(EN_COK))"
+ ],
+ [
+  "süre filtresi sınırdan sonra",
+  "arayuz/sunum_sure.py",
+  "    for ad, sutun in FILTRE.items():\n        if (secim or {}).get(ad):\n            tum = tum[tum[sutun] == secim[ad]]\n",
+  "    tum = seviye_sirala(tum).head(EN_COK)\n    for ad, sutun in FILTRE.items():\n        if (secim or {}).get(ad):\n            tum = tum[tum[sutun] == secim[ad]]\n"
+ ],
+ [
+  "son olaylar en eskilerden",
+  "arayuz/sunum_sure.py",
+  "    yeni = eslesen(tum).sort_values([\"olay_tarihi\"] + anahtar + [\"seviye\"], ascending=[False] + [",
+  "    yeni = eslesen(tum).sort_values([\"olay_tarihi\"] + anahtar + [\"seviye\"], ascending=[True] + ["
+ ],
+ [
+  "olayın atama tarihi güne indirilmez",
+  "arayuz/sunum_sure.py",
+  "    olay = kaynakli(olay).assign(atama_tarihi=gun(olay[\"atama_tarihi\"]))",
+  "    olay = kaynakli(olay)"
+ ],
+ [
+  "pencerede düşümü olan kapanan dönem listelenmez",
+  "arayuz/sunum_sure.py",
+  "        tablo[\"seviye\"].isin(ACIK_DONEM) | dogru_seri(pencere)]",
+  "        tablo[\"seviye\"].isin(ACIK_DONEM)]"
+ ],
+ [
+  "e-posta özeti toplama göre",
+  "arayuz/sunum_sure.py",
+  "[\"kirmizi\", \"toplam\"], ascending=False))",
+  "[\"toplam\", \"kirmizi\"], ascending=False))"
+ ],
+ [
+  "son olaylarda yineleme ayıklanmaz",
+  "arayuz/sunum_sure.py",
+  "    secilen = pd.concat([yeni, eslesen(liste)], ignore_index=True).drop_duplicates(\n        anahtar + [\"seviye\"])",
+  "    secilen = pd.concat([yeni, eslesen(liste)], ignore_index=True)"
+ ],
+ [
+  "avukat seçeneği bütün dönemlerden",
+  "arayuz/sunum_sure.py",
+  "tablo.loc[tablo[\"seviye\"] != \"KAPSAM_DISI\", \"avukat_kodu\"]",
+  "tablo[\"avukat_kodu\"]"
+ ],
+ [
+  "yazılamayan tahsilat yıllık listede başta",
+  "arayuz/sunum.py",
+  "-float(\"inf\"))",
+  "float(\"inf\"))"
+ ],
+ [
+  "yıllıkta yıl azalan",
+  "arayuz/sunum.py",
+  "ascending=[False, True, True])",
+  "ascending=[False, True, False])"
+ ],
+ [
+  "aylık ızgara tahsilatsız ayı atlar",
+  "arayuz/temel.py",
+  "        toplam = toplam.reindex(aylar, fill_value=0)",
+  "        toplam = toplam.reindex([ay for ay in aylar if ay in toplam.index])"
+ ],
+ [
+  "genel branş az dosyalı önce",
+  "arayuz/sunum.py",
+  "\"aktif_dosya\", ascending=False))",
+  "\"aktif_dosya\", ascending=True))"
+ ],
+ [
+  "öncelikli liste süreye bakmaz",
+  "arayuz/sunum.py",
+  "seviye_sirala(eposta).head(8)",
+  "seviye_sirala(eposta, ek=()).head(8)"
+ ],
+ [
+  "bekleyen sütun satırı geçersiz sayılır",
+  "arayuz/sunum.py",
+  "\"gecersiz\": len(parca) - len(gecerli) - len(bekleyen),",
+  "\"gecersiz\": len(parca) - len(gecerli),"
+ ],
+ [
+  "geçerli puan varken bekleme nedeni",
+  "arayuz/sunum.py",
+  "            gecerli.empty else None",
+  "            True else None"
+ ],
+ [
+  "sırasız avukat genel tabloda başta",
+  "arayuz/sunum_siralama.py",
+  "    sira = tablo[\"genel_sira\"].fillna(10 ** 6)",
+  "    sira = tablo[\"genel_sira\"].fillna(0)"
+ ],
+ [
+  "puansız avukat listede başta",
+  "arayuz/sunum_siralama.py",
+  "    puan = birlesik[\"birlesik_puan\"].fillna(-1)",
+  "    puan = birlesik[\"birlesik_puan\"].fillna(1000)"
+ ],
+ [
+  "kart portföyü az dosyalı branş önce",
+  "arayuz/sunum_avukat.py",
+  "\"toplam_dosya\", ascending=False))",
+  "\"toplam_dosya\", ascending=True))"
+ ],
+ [
+  "kısmi son ay işaretlenmez",
+  "arayuz/temel.py",
+  "        kismi_ay = son if dogru_mu(tablo[\"son_ay_kismi\"].iloc[0]) else None",
+  "        kismi_ay = None"
+ ],
+ [
+  "kart alt başlıkları parametre sırasında değil",
+  "arayuz/sunum_avukat.py",
+  "            _s=alt[\"alt_baslik\"].map(sira)).sort_values(\"_s\"))",
+  "            _s=alt[\"alt_baslik\"]).sort_values(\"_s\"))"
+ ],
+ [
+  "kart açıklaması sütun sırasına bakmaz",
+  "arayuz/sunum_avukat.py",
+  "aciklama.sort_values([\"_s\", \"sira\"])",
+  "aciklama.sort_values([\"sira\"])"
+ ],
+ [
+  "geçmişte bütün sürümler",
+  "arayuz/sunum_avukat.py",
+  "    gecmis = secili(donem.son_surum(birlesik_donem), \"avukat_kodu\", kod)",
+  "    gecmis = secili(birlesik_donem, \"avukat_kodu\", kod)"
+ ],
+ [
+  "dönem sonu süreç görüntüsünün etiketine bakmaz",
+  "hat/model.py",
+  "        if tablo is None or not etiket_uygun(tablo, kimlik, uretilen[ad]):",
+  "        if tablo is None or not (ad == \"model_k2_goruntu\" or etiket_uygun(tablo, kimlik, uretilen[ad])):"
+ ],
+ [
+  "model.oku satır sayısına bakmaz (güçlendirilmiş yarıda kalan gece testiyle)",
+  "hat/model.py",
+  "        if tablo is None or not etiket_uygun(tablo, kimlik, uretilen[ad]):",
+  "        if tablo is None or not etiket_uygun(tablo, kimlik):"
+ ],
+ [
+  "sentetik: son iki avukat hep ayrılır",
+  "../../sentetik/uretici.py",
+  "    ayrilan = min(2, max(0, adet - 2))",
+  "    ayrilan = min(2, adet)"
+ ],
+ [
+  "sentetik: üç avukatta da son iki ayrılır",
+  "../../sentetik/uretici.py",
+  "    ayrilan = min(2, max(0, adet - 2))",
+  "    ayrilan = 2 if adet > 2 else 0"
+ ],
+ [
+  "sentetik: tek avukatta yeniden atama denenir",
+  "../../sentetik/uretici.py",
+  "    if not adaylar:  # tek avukatlı üretimde yeniden atanacak başka avukat yok\n        return None\n",
+  ""
+ ],
+ [
+  "sentetik: varsayılan çıktı değişir",
+  "../../sentetik/uretici.py",
+  "    avukat = _avukat_sec(rnd, avukat_listesi, brans)\n    zar = rnd.random()\n",
+  "    avukat = _avukat_sec(rnd, avukat_listesi, brans)\n    yedek = _avukat_sec(rnd, avukat_listesi, brans, avukat[\"kod\"])\n    zar = rnd.random()\n"
+ ],
+ [
+  "sentetik yeniden atama aynı avukata olabilir",
+  "../../sentetik/uretici.py",
+  "    adaylar = [a for a in avukat_listesi if a[\"kod\"] != haric and a[\"durum\"] == \"DEVAM\"]",
+  "    adaylar = [a for a in avukat_listesi if a[\"durum\"] == \"DEVAM\"]"
+ ],
+ [
+  "sentetik ayrılan ilk avukatlar",
+  "../../sentetik/uretici.py",
+  "            \"durum\": \"AYRILDI\" if sira > adet - ayrilan else \"DEVAM\"})",
+  "            \"durum\": \"AYRILDI\" if sira <= ayrilan else \"DEVAM\"})"
+ ],
+ [
+  "sentetik CSV satır sonu LF",
+  "../../sentetik/uretici.py",
+  "        yazici = csv.writer(dosya)",
+  "        yazici = csv.writer(dosya, lineterminator=\"\\n\")"
+ ],
+ [
+  "arka uçta X | Y tip açıklaması",
+  "../webapp/backend.py",
+  "def _oku(ad, okunamayan):",
+  "def _oku(ad: str | None, okunamayan):"
+ ],
+ [
+  "seviye seçilince yalnız açık dönemler listelenir",
+  "arayuz/sunum_sure.py",
+  "    tum = tablo if (secim or {}).get(\"seviye\") else tablo[",
+  "    tum = tablo["
+ ],
+ [
+  "son ay kısmi hesaplanmaz",
+  "avukat_perf/portfoy.py",
+  "son_ay_kismi=not ay_sonu_mu(kesit))",
+  "son_ay_kismi=False)"
+ ],
+ [
+  "takvim ayı penceresi bir ay fazla",
+  "avukat_perf/pencere.py",
+  "    ilk = (son - pd.DateOffset(months=ay - 1)).replace(day=1)",
+  "    ilk = (son - pd.DateOffset(months=ay)).replace(day=1)"
+ ],
+ [
+  "ay sonu kesitinde son ay kısmi sayılır",
+  "avukat_perf/pencere.py",
+  "    return gun + pd.offsets.MonthEnd(0) == gun",
+  "    return False"
+ ],
+ [
+  "ters yön teyidi aranmaz",
+  "avukat_perf/kalite_davranis.py",
+  "    return olcek_tanimli(params) and params[\"kalite_davranis\"][\"ters_yonlu\"] is not None",
+  "    return olcek_tanimli(params)"
+ ],
+ [
+  "ölçek tanımsızken ölçek denetimi yapılır",
+  "avukat_perf/kalite_davranis.py",
+  "    return None not in (olcek[\"en_dusuk\"], olcek[\"en_yuksek\"])",
+  "    return True"
+ ],
+ [
+  "sorgu kimliği isteğe eklenmez",
+  "hat/api.py",
+  "    sorgu = dict(ayar.get(\"sorgu\", {}), **kimlik_sorgusu(ayar.get(\"kimlik\"), gizli))",
+  "    sorgu = dict(ayar.get(\"sorgu\", {}))"
+ ],
+ [
+  "kimlik ayarı doğrulanmaz",
+  "hat/ayar.py",
+  "        if ayar[\"yontem\"] == \"api\":\n            hatalar += kimlik_hatalari(",
+  "        if False:\n            hatalar += kimlik_hatalari("
+ ],
+ [
+  "kimlik türünün gerektirdiği alan denetlenmez",
+  "hat/api_kimlik.py",
+  "            for alan in GEREKEN[tur] if not kimlik.get(alan)]",
+  "            for alan in GEREKEN[tur] if False]"
+ ],
+ [
+  "dağılıma geçersiz sütun puanı girer",
+  "arayuz/sunum_dagilim.py",
+  "        gecerli = puan[puan[\"durum\"] == \"GECERLI\"]",
+  "        gecerli = puan"
+ ],
+ [
+  "dağılıma yayımlanmayan birleşik puan girer",
+  "arayuz/sunum_dagilim.py",
+  "        yay = birlesik[birlesik[\"durum\"] == \"YAYIMLANDI\"]",
+  "        yay = birlesik"
+ ],
+ [
+  "100 puan kutu dışına düşer",
+  "arayuz/sunum_dagilim.py",
+  ".clip(lower=0, upper=100 - KUTU)",
+  ".clip(lower=0)"
+ ],
+ [
+  "boş kutular üretilmez",
+  "arayuz/sunum_dagilim.py",
+  "    sayim = sayim.set_index([\"sutun\", \"alt\"]).reindex(izgara).reset_index()",
+  "    sayim = sayim.reset_index(drop=True)"
+ ],
+ [
+  "süre sütununa beklenen düzey verilmez",
+  "arayuz/sunum_dagilim.py",
+  "\"sure\": params[\"sure_puani\"][\"taban\"]}",
+  "}"
+ ],
+ [
+  "yüzdelik eşitlikte farklı",
+  "arayuz/sunum_dagilim.py",
+  "tablo.groupby(\"sutun\")[\"puan\"].rank(method=\"max\", pct=False) - 1",
+  "tablo.groupby(\"sutun\")[\"puan\"].rank(method=\"min\", pct=False) - 1"
+ ],
+ [
+  "tek avukatın yüzdeliği sıfır",
+  "arayuz/sunum_dagilim.py",
+  ".fillna(1.0) * 100)",
+  ".fillna(0.0) * 100)"
+ ],
+ [
+  "süre dağılımına açık dönem girer",
+  "arayuz/dagilim_sure.py",
+  "    kapanan = k1[(k1[\"seviye\"] == \"KAPANDI\") & k1[\"sure_gun\"].notna()]",
+  "    kapanan = k1[k1[\"sure_gun\"].notna()]"
+ ],
+ [
+  "süre kuyruğu kesilmez",
+  "arayuz/dagilim_sure.py",
+  "    son_kutu = min(int(gun.max() // SURE_KUTU), SURE_EN_COK_KUTU - 1)",
+  "    son_kutu = int(gun.max() // SURE_KUTU)"
+ ],
+ [
+  "süre son kutusu hep açık uçlu",
+  "arayuz/dagilim_sure.py",
+  "    acik_uclu = bool(gun.max() >= (son_kutu + 1) * SURE_KUTU)",
+  "    acik_uclu = True"
+ ],
+ [
+  "negatif rücu tutarı yalnız uyarı",
+  "avukat_perf/kalite_alan.py",
+  "        sonuc.append((\"NEGATIF_RUCU\", _sayi(temiz[\"rucu_tutari\"] < 0), False,",
+  "        sonuc.append((\"NEGATIF_RUCU\", _sayi(temiz[\"rucu_tutari\"] < 0), True,"
+ ],
+ [
+  "sıfır rücu uyarısı negatifi de sayar",
+  "avukat_perf/kalite_alan.py",
+  "_sayi(temiz[\"rucu_tutari\"] == 0)",
+  "_sayi(temiz[\"rucu_tutari\"] <= 0)"
+ ],
+ [
+  "sorgu anahtarı hata iletisinde maskelenmez",
+  "hat/api.py",
+  "        if not any(deger in metin for deger in gizliler):",
+  "        if True:"
+ ],
+ [
+  "adreste kodlanmış anahtar maskelenmez",
+  "hat/api_kimlik.py",
+  "        sonuc |= {parca, urllib.parse.quote(parca, safe=\"\"), urllib.parse.quote_plus(parca)}",
+  "        sonuc |= {parca}"
+ ],
+ [
+  "api adresinin şeması denetlenmez",
+  "hat/ayar.py",
+  "    if ayar[\"yontem\"] == \"api\" and not re.match(r\"^https?://\\S+$\", str(deger)):",
+  "    if False:"
+ ],
+ [
+  "en kısa ay süresi kaba sınırla",
+  "avukat_perf/params.py",
+  "    return int(((gunler + pd.DateOffset(months=int(ay))) - gunler).days.min())",
+  "    return 28 * int(ay)"
+ ],
+ [
+  "iç sözlükte açıklama anahtarı denetlenmez",
+  "avukat_perf/params.py",
+  "            elif tur == \"sozluk\" and any(str(ad).startswith(\"_\") for ad in params[bolum][alan]):",
+  "            elif False:"
+ ],
+ [
+  "ardışık atamada avukat aranmaz",
+  "avukat_perf/hazirlik.py",
+  "    surer = ((normal[\"avukat_kodu\"] == onceki[\"avukat_kodu\"])\n             & (onceki[\"bitis_tarihi\"]",
+  "    surer = ((normal[\"avukat_kodu\"] == normal[\"avukat_kodu\"])\n             & (onceki[\"bitis_tarihi\"]"
+ ],
+ [
+  "ardışık atamada kesintisizlik aranmaz",
+  "avukat_perf/hazirlik.py",
+  "             & (onceki[\"bitis_tarihi\"] == normal[\"atama_tarihi\"]))",
+  ")"
+ ],
+ [
+  "ardışık atamada sulh zinciri keser",
+  "avukat_perf/hazirlik.py",
+  "    normal = tablo[(tablo[\"atama_turu\"] == \"NORMAL\") & (tablo[\"bitis_nedeni\"] != \"IPTAL\")]",
+  "    normal = tablo[tablo[\"bitis_nedeni\"] != \"IPTAL\"]"
+ ],
+ [
+  "birleşen dönemin bitişi ilk kayıttan",
+  "avukat_perf/hazirlik.py",
+  ".transform(\"max\")[~surer]",
+  ".transform(\"min\")[~surer]"
+ ],
+ [
+  "sürer seçeneği uygulanmaz",
+  "avukat_perf/hazirlik.py",
+  "    return _surdur(tablo) if hz[\"ayni_avukata_yeniden_atama\"] == \"surer\" else tablo",
+  "    return tablo"
+ ],
+ [
+  "CSS kuralında sabit renk",
+  "../webapp/stil.css",
+  "  color: var(--rozet-metin); line-height: 1.5; }",
+  "  color: #3A3D52; line-height: 1.5; }"
+ ],
+ [
+  "tanımsız CSS değişkeni",
+  "../webapp/stil.css",
+  ".neden-satir.ISTISNA { color: var(--istisna-metin); }",
+  ".neden-satir.ISTISNA { color: var(--istisna-metni); }"
+ ],
+ [
+  "JS'te sabit renk",
+  "../webapp/uygulama.js",
+  "var BAYRAK_RENK = { YOK: \"var(--seri)\"",
+  "var BAYRAK_RENK = { YOK: \"#2a78d6\""
+ ],
+ [
+  "klasör adı ikinci yerde",
+  "hat/dataiku_ortam.py",
+  "def ayar_oku(self, ad, klasor=AYAR_KLASORU):",
+  "def ayar_oku(self, ad, klasor=\"ayarlar\"):"
+ ],
+ [
+  "listede olmayan tablo adı",
+  "arayuz/sunum_sure.py",
+  "((\"sonuc_k1\", \"K1\"), (\"sonuc_k2\", \"K2\"))",
+  "((\"sonuc_k01\", \"K1\"), (\"sonuc_k2\", \"K2\"))"
+ ],
+ [
+  "sistem adı kodda",
+  "../webapp/uygulama.js",
+  "bosDurum(sistemAdi(\"dava_takip\") + \" verisi bekleniyor ya da dönem yok.\", true)",
+  "bosDurum(\"Dava takip sistemi verisi bekleniyor ya da dönem yok.\", true)"
+ ],
+ [
+  "açıklamada eşik altı sayım yuvarlanır",
+  "avukat_perf/aciklama_bicim.py",
+  "rounding=ROUND_FLOOR",
+  "rounding=ROUND_HALF_UP"
+ ],
+ [
+  "ay sonu kesitinde 29 Şubat dışarıda",
+  "avukat_perf/portfoy.py",
+  "son_gun = 31 if ay_sonu_mu(kesit) else kesit.day",
+  "son_gun = kesit.day"
+ ],
+ [
+  "açıklamadaki sütun adı ekrandan farklı",
+  "avukat_perf/aciklama_bicim.py",
+  "\"kalite\": \"Hukuki Kalite\",",
+  "\"kalite\": \"Hukuki kalite\","
+ ],
+ [
+  "eşik günü beklemeli tarihten",
+  "avukat_perf/kriter1.py",
+  "    esik, olagan = esikler(atama, oto, aralik_listesi, k1), esikler(atama, oto, [], k1)",
+  "    esik = olagan = esikler(atama, oto, aralik_listesi, k1)"
+ ],
+ [
+  "eşik aralığı birleşmez",
+  "arayuz/dagilim_sure.py",
+  "ESIK_ARALIK = 3",
+  "ESIK_ARALIK = 0"
+ ],
+ [
+  "eşik satırına gösterilmeyen adet yazılır",
+  "arayuz/dagilim_sure.py",
+  "                     for alt, ust in araliklar]\n    return pd.DataFrame(satirlar, columns=[\"tur\", \"bayrak\", \"alt\", \"ust\"])",
+  "                     for alt, ust in araliklar]\n    return pd.DataFrame(satirlar, columns=[\"tur\", \"bayrak\", \"alt\", \"ust\"]).assign(adet=1)"
+ ],
+ [
+  "süre dağılımı kurala göre ayrılmaz",
+  "arayuz/dagilim_sure.py",
+  "    kural = kapanan.get(\"esik_kurali\", pd.Series(\"TUMU\", index=kapanan.index)).fillna(\"TUMU\")",
+  "    kural = pd.Series(\"TUMU\", index=kapanan.index)"
+ ],
+ [
+  "kırılıma branş eklenmez",
+  "avukat_perf/tahsilat.py",
+  "    kirilim = grup + [ad for ad in (\"brans\",) if ad not in grup]",
+  "    kirilim = grup"
+ ],
+ [
+  "branş yeterliliği eşiğe bakmaz",
+  "avukat_perf/tahsilat.py",
+  "    brans = brans.assign(yeterli=yeterli_mi(brans[\"n\"], tah))",
+  "    brans = brans.assign(yeterli=brans[\"n\"] > 0)"
+ ],
+ [
+  "Tukey bıyığı aykırıyı içerir",
+  "arayuz/dagilim_brans.py",
+  "TUKEY = 1.5",
+  "TUKEY = 100"
+ ],
+ [
+  "tabanın altındaki satır kutuya girer",
+  "arayuz/dagilim_brans.py",
+  "sayilan = dogru_seri(brans[\"yeterli\"]) & brans[\"oran\"].notna()",
+  "sayilan = brans[\"oran\"].notna()"
+ ],
+ [
+  "branş sırası avukat sayısına bakmaz",
+  "arayuz/dagilim_brans.py",
+  "key=lambda ad: (-adet[ad], str(ad))",
+  "key=lambda ad: str(ad)"
+ ],
+ [
+  "eşik kuralı sonuca yazılmaz",
+  "avukat_perf/kriter1.py",
+  "                 esik_kurali=\"OTO\" if oto else \"OTO_DISI\",",
+  "                 esik_kurali=\"OTO_DISI\","
+ ],
+ [
+  "gölge aralığının alt günü gölgede sayılır",
+  "avukat_perf/pencere.py",
+  "            icinde = icinde & (tarih > alt)",
+  "            icinde = icinde & (tarih >= alt)"
+ ],
+ [
+  "gölge aralığının alt sınırı yok sayılır",
+  "avukat_perf/pencere.py",
+  "        if alt is not None:",
+  "        if False:"
+ ],
+ [
+  "süre puanı gölge günlerini sayar",
+  "hat/hesap_sure.py",
+  "    sonuc[\"sonuc_sure\"] = sure_puani.puanla(girdi, kapsam, kesit, params, haric)",
+  "    sonuc[\"sonuc_sure\"] = sure_puani.puanla(girdi, kapsam, kesit, params)"
+ ],
+ [
+  "dönem bugünkü gölge ayarıyla hesaplanır",
+  "hat/donem_akisi.py",
+  "golge_mod=gecmis.golgede_mi(onceki, kesit, \"K2\"),",
+  "golge_mod=params[\"uyari\"][\"golge_mod\"],"
+ ],
+ [
+  "dönem kesiti gölge aralığının alt günüyse gölgede sayılır",
+  "hat/gecmis.py",
+  "    return any((alt is None or gun > alt) and gun <= ust for alt, ust in araliklar)",
+  "    return any((alt is None or gun >= alt) and gun <= ust for alt, ust in araliklar)"
+ ],
+ [
+  "dönem kesiti gölge aralığının üst günüyse canlı sayılır",
+  "hat/gecmis.py",
+  "    return any((alt is None or gun > alt) and gun <= ust for alt, ust in araliklar)",
+  "    return any((alt is None or gun > alt) and gun < ust for alt, ust in araliklar)"
+ ],
+ [
+  "ardışık atamada hatalı iptal kaydı zinciri keser",
+  "avukat_perf/hazirlik.py",
+  "    normal = tablo[(tablo[\"atama_turu\"] == \"NORMAL\") & (tablo[\"bitis_nedeni\"] != \"IPTAL\")]",
+  "    normal = tablo[tablo[\"atama_turu\"] == \"NORMAL\"]"
+ ],
+ [
+  "ardışık atama varsayılanı yeni dönem",
+  "../degiskenler/params.json",
+  "    \"ayni_avukata_yeniden_atama\": \"surer\",",
+  "    \"ayni_avukata_yeniden_atama\": \"yeni_donem\","
+ ],
+ [
+  "gizli kırpılmaz",
+  "hat/api.py",
+  "    gizli = temiz_gizli(gizli)\n",
+  "    gizli = gizli\n"
+ ],
+ [
+  "gizlide iç satır sonu denetlenmez",
+  "hat/api_kimlik.py",
+  "        if any(ord(harf) < 32 or ord(harf) == 127 for harf in deger):",
+  "        if False:"
+ ],
+ [
+  "gizli yalnız sorgu türünde maskelenir",
+  "hat/api_kimlik.py",
+  "    if kimlik.get(\"tur\", \"yok\") == \"yok\" or not kimlik.get(\"gizli\"):",
+  "    if kimlik.get(\"tur\", \"yok\") != \"sorgu\" or not kimlik.get(\"gizli\"):"
+ ],
+ [
+  "iki parçalı gizlide şifre maskelenmez",
+  "hat/api_kimlik.py",
+  "    parcalar = {deger, deger.partition(\":\")[2]} if kimlik[\"tur\"] in (\"basic\", \"oauth2\") else {deger}",
+  "    parcalar = {deger}"
+ ],
+ [
+  "başlıkta kodlanmış gizli maskelenmez",
+  "hat/api_kimlik.py",
+  "    sonuc = {base64.b64encode(deger.encode(\"utf-8\")).decode()}",
+  "    sonuc = set()"
+ ],
+ [
+  "yeterli veri eşiği sınırın kendisini dışlar",
+  "avukat_perf/tahsilat_puan.py",
+  "    return round(n, 9) >= tah[\"yeterli_olgun_dosya\"]",
+  "    return round(n, 9) > tah[\"yeterli_olgun_dosya\"]"
+ ],
+ [
+  "branş oranı yarım kuruş beklenende üretilir",
+  "avukat_perf/tahsilat_puan.py",
+  ".where(tablo[\"beklenen\"] >= YARIM_KURUS),",
+  ".where(tablo[\"beklenen\"] > 0),"
+ ],
+ [
+  "ay sonu kesitinde önceki yıl 29. günde kesilir",
+  "avukat_perf/portfoy.py",
+  "son_gun = 31 if ay_sonu_mu(kesit) else kesit.day",
+  "son_gun = 29 if ay_sonu_mu(kesit) else kesit.day"
+ ],
+ [
+  "kutu grafiğinde Tukey katsayısı 3",
+  "arayuz/dagilim_brans.py",
+  "TUKEY = 1.5",
+  "TUKEY = 3.0"
+ ],
+ [
+  "kutu çeyrekleri en yakın veri noktasından",
+  "arayuz/dagilim_brans.py",
+  "float(oranlar.quantile(oran))",
+  "float(oranlar.quantile(oran, interpolation=\"nearest\"))"
+ ],
+ [
+  "AHP satır ortalaması aritmetik",
+  "avukat_perf/agirlik.py",
+  "    ortalama = [math.exp(sum(math.log(x) for x in satir) / n) for satir in matris]",
+  "    ortalama = [sum(satir) / n for satir in matris]"
+ ],
+ [
+  "karşılaştırma yönü ters okunur",
+  "avukat_perf/agirlik.py",
+  "            ciftler[(min(i, j), max(i, j))] = oran if i < j else 1.0 / oran",
+  "            ciftler[(min(i, j), max(i, j))] = oran"
+ ],
+ [
+  "ağırlık yuvarlamasında kalan dağıtılmaz",
+  "avukat_perf/agirlik.py",
+  "    for ad in kalan[:100 - sum(tam.values())]:",
+  "    for ad in kalan[:0]:"
+ ],
+ [
+  "yeterli veri eşiği yerine yayın tabanı",
+  "avukat_perf/tahsilat_puan.py",
+  "    return round(n, 9) >= tah[\"yeterli_olgun_dosya\"]",
+  "    return round(n, 9) >= tah[\"en_az_olgun_dosya\"]"
+ ],
+ [
+  "maruziyet yaş bandına bölünmez",
+  "avukat_perf/tahsilat_maruz.py",
+  "        alt = bas if bant == 0 else bas.where(bas >= sinirlar[bant - 1], sinirlar[bant - 1])",
+  "        alt = bas"
+ ],
+ [
+  "maruziyete bitiş günü de girer",
+  "avukat_perf/tahsilat_maruz.py",
+  "        gun = (ust - alt).dt.days.clip(lower=0)",
+  "        gun = (ust - alt).dt.days.clip(lower=0) + 1"
+ ],
+ [
+  "maruziyet aralık sonunda kesilmez",
+  "avukat_perf/tahsilat_maruz.py",
+  "    son = tablo[\"bitis_tarihi\"].where(tablo[\"bitis_tarihi\"] < tablo[\"ust\"], tablo[\"ust\"])",
+  "    son = tablo[\"bitis_tarihi\"]"
+ ],
+ [
+  "maruziyet aralık başından önce başlar",
+  "avukat_perf/tahsilat_maruz.py",
+  "    bas = tablo[\"atama_tarihi\"].where(tablo[\"atama_tarihi\"] >= tablo[\"alt\"], tablo[\"alt\"])",
+  "    bas = tablo[\"atama_tarihi\"]"
+ ],
+ [
+  "olay ay yerine gün sayılır",
+  "avukat_perf/tahsilat_maruz.py",
+  "    tablo = tablo.assign(ay=tablo[\"hareket_tarihi\"].dt.strftime(\"%Y-%m\"),",
+  "    tablo = tablo.assign(ay=tablo[\"hareket_tarihi\"].dt.strftime(\"%Y-%m-%d\"),"
+ ],
+ [
+  "ters kayıtla sıfırlanan ay olay sayılır",
+  "avukat_perf/tahsilat_maruz.py",
+  "    ay = ay[ay[\"tutar\"] > YARIM_KURUS]",
+  "    ay = ay[ay[\"tutar\"] > -YARIM_KURUS]"
+ ],
+ [
+  "olay bandı ayın son hareketinden",
+  "avukat_perf/tahsilat_maruz.py",
+  "tarih=(\"pozitif\", \"min\")",
+  "tarih=(\"pozitif\", \"max\")"
+ ],
+ [
+  "kapanıştan sonraki tahsilat olay sayılır",
+  "avukat_perf/tahsilat_maruz.py",
+  "(tarih >= tablo[\"alt\"]) & (tarih < tablo[\"ust\"])",
+  "(tarih >= tablo[\"alt\"])"
+ ],
+ [
+  "aralık başından önceki tahsilat olay sayılır",
+  "avukat_perf/tahsilat_maruz.py",
+  "(tarih >= tablo[\"alt\"]) & (tarih < tablo[\"ust\"])",
+  "(tarih < tablo[\"ust\"])"
+ ],
+ [
+  "avukata yazılmayan tahsilat olay sayılır",
+  "avukat_perf/tahsilat_maruz.py",
+  "    tablo = hareket[hareket[\"avukat_kodu\"].notna()].merge(",
+  "    tablo = hareket.assign(avukat_kodu=hareket[\"avukat_kodu\"].fillna(\"-\")).merge("
+ ],
+ [
+  "kapalı dosya açık sayılır",
+  "avukat_perf/tahsilat_maruz.py",
+  "    ust = gun.where(gun.notna(), tahmin).where(kapali, sinir)",
+  "    ust = gun.where(gun.notna(), tahmin).where(kapali & False, sinir)"
+ ],
+ [
+  "bilinmeyen kapanışta son tahsilat kullanılmaz",
+  "avukat_perf/tahsilat_maruz.py",
+  "    ust = gun.where(gun.notna(), tahmin).where(kapali, sinir)",
+  "    ust = gun.where(gun.notna(), sinir).where(kapali, sinir)"
+ ],
+ [
+  "son tahsilat günü aralık dışında kalır",
+  "avukat_perf/tahsilat_maruz.py",
+  "    tahmin = pd.to_datetime(dosya[\"dosya_no\"].map(son)) + BIR_GUN",
+  "    tahmin = pd.to_datetime(dosya[\"dosya_no\"].map(son))"
+ ],
+ [
+  "bilinmeyen kapanışta ters kayıt son tahsilat sayılır",
+  "avukat_perf/tahsilat_maruz.py",
+  "    son = hareket[hareket[\"tutar\"] > YARIM_KURUS].groupby(\"dosya_no\")[\"hareket_tarihi\"].max()",
+  "    son = hareket.groupby(\"dosya_no\")[\"hareket_tarihi\"].max()"
+ ],
+ [
+  "kesitten sonraki kapanış günü kesite kırpılmaz",
+  "avukat_perf/tahsilat_maruz.py",
+  "    return ust.where(ust.isna() | (ust <= sinir), sinir)",
+  "    return ust"
+ ],
+ [
+  "grup hızı yanlış paydayla",
+  "avukat_perf/tahsilat_olay.py",
+  "    hiz[ad + \"_hizi\"] = hiz[\"olay\"] / hiz[\"maruz\"]",
+  "    hiz[ad + \"_hizi\"] = hiz[\"olay\"] / hiz[\"maruz\"].sum()"
+ ],
+ [
+  "boş aralıklı dosya ayıklanmaz",
+  "avukat_perf/tahsilat_olay.py",
+  "    dosya = dosya[dosya[\"ust\"].notna() & (dosya[\"ust\"] > dosya[\"alt\"])]",
+  "    dosya = dosya"
+ ],
+ [
+  "güncellik pencere ilk günü dahil sayılırsa",
+  "avukat_perf/tahsilat_olay.py",
+  "    ilk = pencere_bas + BIR_GUN",
+  "    ilk = pencere_bas"
+ ],
+ [
+  "güncellik penceresi rücuya verilişten önce başlar",
+  "avukat_perf/tahsilat_olay.py",
+  "    pencere = dosya.assign(alt=verilis.where(verilis > ilk, ilk),",
+  "    pencere = dosya.assign(alt=ilk,"
+ ],
+ [
+  "sıklık rücuya verilişten önceki süreyi sayar",
+  "avukat_perf/tahsilat_olay.py",
+  "_say(olgun.assign(alt=olgun[\"rucuya_verilis_tarihi\"], ust=ust)",
+  "_say(olgun.assign(alt=olgun[\"rucuya_verilis_tarihi\"] - pd.Timedelta(days=3650), ust=ust)"
+ ],
+ [
+  "güncellikte kapanış yok sayılır",
+  "avukat_perf/tahsilat_olay.py",
+  "                           ust=kapanis_ustu(dosya, hareket, kapanis, kesit).values)",
+  "                           ust=kesit + BIR_GUN)"
+ ],
+ [
+  "eksi tahsilatlı grupta gösterilen oran eksi",
+  "avukat_perf/tahsilat_tutar.py",
+  "(tablo[\"rucu_toplami\"] > 0) & (tablo[\"atfedilen\"] > 0), 0.0)",
+  "(tablo[\"rucu_toplami\"] > 0), 0.0)"
+ ],
+ [
+  "rücu sıfır grupta oran sonsuz",
+  "avukat_perf/tahsilat_tutar.py",
+  "(tablo[\"rucu_toplami\"] > 0) & (tablo[\"atfedilen\"] > 0), 0.0)",
+  "(tablo[\"atfedilen\"] > 0), 0.0)"
+ ],
+ [
+  "ağırlık en büyük kalan yerine en küçük kalana",
+  "avukat_perf/agirlik.py",
+  "    kalan = sorted(etkin, key=lambda ad: (-round(yuzde[ad] - tam[ad], 9), SUTUNLAR.index(ad)))",
+  "    kalan = sorted(etkin, key=lambda ad: (round(yuzde[ad] - tam[ad], 9), SUTUNLAR.index(ad)))"
+ ],
+ [
+  "ağırlıkta eşit kalan kayan nokta artığıyla sıralanır",
+  "avukat_perf/agirlik.py",
+  "    kalan = sorted(etkin, key=lambda ad: (-round(yuzde[ad] - tam[ad], 9), SUTUNLAR.index(ad)))",
+  "    kalan = sorted(etkin, key=lambda ad: (-(yuzde[ad] - tam[ad]), SUTUNLAR.index(ad)))"
+ ],
+ [
+  "kesitten sonra kapanan dosya kapalı sayılır",
+  "avukat_perf/gozlem.py",
+  "    secili = ilk.isna() | (ilk <= tek_gun(kesit))",
+  "    secili = ilk.isna() | ilk.notna()"
+ ],
+ [
+  "günü bilinmeyen kapanış açık sayılır",
+  "avukat_perf/gozlem.py",
+  "    secili = ilk.isna() | (ilk <= tek_gun(kesit))",
+  "    secili = ilk <= tek_gun(kesit)"
+ ],
+ [
+  "dosya tablosundaki fazla sütun hesaba sızar",
+  "avukat_perf/tahsilat_evren.py",
+  "    tablo = dosyalar[list(DOSYA_SUTUNLARI)].assign(",
+  "    tablo = dosyalar.assign("
+ ],
+ [
+  "hareket tablosundaki fazla sütun hesaba sızar",
+  "avukat_perf/atama.py",
+  "    tablo = hareketler[list(zorunlu)].assign(",
+  "    tablo = hareketler.assign("
+ ],
+ [
+  "açıklamada beklenen iki ondalık",
+  "avukat_perf/aciklama_tahsilat.py",
+  "                baslik, sabit(gerceklesen), k, sayi(beklenen, 4), k, sayi(r, 6),",
+  "                baslik, sabit(gerceklesen), k, sayi(beklenen), k, sayi(r, 4),"
+ ],
+ [
+  "ondalıklı sabit yuvarlanır",
+  "avukat_perf/aciklama_bicim.py",
+  "    if float(deger) == int(deger):",
+  "    if True:"
+ ],
+ [
+  "kapanış günü aralık dışında kalır",
+  "avukat_perf/tahsilat_maruz.py",
+  "    gun = pd.to_datetime(dosya[\"dosya_no\"].map(kapanis)) + BIR_GUN\n",
+  "    gun = pd.to_datetime(dosya[\"dosya_no\"].map(kapanis))\n"
+ ],
+ [
+  "boş atama dönemi ayıklanmaz",
+  "avukat_perf/atama.py",
+  "    tablo = tablo[~(tablo[\"bitis_tarihi\"] <= tablo[\"atama_tarihi\"])]  # boş dönem: tutulan gün yok\n",
+  ""
+ ],
+ [
+  "kalite kartı yalnız en son çalışmayı gösterir",
+  "arayuz/sunum_kural.py",
+  "    return [str(ozet.loc[ozet[\"tur\"] == t, \"calisma_kimligi\"].iloc[-1])\n            for t in (\"GECELIK\", \"DONEM_SONU\") if (ozet[\"tur\"] == t).any()]",
+  "    return [str(ozet[\"calisma_kimligi\"].iloc[-1])]"
+ ],
+ [
+  "kalite kartı çekim tarihine göre seçer",
+  "arayuz/sunum_kural.py",
+  "        son_kalite = kalite[kalite[\"calisma_kimligi\"].isin(_son_kimlikler(kayit, kalite))]\n",
+  "        son_kalite = kalite[kalite[\"cekim_tarihi\"] == kalite[\"cekim_tarihi\"].max()]\n"
+ ],
+ [
+  "0 TL hareket olayın yaş bandını taşır",
+  "avukat_perf/tahsilat_maruz.py",
+  "                         pozitif=tablo[\"hareket_tarihi\"].where(tablo[\"tutar\"] > YARIM_KURUS))",
+  "                         pozitif=tablo[\"hareket_tarihi\"])"
+ ],
+ [
+  "avukatın kendi sonucu beklentisine girer",
+  "avukat_perf/referans.py",
+  "    kendi = tablo.groupby([AVUKAT] + anahtar)[[pay, payda]].transform(\"sum\")",
+  "    kendi = toplam * 0"
+ ],
+ [
+  "tek avukatlı grupta branş katmanı atlanır",
+  "avukat_perf/referans.py",
+  "    return digerlerinin_orani(tablo, [grup, [\"brans\"]], pay, payda, sifir_olcut_degil)",
+  "    return digerlerinin_orani(tablo, [grup], pay, payda, sifir_olcut_degil)"
+ ],
+ [
+  "sayım bileşeninde beklenti kendi hızından",
+  "avukat_perf/tahsilat_olay.py",
+  "    hucre[\"e\"] = hucre[\"maruz\"] * tahsilat_orani(hucre, grup, \"olay\", \"maruz\", False)",
+  "    hucre[\"e\"] = hucre[\"maruz\"] * hucre[\"olay\"] / hucre[\"maruz\"]"
+ ],
+ [
+  "sonsuz sayı kalite kapısından geçer",
+  "avukat_perf/kalite.py",
+  "            sonsuz = temiz[ad].isin([float(\"inf\"), float(\"-inf\")])",
+  "            sonsuz = temiz[ad].isin([])"
+ ],
+ [
+  "sonsuz hareket tutarı çekirdekte reddedilmez",
+  "avukat_perf/atama.py",
+  "        raise ValueError(\"hareketler: tutar sonlu değil ya da toplam sayısal aralığı aşıyor\")",
+  "        pass"
+ ],
+ [
+  "sonsuz rücu tutarı çekirdekte reddedilmez",
+  "avukat_perf/tahsilat_evren.py",
+  "        raise ValueError(\"dosyalar: rücu tutarı sonlu değil ya da toplam sayısal aralığı aşıyor\")",
+  "        pass"
+ ],
+ [
+  "API yanıtında önbellek yasağı yok",
+  "../webapp/backend.py",
+  "        yanit.headers[\"Cache-Control\"] = \"no-store\"",
+  "        pass"
+ ],
+ [
+  "önbellek tabloları parametre okunmadan yayımlar",
+  "../webapp/backend.py",
+  "            tablolar = {ad: _oku(ad, okunamayan) for ad in sunum.TABLOLAR}",
+  "            tablolar = ONBELLEK[\"tablolar\"] = {ad: _oku(ad, okunamayan) for ad in sunum.TABLOLAR}"
+ ],
+ [
+  "menü bağlantısının erişilebilir adı yok",
+  "../webapp/index.html",
+  "href=\"#genel\" aria-label=\"Genel Bakış\"",
+  "href=\"#genel\""
+ ],
+ [
+  "sonsuz sayı denetiminin adı yok",
+  "../webapp/uygulama.js",
+  "    SONSUZ: \"Sonlu olmayan sayı\",\n",
+  ""
+ ],
+ [
+  "yeterli veri eşiğinde kayan nokta artığı",
+  "avukat_perf/tahsilat_puan.py",
+  "    return round(n, 9) >= tah[\"yeterli_olgun_dosya\"]",
+  "    return n >= tah[\"yeterli_olgun_dosya\"]"
+ ],
+ [
+  "avukat yeterliliği eşiğe bakmaz",
+  "avukat_perf/tahsilat.py",
+  "    avukat = avukat.assign(durum=durum, yeterli=yeterli_mi(avukat[\"n\"], tah))",
+  "    avukat = avukat.assign(durum=durum, yeterli=avukat[\"n\"] > 0)"
+ ],
+ [
+  "açıklamada yeterli veri uyarısı yok",
+  "avukat_perf/aciklama_tahsilat.py",
+  "    if not yeterli_mi(s.n, tah):",
+  "    if False:"
+ ],
+ [
+  "yeterli veri eşiği tabandan küçük kabul edilir",
+  "avukat_perf/params_tahsilat.py",
+  "    if tah[\"yeterli_olgun_dosya\"] < tah[\"en_az_olgun_dosya\"]:",
+  "    if False:"
+ ],
+ [
+  "Genel Bakış tablosunda yeterli veri işareti yok",
+  "arayuz/sunum_siralama.py",
+  "\"yeterli\": \"tahsilat_yeterli\"}",
+  "\"yeterli\": \"_yeterli_yok\"}"
+ ],
+ [
+  "sütun kadranında yeterli veri işareti yok",
+  "arayuz/sunum_avukat.py",
+  "            {sutun: _yeterli(t, kod, ad) for sutun, ad in YETERLI.items()}))",
+  "            {}))"
+ ],
+ [
+  "Genel Bakış'ta yeterli veri uyarısı okunmaz",
+  "../webapp/uygulama.js",
+  "azVeriSatiri(al(r, \"tahsilat_yeterli\"), al(r, \"tahsilat\"))",
+  "azVeriSatiri(null, al(r, \"tahsilat\"))"
+ ],
+ [
+  "tarih biçimine uymayan değer zorla tarihe döner",
+  "hat/kaynak.py",
+  "    return tarih.astype(object).where(~uymayan, seri) if uymayan.any() else tarih",
+  "    return tarih.where(~uymayan, seri)"
+ ],
+ [
+  "gözlem değer alanı doluluğu denetlenmez",
+  "avukat_perf/kalite_alan.py",
+  "int(len(temiz) > 0 and not temiz[ad].notna().any())",
+  "0"
+ ],
+ [
+  "dava esası doluluğu denetlenmez",
+  "avukat_perf/kalite_alan.py",
+  "\"k2_goruntu\": (\"surec_turu\", \"dava_esas_no\")",
+  "\"k2_goruntu\": (\"surec_turu\",)"
+ ],
+ [
+  "takip esası doluluğu denetlenmez",
+  "avukat_perf/kalite_alan.py",
+  "           \"takip\": (\"esas_no\",)}",
+  "           }"
+ ],
+ [
+  "ilişki yetim oranı eşiği uygulanmaz",
+  "avukat_perf/kalite_iliski.py",
+  "    asti = en_cok_oran is not None and oran > en_cok_oran",
+  "    asti = False"
+ ],
+ [
+  "ilişki oranı tutarla tartılmaz",
+  "avukat_perf/kalite_iliski.py",
+  "        oran = max(oran, float(tutar[yetim].sum()) / tutar.sum() if tutar.sum() > 0 else 0.0)",
+  "        oran = oran"
+ ],
+ [
+  "hareket ilişkisine tutar verilmez",
+  "hat/okuma.py",
+  "\"tutar\" if alt == \"tahsilat_hareketi\" else None)",
+  "None)"
+ ],
+ [
+  "ilişki oranı gecede uygulanmaz",
+  "hat/okuma.py",
+  "                                     oran if oranli else None,",
+  "                                     None,"
+ ],
+ [
+  "ilişki oranı parametreden okunmaz",
+  "hat/okuma.py",
+  "    oran = params[\"kalite\"][\"iliski_en_cok_yetim_orani\"]",
+  "    oran = 0.5"
+ ],
+ [
+  "bilinmeyen branş yalnız uyarı",
+  "avukat_perf/kalite_alan.py",
+  "sonuc.append((\"DEGER:brans\", _sayi(bilinmeyen), False,",
+  "sonuc.append((\"DEGER:brans\", _sayi(bilinmeyen), True,"
+ ],
+ [
+  "değer eşlemesi uygulanmaz",
+  "hat/kaynak.py",
+  "            tablo[alan] = _deger_esle(tablo[alan], harita)",
+  "            pass"
+ ],
+ [
+  "değer eşlemesi boşluğu kırpmaz",
+  "hat/kaynak.py",
+  "harita.get(deger.strip(), deger)",
+  "harita.get(deger, deger)"
+ ],
+ [
+  "oto branşı bilinen branşlarla karşılaştırılmaz",
+  "avukat_perf/params_veri.py",
+  "    if not _metin_listesi(oto) or not set(oto) <= bilinen:",
+  "    if not _metin_listesi(oto):"
+ ],
+ [
+  "olgunluk branşı bilinen branşlarla karşılaştırılmaz",
+  "avukat_perf/params_veri.py",
+  "    if set(params[\"tahsilat\"][\"olgunluk_ay\"]) - bilinen - {\"DIGER\"}:",
+  "    if False:"
+ ],
+ [
+  "kapıda ölçek bütün kodlara uygulanır",
+  "avukat_perf/kalite_davranis.py",
+  "    return tablo[\"alt_baslik\"].isin(kodlar) & ((puan < olcek[\"en_dusuk\"]) |",
+  "    return tablo[\"alt_baslik\"].notna() & ((puan < olcek[\"en_dusuk\"]) |"
+ ],
+ [
+  "İngilizce sayı biçimi uygulanmaz",
+  "hat/kaynak.py",
+  "if tur == \"sayi\" and ayar.get(\"sayi_bicimi\") in (\"tr\", \"en\"):",
+  "if tur == \"sayi\" and ayar.get(\"sayi_bicimi\") == \"tr\":"
+ ],
+ [
+  "İngilizce biçim Türkçe gibi çevrilir",
+  "hat/kaynak.py",
+  "(TR_KALIBI, \".\", \",\") if bicim == \"tr\" else (EN_KALIBI, \",\", \".\")",
+  "(TR_KALIBI, \".\", \",\")"
+ ],
+ [
+  "sayı biçimi iletisi en seçeneğini söylemez",
+  "avukat_perf/kalite.py",
+  "\"teyit edip kaynak ayarında sayi_bicimi tr ya da en \"",
+  "\"teyit edip kaynak ayarında sayi_bicimi tr \""
+ ],
+ [
+  "sayı biçimi iletisi belirsizliği söylemez",
+  "avukat_perf/kalite.py",
+  "aciklama=\"Türkçe ya da belirsiz biçimli metin sayı (1.234 ya \"",
+  "aciklama=\"Türkçe biçimli metin sayı (1.234 ya \""
+ ],
+ [
+  "sayı biçimi ayarı doğrulanmaz",
+  "hat/ayar_alan.py",
+  "    if ayar.get(\"sayi_bicimi\") not in SAYI_BICIMLERI:",
+  "    if False:"
+ ],
+ [
+  "sulh alanı doğrulanmaz",
+  "avukat_perf/params_veri.py",
+  "    if hz[\"sulh_alani\"] is not None and hz[\"sulh_alani\"] not in SULH_ALANLARI:",
+  "    if False:"
+ ],
+ [
+  "sulh alanı kimlik alanı olabilir",
+  "avukat_perf/params_veri.py",
+  "if alan not in (\"dosya_no\", \"avukat_kodu\", \"atama_tarihi\", \"iptal_tarihi\")]",
+  "if True]"
+ ],
+ [
+  "süzgeç dışı hareket türü sayılmaz",
+  "avukat_perf/kalite_alan.py",
+  "    disarida = ~temiz[\"hareket_turu\"].isin(turler)",
+  "    disarida = temiz[\"hareket_turu\"].isna()"
+ ],
+ [
+  "hiçbir hareket tahsilat sayılmasa da geçer",
+  "avukat_perf/kalite_alan.py",
+  "    hepsi = len(temiz) > 0 and bool(disarida.all())",
+  "    hepsi = False"
+ ],
+ [
+  "dışarıda kalan ters kayıt sayılmaz",
+  "avukat_perf/kalite_alan.py",
+  "_sayi(disarida & (temiz[\"tutar\"] < 0)), True,",
+  "0, True,"
+ ],
+ [
+  "hareket türü listesi boş olabilir",
+  "avukat_perf/params_veri.py",
+  "    if turler == []:",
+  "    if False:"
+ ],
+ [
+  "kod listesi öğe türü denetlenmez",
+  "avukat_perf/params_veri.py",
+  "    if not all(_metin_listesi(liste) for liste in listeler):",
+  "    if False:"
+ ],
+ [
+  "bilinen branş öğe türü denetlenmez",
+  "avukat_perf/params_veri.py",
+  "            or not _metin_listesi(kal[\"bilinen_branslar\"]):",
+  "            or False:"
+ ],
+ [
+  "avukat listesi ilişkisi denetlenmez",
+  "hat/okuma.py",
+  "             (\"AVUKAT_AVUKAT\", \"avukat\", \"atama_log\", \"avukat_kodu\", False))",
+  "             )"
+ ],
+ [
+  "avukat listesi oranla durur",
+  "hat/okuma.py",
+  "(\"AVUKAT_AVUKAT\", \"avukat\", \"atama_log\", \"avukat_kodu\", False))",
+  "(\"AVUKAT_AVUKAT\", \"avukat\", \"atama_log\", \"avukat_kodu\", True))"
+ ],
+ [
+  "değerlendiren dolu çift kayıt yalnız uyarı",
+  "avukat_perf/kalite_alan.py",
+  "             (\"YINELENEN:degerlendiren\", _sayi(cift), False,",
+  "             (\"YINELENEN:degerlendiren\", _sayi(cift), True,"
+ ],
+ [
+  "değerlendiren boşken de çift kayıt durur",
+  "avukat_perf/kalite_alan.py",
+  "cift = temiz[\"degerlendiren\"].notna() & temiz.duplicated(",
+  "cift = temiz.duplicated("
+ ],
+ [
+  "pencere dışı puanlı değerlendirme sayılmaz",
+  "avukat_perf/kalite_alan.py",
+  "disari = temiz[\"puan\"].notna() & ~icinde(",
+  "disari = temiz[\"puan\"].isna() & ~icinde("
+ ],
+ [
+  "tanımsız alt başlık hiç eşleşmese de yalnız uyarı",
+  "avukat_perf/kalite_alan.py",
+  "    sonuc = [(\"DEGER:alt_baslik\", _sayi(bilinmeyen), not hepsi,",
+  "    sonuc = [(\"DEGER:alt_baslik\", _sayi(bilinmeyen), True,"
+ ],
+ [
+  "mevcut alanlar tanımsız kod sayılır",
+  "avukat_perf/kalite_alan.py",
+  "        kodlar + list(kd[\"mevcut_alanlar\"]))",
+  "        kodlar)"
+ ],
+ [
+  "eşleme sonrası çift sütun fark edilmez",
+  "hat/kaynak.py",
+  "    if cift:\n        raise ValueError(\"{}: alan eşlemesinden",
+  "    if False:\n        raise ValueError(\"{}: alan eşlemesinden"
+ ],
+ [
+  "geniş değerlendirmede eksik sütun eklenmez",
+  "hat/kaynak.py",
+  "        tablo = hazirlik.degerlendirme_uzun(tablo.assign(**{\n            alan: None for alan in genis if alan not in tablo.columns}), genis)",
+  "        tablo = hazirlik.degerlendirme_uzun(tablo, genis)"
+ ],
+ [
+  "geniş değerlendirmede hiçbir sütun yokken geçer",
+  "hat/kaynak.py",
+  "        if not any(alan in tablo.columns for alan in genis):",
+  "        if False:"
+ ],
+ [
+  "tarih türündeki metin alanı yerel güne çevrilmez",
+  "avukat_perf/kalite_tur.py",
+  "    if pd.api.types.is_datetime64_any_dtype(seri):  # metin alanı tarih türünde (rapor dönemi)",
+  "    if False:"
+ ],
+ [
+  "saatli rapor dönemi UTC ayına düşer",
+  "avukat_perf/kalite_iliski.py",
+  "    if re.match(r\"^\\d{4}-\\d{2}-\\d{2}[T ]\\d\", metin):",
+  "    if False:"
+ ],
+ [
+  "takipte en erken esas seçilmez",
+  "hat/model.py",
+  "takip.sort_values(\n        \"islem_tarihi\", na_position=\"last\", kind=\"mergesort\").rename(",
+  "takip.rename("
+ ],
+ [
+  "takipte çok satır geceyi durdurur",
+  "avukat_perf/sema.py",
+  "              \"yinelenen_uyari\": True, \"alanlar\": [",
+  "              \"alanlar\": ["
+ ],
+ [
+  "geçersiz en eski tarih günü kabul edilir",
+  "avukat_perf/params_veri.py",
+  "    if not _gun_mu(kal[\"en_eski_tarih\"]) or not kal[\"bilinen_branslar\"] \\",
+  "    if not kal[\"bilinen_branslar\"] \\"
+ ],
+ [
+  "uygulanmamış enflasyon düzeltmesi kabul edilir",
+  "avukat_perf/params_tahsilat.py",
+  "    if tah[\"enflasyon_duzeltme\"]:",
+  "    if False:"
+ ],
+ [
+  "metin teyit listesi harf harf denetlenir",
+  "avukat_perf/params.py",
+  "    if not isinstance(liste, list):\n        return [\"_teyit_bekleyen liste olmalı\"]\n",
+  ""
+ ],
+ [
+  "sayfalama bilinmeyen anahtarı geçer",
+  "hat/ayar_alan.py",
+  "    hatalar = bilinmeyen(sayfalama, SAYFALAMA_ANAHTARLARI, yer + \".sayfalama\")",
+  "    hatalar = []"
+ ],
+ [
+  "sayfalama türünün gerektirdiği alan aranmaz",
+  "hat/ayar_alan.py",
+  "    eksik = [alan for alan in SAYFALAMA[tur] if sayfalama.get(alan) in (None, \"\")]",
+  "    eksik = []"
+ ],
+ [
+  "kimlik bilinmeyen anahtarı geçer",
+  "hat/ayar_alan.py",
+  "    hatalar += bilinmeyen(api.get(\"kimlik\"), KIMLIK_ANAHTARLARI, ad + \".api.kimlik\")",
+  "    hatalar += []"
+ ],
+ [
+  "değer eşlemesi alanı denetlenmez",
+  "hat/ayar_alan.py",
+  "            for alan in sorted(eslesme) if not alan.startswith(\"_\") and alan not in izinli]",
+  "            for alan in sorted(eslesme) if False]"
+ ],
+ [
+  "değer eşlemesi biçimi denetlenmez",
+  "hat/ayar_alan.py",
+  "    if not duzgun:\n        return [yer + \".deger_eslemesi",
+  "    if False:\n        return [yer + \".deger_eslemesi"
+ ],
+ [
+  "kaynak düzeyinde sistem anahtarı kabul edilir",
+  "hat/ayar.py",
+  "KAYNAK_ANAHTARLARI = {\"yontem\", \"api\",",
+  "KAYNAK_ANAHTARLARI = {\"sistem\", \"yontem\", \"api\","
+ ],
+ [
+  "eski api.yontem adı kabul edilir",
+  "hat/ayar.py",
+  "API_ANAHTARLARI = {\"adres\", \"adres_koku\", \"yol\", \"http_yontemi\", \"basliklar\",",
+  "API_ANAHTARLARI = {\"adres\", \"adres_koku\", \"yol\", \"http_yontemi\", \"yontem\", \"basliklar\","
+ ],
+ [
+  "adres yolu eğik çizgisiz bitişik kurulur",
+  "hat/ayar.py",
+  "(\"/\" + yol if yol else \"\")",
+  "yol"
+ ],
+ [
+  "sayfalama bloğu ekte derin birleştirilir",
+  "hat/ayar.py",
+  "                and anahtar not in BUTUN_DEGISEN:",
+  "                and True:"
+ ],
+ [
+  "API ilk sayfa numarası ayardan okunmaz",
+  "hat/api.py",
+  "sayfalama.get(\"baslangic\", 1)",
+  "1"
+ ],
+ [
+  "kategori ve string türü object'e çevrilmez",
+  "avukat_perf/kalite_tur.py",
+  "    if pd.api.types.is_datetime64_any_dtype(seri) or pd.api.types.is_numeric_dtype(seri):",
+  "    if seri.dtype != object:"
+ ],
+ [
+  "tarih çevrilemeyen iletisi nedeni söylemez",
+  "avukat_perf/kalite.py",
+  "aciklama=TARIH_TUR if tur in (",
+  "aciklama=\"çevrilemeyen değer\" if tur in ("
+ ],
+ [
+  "kesit ayı mutabakat farkı geceyi durdurur",
+  "avukat_perf/kalite_iliski.py",
+  "uyari=donem == kesit_ayi))",
+  "uyari=False))"
+ ],
+ [
+  "yinelenen JSON anahtarı geçer",
+  "hat/ortam.py",
+  "        if cift:\n            raise ValueError(\"{}: yinelenen anahtar",
+  "        if False:\n            raise ValueError(\"{}: yinelenen anahtar"
+ ],
+ [
+  "Dataiku ayarı yinelenen anahtarı denetlemez",
+  "hat/dataiku_ortam.py",
+  "            return json_oku(akis.read().decode(\"utf-8-sig\"), ad)",
+  "            return __import__(\"json\").loads(akis.read().decode(\"utf-8-sig\"))"
+ ],
+ [
+  "yerel ayar yinelenen anahtarı denetlemez",
+  "hat/ortam.py",
+  "            return json_oku(dosya.read(), ad)",
+  "            return json.loads(dosya.read())"
+ ],
+ [
+  "bekleme dosya-avukat çifti denetlenmez",
+  "hat/okuma.py",
+  "             (\"BEKLEME_ATAMA\", \"bekleme\", \"atama_log\", (\"dosya_no\", \"avukat_kodu\"), False),\n",
+  ""
+ ],
+ [
+  "ilişki çok alanlı anahtarın ilkine bakar",
+  "avukat_perf/kalite_iliski.py",
+  "    alanlar = [anahtar] if isinstance(anahtar, str) else list(anahtar)",
+  "    alanlar = [anahtar] if isinstance(anahtar, str) else list(anahtar)[:1]"
+ ],
+ [
+  "aktarım kontrolü tarih türünü yazmaz",
+  "../kontrol/aktarim_kontrol.py",
+  "        print(ad, \"· tarih alanı türleri:\",",
+  "        print(ad, \"· tarih alanı türü yok:\","
+ ],
+ [
+  "yöntem listesi iki yerde",
+  "hat/kaynak.py",
+  "from hat.ayar import YONTEMLER\n",
+  "YONTEMLER = (\"bekliyor\", \"dataiku\", \"api\", \"dosya\")\n"
+ ],
+ [
+  "özet aracı kendi özet işlevini kullanır",
+  "../../araclar/ozet.py",
+  "from avukat_perf.surum import hesap_surumu, metin_ozeti  # noqa: E402  (tek kural: surum.py)",
+  "from avukat_perf.surum import hesap_surumu  # noqa: E402\nfrom avukat_perf.surum import metin_ozeti as _ozet  # noqa: E402\n\n\ndef metin_ozeti(metin):\n    return _ozet(metin)"
+ ],
+ [
+  "yer tutucuda önceki çekim tarihi sunulur",
+  "hat/okuma.py",
+  "    return {\"kesit\": str(cekim.date()), \"cekim_tarihi\": str(cekim.date())}",
+  "    return {\"kesit\": str(cekim.date()), \"cekim_tarihi\": str(cekim.date()), \"onceki_basarili\": \"\"}"
+ ],
+ [
+  "Dataiku boş mantıksal sütunda pandas tahminine düşer",
+  "hat/dataiku_ortam.py",
+  "                    {\"infer_with_pandas\": False, \"int_as_float\": True, \"bool_as_str\": True}):",
+  "                    ):"
+ ],
+ [
+  "Dataiku okunamayınca varsayılan okumaya düşer",
+  "hat/dataiku_ortam.py",
+  "    raise ValueError(ad + \": şema türleriyle okunamadı",
+  "    return veri_kumesi.get_dataframe()\n    raise ValueError(ad + \": şema türleriyle okunamadı"
+ ],
+ [
+  "oauth2 jetonu 429'da denenmez",
+  "hat/api_kimlik.py",
+  "            if (hata.code < 500 and hata.code != 429) or sira == 2:",
+  "            if hata.code < 500 or sira == 2:"
+ ],
+ [
+  "oauth2 jetonu zaman aşımında denenmez",
+  "hat/api_kimlik.py",
+  "        except (urllib.error.URLError, ConnectionError, ZAMAN_ASIMI):",
+  "        except (urllib.error.URLError, ConnectionError):"
+ ],
+ [
+  "oauth2 jetonu enjekte uykuyu kullanmaz",
+  "hat/api_kimlik.py",
+  "        uyku(2 ** sira)",
+  "        time.sleep(2 ** sira)"
+ ],
+ [
+  "değer eşlemesinde açıklama anahtarı biçim hatası sayılır",
+  "hat/ayar_alan.py",
+  "for alan, harita in eslesme.items() if not alan.startswith(\"_\"))",
+  "for alan, harita in eslesme.items())"
+ ],
+ [
+  "hesap sürümü gecmis.py'yi kapsamaz",
+  "avukat_perf/surum.py",
+  "KOD_DOSYALARI = ((\"avukat_perf\", None), (\"hat\", (\"akis.py\", \"donem_akisi.py\", \"gecmis.py\",",
+  "KOD_DOSYALARI = ((\"avukat_perf\", None), (\"hat\", (\"akis.py\", \"donem_akisi.py\","
+ ],
+ [
+  "kalite kapısı eşiği hesap sürümüne girer",
+  "avukat_perf/surum.py",
+  "SURUM_DISI = (GORUNUM, \"kalite\")",
+  "SURUM_DISI = (GORUNUM,)"
+ ],
+ [
+  "arşiv bilgisi normalleştirme ayarını yazmaz",
+  "hat/okuma.py",
+  "bilgi = dict({alan: ayar.get(alan) for alan in kaynak.NORMALLEME},",
+  "bilgi = dict({},"
+ ],
+ [
+  "oauth2 Basic başlığı yönlendirmede taşınır",
+  "hat/api_kimlik.py",
+  "istek.add_unredirected_header(\"Authorization\", \"Basic \"",
+  "istek.add_header(\"Authorization\", \"Basic \""
+ ],
+ [
+  "gecelik ayrı çekim günü alır",
+  "hat/akis.py",
+  "def gecelik(ortam, ayarlar, params, simdi=None):",
+  "def gecelik(ortam, ayarlar, params, simdi=None, cekim_tarihi=None):"
+ ],
+ [
+  "kesik tablo yalnız son geceyle karşılaştırılır",
+  "hat/butunluk.py",
+  "    beklenen, secili = {}, basarili_calismalar(kayit, tur)\n",
+  "    beklenen, secili = {}, basarili_calismalar(kayit, tur)\n    secili = None if secili is None else secili.iloc[-1:]\n"
+ ],
+ [
+  "çalışma kaydı boşken eklenen tablolar denetlenmez",
+  "hat/butunluk.py",
+  "    if dolu:\n        raise ValueError(\"VERI_KAYBI: calisma_kaydi boş",
+  "    if False:\n        raise ValueError(\"VERI_KAYBI: calisma_kaydi boş"
+ ],
+ [
+  "dönem sonu kayıt kaybını denetlemez",
+  "hat/donem_akisi.py",
+  "    butunluk.kayitsiz_gecmis(ortam, onceki)\n",
+  ""
+ ],
+ [
+  "dönem sonu kesik modeli kaynak bekleniyor sayar",
+  "hat/donem_kayit.py",
+  "    kesik = [tablo for tablo, ad in adlar if tablo in uretilen and mdl[ad] is None]",
+  "    kesik = []"
+ ],
+ [
+  "dönem sonu hatası kayda geçmez",
+  "hat/donem_akisi.py",
+  "        donem_kayit.hata(ortam, onceki, ozet, okuma.ileti(hata))",
+  "        pass"
+ ],
+ [
+  "yedek yol gölgesi Kriter 2'yi de kapsar",
+  "avukat_perf/sure_ozet.py",
+  "            \"K2\": bool(uyari[\"golge_mod\"])}",
+  "            \"K2\": bool(uyari[\"golge_mod\"] or uyari.get(\"golge_k1\"))}"
+ ],
+ [
+  "yedek yol Kriter 1'i gölgeye almaz",
+  "avukat_perf/sure_ozet.py",
+  "    return {\"K1\": bool(uyari[\"golge_mod\"] or uyari.get(\"golge_k1\")),",
+  "    return {\"K1\": bool(uyari[\"golge_mod\"]),"
+ ],
+ [
+  "K2 gölge aralığı yedek yolu da sayar",
+  "hat/gecmis.py",
+  "    if kriter == \"K1\":\n        golge = golge | gece.get(\"golge_zorunlu\", bos).map(_dogru)",
+  "    if True:\n        golge = golge | gece.get(\"golge_zorunlu\", bos).map(_dogru)"
+ ],
+ [
+  "gece kaydının gölgesi yedek yolu içerir",
+  "hat/akis.py",
+  "            ozet[\"golge\"] = bool(params[\"uyari\"][\"golge_mod\"])  #",
+  "            ozet[\"golge\"] = bool(params[\"uyari\"][\"golge_mod\"] or ozet[\"golge_zorunlu\"])  #"
+ ],
+ [
+  "dönem yedek yol gölgesini Kriter 1'e uygulamaz",
+  "hat/donem_akisi.py",
+  "golge_k1=gecmis.golgede_mi(onceki, kesit, \"K1\")))",
+  "golge_k1=False))"
+ ],
+ [
+  "kriter bazında hariç aralık bütün satırlara uygulanır",
+  "avukat_perf/pencere.py",
+  "            sonuc = sonuc & (aralik_disinda(tarih, araliklar) | (kriter != ad))",
+  "            sonuc = sonuc & aralik_disinda(tarih, araliklar)"
+ ],
+ [
+  "tahsilat hareketi zorunlu kaynak",
+  "avukat_perf/sema.py",
+  "    \"tahsilat_hareketi\": {\"sistem\": \"tahsilat_raporu\", \"anahtar\": [], \"istege_bagli\": True,",
+  "    \"tahsilat_hareketi\": {\"sistem\": \"tahsilat_raporu\", \"anahtar\": [], \"istege_bagli\": False,"
+ ],
+ [
+  "hareketsiz gecede tahsilat koşulsuz hesaplanır",
+  "hat/hesap.py",
+  "    if hareket is None:\n        durum[\"tahsilat\"] = \"KAYNAK_BEKLENIYOR\"",
+  "    if False:\n        durum[\"tahsilat\"] = \"KAYNAK_BEKLENIYOR\""
+ ],
+ [
+  "hareketsiz gecede mutabakat uyarısı yok",
+  "hat/okuma.py",
+  "\"mutabakat\", \"TAHSILAT_HAREKETI_YOK\", 1, uyari=True,",
+  "\"mutabakat\", \"TAHSILAT_HAREKETI_YOK\", 0, uyari=True,"
+ ],
+ [
+  "model hareketi koşulsuz hazırlar",
+  "hat/model.py",
+  "             \"hareket\": None if tablolar.get(\"tahsilat_hareketi\") is None else",
+  "             \"hareket\": None if False else"
+ ],
+ [
+  "dönem zorunlu model listesi sabit",
+  "hat/donem_kayit.py",
+  "ZORUNLU = tuple(ad for ad, kaynak in MODEL_KAYNAGI.items() if kaynak in sema.zorunlu_kaynaklar())",
+  "ZORUNLU = (\"dosya\", \"atama_donemi\", \"hareket\")"
+ ],
+ [
+  "olay anahtarı esas kaynağını taşımaz",
+  "avukat_perf/olay.py",
+  "ANAHTAR = DONEM_ANAHTARI + [\"kriter\", \"seviye\", \"esas_kaynagi\"]",
+  "ANAHTAR = DONEM_ANAHTARI + [\"kriter\", \"seviye\"]"
+ ],
+ [
+  "olay çelişkisi bütün kaynaklarla aranır",
+  "hat/akis.py",
+  "            (mevcut[\"kriter\"] == kriter) & (mevcut[\"esas_kaynagi\"] == kaynaklar[kriter])]",
+  "            (mevcut[\"kriter\"] == kriter)]"
+ ],
+ [
+  "yedek yolun olayı dava takip kaynağı yazılır",
+  "hat/hesap_sure.py",
+  "    return {\"K1\": olay.YEDEK if model.get(\"golge_zorunlu\") else olay.DAVA_TAKIP,",
+  "    return {\"K1\": olay.DAVA_TAKIP,"
+ ],
+ [
+  "Süre Takibi eski kaynağın olaylarını gösterir",
+  "arayuz/sunum_sure.py",
+  "    anahtar = [\"dosya_no\", \"avukat_kodu\", \"atama_tarihi\", \"kriter\", \"esas_kaynagi\"]",
+  "    anahtar = [\"dosya_no\", \"avukat_kodu\", \"atama_tarihi\", \"kriter\"]"
+ ],
+ [
+  "saatsiz aynı gün ataması uyarılmaz",
+  "avukat_perf/kalite_tarih.py",
+  "    return _sayi((sayi > 1) & grup[\"saatsiz\"].transform(\"all\").astype(bool))",
+  "    return 0"
+ ],
+ [
+  "saatsiz denetimi saatli atamayı da sayar",
+  "avukat_perf/kalite_tarih.py",
+  "\"saatsiz\": secili[\"atama_tarihi\"] == gun})",
+  "\"saatsiz\": secili[\"atama_tarihi\"] == secili[\"atama_tarihi\"]})"
+ ],
+ [
+  "aktarım kontrolü saati denemez",
+  "../kontrol/aktarim_kontrol.py",
+  "          list(pd.to_datetime(geri[\"zaman\"])) == list(deneme[\"zaman\"]))",
+  "          list(pd.to_datetime(geri[\"zaman\"])) == list(deneme[\"zaman\"]) or True)"
+ ],
+ [
+  "aktarım kontrolü boş tabloyu denemez",
+  "../kontrol/aktarim_kontrol.py",
+  "    ortam.tablo_yaz(tablo_adi, deneme.iloc[0:0])\n",
+  "    ortam.tablo_yaz(tablo_adi, deneme.iloc[0:1])\n"
+ ],
+ [
+  "aktarım kontrolü ilişki denetimi yapmaz",
+  "../kontrol/aktarim_kontrol.py",
+  "if all(ad in okunan for ad in zorunlu_kaynaklar()):",
+  "if False:"
+ ],
+ [
+  "kurulum ayar dosyası yokken düşer",
+  "../kontrol/kurulum.py",
+  "if kurulum_ortami.ayar_oku_varsa(\"kaynaklar.json\") is None:",
+  "if False:"
+ ],
+ [
+  "dönem sonu yalnız zorunlu model tablosunun kesikliğine bakar",
+  "hat/donem_kayit.py",
+  "    adlar = [(\"model_\" + ad, ad) for ad in MODEL_KAYNAGI] + [(ad, ad) for ad in GOZLEMLER]",
+  "    adlar = [(\"model_\" + ad, ad) for ad in ZORUNLU]"
+ ],
+ [
+  "denetim kodu SAATSIZ_ATAMA etiketsiz kalır",
+  "../webapp/uygulama.js",
+  "\"Puana girmeyen ters kayıt\", SAATSIZ_ATAMA: \"Saatsiz aynı gün ataması\",",
+  "\"Puana girmeyen ters kayıt\","
+ ],
+ [
+  "dönem sonu denetim kodları etiketsiz kalır",
+  "../webapp/uygulama.js",
+  "    MODEL_TABLOSU: \"Kesik ya da okunamayan model tablosu\", HESAP_HATASI: \"Hesap hatası\" };",
+  "    };"
+ ],
+ [
+  "e-posta özeti gönderimi avukat başına birleştirir",
+  "arayuz/sunum_sure.py",
+  "        gonder = dogru_seri(eposta[\"gonderilecek\"])\n",
+  "        gonder = dogru_seri(eposta[\"gonderilecek\"])\n        gonder = gonder.groupby(eposta[\"avukat_kodu\"]).transform(\"any\")\n"
+ ],
+ [
+  "dönem yayın kaydı hata yolunda yazılır",
+  "hat/donem_akisi.py",
+  "    return karar, yayin, kontrol\n",
+  "    calisma.kaydet(ortam, onceki, [], karar, ozet)\n    calisma.kalite_ekle(ortam, [kontrol], kesit)\n    return karar, yayin, None\n"
+ ],
+ [
+  "tahsilat kapanışı en erken gün (kaçan gece kapatan tahsilatı siler)",
+  "avukat_perf/gozlem.py",
+  "    gun = ilk.where(tablo[\"dayanak\"] != \"GECELIK_GOZLEM\", pd.to_datetime(tablo[\"ilk_gorulme\"]))",
+  "    gun = ilk"
+ ],
+ [
+  "tutar verilişten önceki tahsilatı sayar",
+  "avukat_perf/tahsilat.py",
+  "verilisten = olgun_hareket[\"hareket_tarihi\"] >= olgun_hareket[\"rucuya_verilis_tarihi\"]",
+  "verilisten = olgun_hareket[\"hareket_tarihi\"].notna()"
+ ],
+ [
+  "tutarda sıfır ya da eksi ölçüt üst katmana geçmez",
+  "avukat_perf/referans.py",
+  "    return oran.where(oran > 0) if sifir_olcut_degil else oran",
+  "    return oran"
+ ],
+ [
+  "tutar bileşeni sıfır ölçütü kabul eder",
+  "avukat_perf/tahsilat_tutar.py",
+  "tahsilat_orani(tablo, grup, \"referans\", \"maruziyet\", True)",
+  "tahsilat_orani(tablo, grup, \"referans\", \"maruziyet\", False)"
+ ],
+ [
+  "sayım bileşeninde sıfır oran ölçüt sayılmaz",
+  "avukat_perf/tahsilat_olay.py",
+  "tahsilat_orani(hucre, grup, \"olay\", \"maruz\", False)",
+  "tahsilat_orani(hucre, grup, \"olay\", \"maruz\", True)"
+ ],
+ [
+  "sıfır rücu tutarlı dosyanın tahsilatı ölçüt payına girer",
+  "avukat_perf/tahsilat_tutar.py",
+  "hareket[hareket[\"rucu_tutari\"] > 0].groupby(anahtar)",
+  "hareket.groupby(anahtar)"
+ ],
+ [
+  "bileşen puanı yarım değerde aşağı yuvarlanır",
+  "avukat_perf/tahsilat_puan.py",
+  "    return round(min(max(ham_puan(r, tah), 0.0), 100.0), 9)",
+  "    return min(max(ham_puan(r, tah), 0.0), 100.0)"
+ ],
+ [
+  "hiç tutulmayan olgun dosyanın tahsilatı grupta sayılır",
+  "avukat_perf/tahsilat.py",
+  "olgun_hareket[olgun_hareket[\"dosya_no\"].isin(pay[\"dosya_no\"]) & verilisten]",
+  "olgun_hareket[verilisten]"
+ ],
+ [
+  "açıklamada n kesilir",
+  "avukat_perf/aciklama_tahsilat.py",
+  "n=kesin(s.n)",
+  "n=sayim(s.n)"
+ ],
+ [
+  "açıklamada bileşen ağırlığı yuvarlanır",
+  "avukat_perf/aciklama_tahsilat.py",
+  "sabit(agirlik[\"tutar\"]), sayi(s.puan_tutar), sabit(agirlik[\"siklik\"]),",
+  "sayi(agirlik[\"tutar\"]), sayi(s.puan_tutar), sayi(agirlik[\"siklik\"]),"
+ ],
+ [
+  "açıklamada kesirli sayı tam sayı gibi yazılır",
+  "avukat_perf/aciklama_bicim.py",
+  "        return sayi(deger, 0)\n    return sayi(deger, 6)",
+  "        return sayi(deger, 0)\n    return sayi(deger, 0)"
+ ],
+ [
+  "açıklamada tam sayı ondalıkla yazılır",
+  "avukat_perf/aciklama_bicim.py",
+  "        return sayi(deger, 0)\n    return sayi(deger, 6)",
+  "        return sayi(deger, 6)\n    return sayi(deger, 6)"
+ ],
+ [
+  "açıklamada eksi sıfır yazılır",
+  "avukat_perf/aciklama_bicim.py",
+  "    yuvarlanan = 0.0 if yuvarlanan == 0 else yuvarlanan",
+  "    yuvarlanan = yuvarlanan"
+ ],
+ [
+  "arşiv öncesi koşul kaybı yeniden açılınca unutulur",
+  "avukat_perf/kriter2.py",
+  "            pd.notna(kayit[\"kosul_gorulme\"]):",
+  "            False:"
+ ],
+ [
+  "koşul kaybının görülme günü aktarılmaz",
+  "avukat_perf/hazirlik.py",
+  "    tablo[\"kosul_gorulme\"] = tablo[\"dosya_no\"].map(gozlem.bilinmeyen_esle(kosul_gozlem))",
+  "    tablo[\"kosul_gorulme\"] = pd.NaT"
+ ],
+ [
+  "dosya tablosunda olmayan dönem oto dışı eşikle ölçülür",
+  "avukat_perf/kriter1.py",
+  "    if pd.isna(neden) and pd.isna(kayit[\"brans\"]):",
+  "    if False:"
+ ],
+ [
+  "kapsam dosyası olmayan dönemi sayar",
+  "avukat_perf/sure_puani.py",
+  "OLCULMEYEN = (\"SULH\", \"IPTAL\", \"ESAS_ONCEDEN_VAR\", \"DOSYA_YOK\")",
+  "OLCULMEYEN = (\"SULH\", \"IPTAL\", \"ESAS_ONCEDEN_VAR\")"
+ ],
+ [
+  "ölçülen Kriter 1 dönemi olmayan avukatta kapsam bilinmiyor",
+  "avukat_perf/sure_puani.py",
+  "tablo[\"kapsam\"] = tablo[\"kapsam\"].fillna(1.0)",
+  "tablo[\"kapsam\"] = tablo[\"kapsam\"].fillna(0.0)"
+ ],
+ [
+  "kaynak tarihi önceki çekim gününe eşitse görülmez",
+  "avukat_perf/gozlem.py",
+  "dayanak = aralikta.map({True: \"KAYNAK_TARIHI\", False: \"GECELIK_GOZLEM\"}).values",
+  "dayanak = aralikta.map({True: \"GECELIK_GOZLEM\", False: \"GECELIK_GOZLEM\"}).values"
+ ],
+ [
+  "başlangıç kaynak tarihini yok sayar",
+  "avukat_perf/gozlem.py",
+  "tablo[\"dayanak\"].isin([\"ARSIV_ONCESI\", \"KAYNAK_TARIHI\"])",
+  "tablo[\"dayanak\"].isin([\"ARSIV_ONCESI\"])"
+ ],
+ [
+  "tarih bilinmiyor işareti türünden okunur",
+  "avukat_perf/hazirlik.py",
+  "\"tarih_bilinmiyor\": gozlem.tarih_bilinmiyor(tablo).values,",
+  "\"tarih_bilinmiyor\": tablo[\"tarih_bilinmiyor\"].astype(bool).values,"
+ ],
+ [
+  "yeterlilik açıklaması parametreden yeniden kurulur",
+  "avukat_perf/aciklama.py",
+  "\"sağlanıyor\" if s.durum == \"GECERLI\" else \"sağlanmıyor\"",
+  "\"sağlanıyor\" if s.puanlanan * 3 >= s.toplam * 2 else \"sağlanmıyor\""
+ ],
+ [
+  "süre açıklamasında yeterli veri uyarısı yazılmaz",
+  "avukat_perf/aciklama.py",
+  "    if not bool(getattr(s, \"yeterli\", True)):",
+  "    if False:"
+ ],
+ [
+  "süre beklentisi kendi dönemlerini içerir",
+  "avukat_perf/referans.py",
+  "    oran = ((toplam[pay] - kendi[pay]) / diger_payda).where(diger_payda > 0)",
+  "    oran = (toplam[pay] / toplam[payda]).where(diger_payda > 0)"
+ ],
+ [
+  "süre tek avukatlı grupta kriter-süreç katmanı atlanır",
+  "avukat_perf/sure_puani.py",
+  "[GRUP, GRUP[:2]], \"_dusum\", \"_bir\"",
+  "[GRUP], \"_dusum\", \"_bir\""
+ ],
+ [
+  "süre sıfır düşüm oranı ölçüt sayılmaz",
+  "avukat_perf/sure_puani.py",
+  "                                                      False))",
+  "                                                      True))"
+ ],
+ [
+  "süre puanı yeterli veri altında üretilmez",
+  "avukat_perf/sure_puani.py",
+  "    if round(satir.e, 9) < sp[\"en_az_beklenen\"]:  # E kesirli oranların toplamı",
+  "    if satir.risk_dosya < sp[\"yeterli_dosya\"]:\n        return \"AZ_DOSYA\"\n    if round(satir.e, 9) < sp[\"en_az_beklenen\"]:  # E kesirli oranların toplamı"
+ ],
+ [
+  "kapanış kodu rücu koduyla çakışabilir",
+  "avukat_perf/params_kural.py",
+  "            or k2[\"rucu_kodu\"] in kapanis:",
+  "            or False:"
+ ],
+ [
+  "aylık pencere sıfır olabilir",
+  "avukat_perf/params_tahsilat.py",
+  "            or tah[\"aylik_pencere_ay\"] < 1:",
+  "            or False:"
+ ],
+ [
+  "hazırlık sürümü kapanış kodlarını içermez",
+  "avukat_perf/surum.py",
+  "                                      \"kapanis_kodlari\": k2[\"kapanis_kodlari\"]})",
+  "                                      \"_yok\": None})"
+ ],
+ [
+  "iade sonrası kapanış dışı kod oluşmuş K2 düşümünü siler",
+  "avukat_perf/kriter2.py",
+  "        or _sonlanan_baska_kod(kayit, k2)",
+  "        or False"
+ ],
+ [
+  "sürmekte olan dönemde kapanış dışı kod K2 ölçümüne girer",
+  "avukat_perf/kriter2.py",
+  "    return pd.notna(kayit[\"bitis_tarihi\"]) and isinstance(kod, str) and \\",
+  "    return isinstance(kod, str) and \\"
+ ],
+ [
+  "kapanış kodu sona ermiş dönemde koşul kaybı sayılmaz",
+  "avukat_perf/kriter2.py",
+  "        kod != k2[\"rucu_kodu\"] and kod not in k2[\"kapanis_kodlari\"]",
+  "        kod != k2[\"rucu_kodu\"]"
+ ],
+ [
+  "R11'de sıfır bakiye sona ermiş dönemde koşul kaybı sayılmaz",
+  "avukat_perf/kriter2.py",
+  "        kod != k2[\"rucu_kodu\"] and kod not in k2[\"kapanis_kodlari\"]",
+  "        kod not in k2[\"kapanis_kodlari\"]"
+ ],
+ [
+  "boş rücu kodu kapanış dışı başka kod sayılır",
+  "avukat_perf/kriter2.py",
+  "and isinstance(kod, str) and",
+  "and True and"
+ ],
+ [
+  "okunamayan tablo önbellekte kalır",
+  "../webapp/backend.py",
+  "        sure = YENIDEN_SN if ONBELLEK[\"okunamayan\"] else ONBELLEK_SN",
+  "        sure = ONBELLEK_SN"
+ ],
+ [
+  "okunamayan tablo şeride gelmez",
+  "../webapp/backend.py",
+  "        okunamayan.append(ad)\n",
+  ""
+ ],
+ [
+  "web uygulaması parametreyi doğrulamaz",
+  "arayuz/sunum.py",
+  "guncel_tablolar(tablolar), dogrula(params)",
+  "guncel_tablolar(tablolar), []"
+ ],
+ [
+  "geçersiz parametrede ağırlık hesaplanır",
+  "arayuz/sunum_kural.py",
+  "    if hatalar:  # ağırlık hesabı",
+  "    if False:  # ağırlık hesabı"
+ ],
+ [
+  "geçersiz parametrede kurallar değişti denir",
+  "arayuz/sunum_ortak.py",
+  "kural_degisti=not hatalar and isinstance(surum, str)",
+  "kural_degisti=True and isinstance(surum, str)"
+ ],
+ [
+  "eski biçimli tablo sayfaya girer",
+  "arayuz/temel.py",
+  "            return None  # eski biçim",
+  "            return tablo  # eski biçim"
+ ],
+ [
+  "dönem tablosunun biçimi denetlenmez",
+  "arayuz/temel.py",
+  "ad.startswith((\"sonuc_\", \"model_\", \"birlesik_donem\"))",
+  "ad.startswith((\"sonuc_\", \"model_\"))"
+ ],
+ [
+  "metin mantıksal sütun çevrilmez",
+  "arayuz/temel.py",
+  "    return {ad: mantiksal(suz(ad, tablo)) for",
+  "    return {ad: suz(ad, tablo) for"
+ ],
+ [
+  "mantıksal çözücü false metnini doğru sayar",
+  "avukat_perf/mantik.py",
+  "        return bool(deger) and (deger is True or str(deger).strip().lower() in DOGRU_METINLER)",
+  "        return bool(deger)"
+ ],
+ [
+  "mantıksal çözücü E/H tanımaz",
+  "avukat_perf/mantik.py",
+  "DOGRU_METINLER = (\"true\", \"1\", \"e\", \"evet\")",
+  "DOGRU_METINLER = (\"true\", \"1\")"
+ ],
+ [
+  "mantıksal çözücü NaN değeri doğru sayar",
+  "avukat_perf/mantik.py",
+  "    return not math.isnan(sayi) and sayi != 0",
+  "    return sayi != 0"
+ ],
+ [
+  "yedek yolun gölgesi Kriter 2'ye de yazılır",
+  "arayuz/sunum_ortak.py",
+  "        k2 = dogru_mu(son.get(\"golge\"))",
+  "        k2 = dogru_mu(son.get(\"golge\")) or dogru_mu(son.get(\"golge_zorunlu\"))"
+ ],
+ [
+  "bekleyen kaynak şeride gelmez",
+  "arayuz/sunum_ortak.py",
+  "                    bekleyen_kaynaklar=sorted(gece[\"kaynak\"].astype(str)),",
+  "                    bekleyen_kaynaklar=[],"
+ ],
+ [
+  "dönem sonu kararı gecelikten alınır",
+  "arayuz/sunum_ortak.py",
+  "            \"son_donem_karari\": _son_karar(kayit, \"DONEM_SONU\"),",
+  "            \"son_donem_karari\": _son_karar(kayit, \"GECELIK\"),"
+ ],
+ [
+  "şerit kesiti üretilen alanı boş geceden",
+  "arayuz/sunum_ortak.py",
+  "    son = gecmis.son_basarili_gece(kayit)\n",
+  "    son = gecmis.son_basarili_gece(None if kayit is None else kayit.assign(uretilen=\"x\"))\n"
+ ],
+ [
+  "kalite kartı kimlik metnine göre seçer",
+  "arayuz/sunum_kural.py",
+  "    ozet = ozet.assign(_bas=pd.to_datetime(ozet[\"baslangic\"])).sort_values(\"_bas\")",
+  "    ozet = ozet.sort_values(\"calisma_kimligi\")"
+ ],
+ [
+  "çelişki listesi tablo sırasıyla kesilir",
+  "arayuz/sunum_kural.py",
+  "        secilen = celiski.sort_values(sira, ascending=[ad in CELISKI_SIRASI[2:] for ad in sira],\n                                      kind=\"mergesort\").head(CELISKI_EN_COK)",
+  "        secilen = celiski.head(CELISKI_EN_COK)"
+ ],
+ [
+  "çelişki toplamı gösterileni sayar",
+  "arayuz/sunum_kural.py",
+  "{\"toplam\": len(celiski),",
+  "{\"toplam\": len(secilen),"
+ ],
+ [
+  "çelişki sınırı küçülür",
+  "arayuz/sunum_kural.py",
+  "CELISKI_EN_COK = 200",
+  "CELISKI_EN_COK = 2"
+ ],
+ [
+  "aylık avukat tablosu en eski aylar",
+  "arayuz/sunum_tahsilat.py",
+  "[-AYLIK_TABLO_AY:]",
+  "[:AYLIK_TABLO_AY]"
+ ],
+ [
+  "Veri Durumu kaynakları ilk geceden",
+  "arayuz/sunum_kural.py",
+  "            son_kimlik = gece.sort_values(\"baslangic\")[\"calisma_kimligi\"].iloc[-1]",
+  "            son_kimlik = gece.sort_values(\"baslangic\")[\"calisma_kimligi\"].iloc[0]"
+ ],
+ [
+  "dağılım yuvarlanmamış puanla",
+  "arayuz/sunum_dagilim.py",
+  "    return tablo.assign(puan=tablo[\"puan\"].map(yuvarla))",
+  "    return tablo.assign(puan=tablo[\"puan\"].astype(float))"
+ ],
+ [
+  "kadran puanı yuvarlanmaz",
+  "arayuz/sunum_avukat.py",
+  "        puan = puan.assign(_s=puan[\"sutun\"].map(ACIKLAMA_SIRASI), puan=puan[\"puan\"].map(\n            yuvarla)).sort_values(\"_s\")",
+  "        puan = puan.assign(_s=puan[\"sutun\"].map(ACIKLAMA_SIRASI)).sort_values(\"_s\")"
+ ],
+ [
+  "son olaylar satır sırasıyla seçilir",
+  "arayuz/sunum_sure.py",
+  "    yeni = eslesen(tum).sort_values([\"olay_tarihi\"] + anahtar + [\"seviye\"], ascending=[False] + [\n        True] * (len(anahtar) + 1), kind=\"mergesort\").head(SON_OLAY)",
+  "    yeni = eslesen(tum).sort_values(\"olay_tarihi\", ascending=False).head(SON_OLAY)"
+ ],
+ [
+  "son olay sırası yazılmaz",
+  "arayuz/sunum_sure.py",
+  "    yeni = yeni.assign(son_sira=range(1, len(yeni) + 1))",
+  "    yeni = yeni.assign(son_sira=None)"
+ ],
+ [
+  "Genel Bakış tablosunda süre yeterli işareti yok",
+  "arayuz/sunum_siralama.py",
+  "\"yeterli\": \"sure_yeterli\"}), on=\"avukat_kodu\", how=\"left\")",
+  "\"yeterli\": \"_sure_yok\"}), on=\"avukat_kodu\", how=\"left\")"
+ ],
+ [
+  "kadranda süre yeterli işareti yok",
+  "arayuz/sunum_siralama.py",
+  "YETERLI = {\"tahsilat\": \"sonuc_tahsilat_avukat\", \"sure\": \"sonuc_sure\"}",
+  "YETERLI = {\"tahsilat\": \"sonuc_tahsilat_avukat\"}"
+ ],
+ [
+  "branş renk sırası gönderilmez",
+  "arayuz/sunum_ortak.py",
+  "    satirlar += [(\"brans\", oge[0], oge[1], sira + 1) for sira, oge in",
+  "    satirlar += [(\"brans\", oge[0], oge[1], None) for sira, oge in"
+ ],
+ [
+  "alt başlık adları gönderilmez",
+  "arayuz/sunum_ortak.py",
+  "    for tur, alan in ((\"alt_baslik\", \"alt_baslik_adlari\"), (\"mevcut_alan\", \"mevcut_alan_adlari\")):",
+  "    for tur, alan in ():"
+ ],
+ [
+  "branş adı listesi doğrulanmaz",
+  "avukat_perf/params_kural.py",
+  "    if len(ciftler) != len(branslar) or len({kod for kod, _ in ciftler}) != len(ciftler):",
+  "    if False:"
+ ],
+ [
+  "branş kodu tekrarı doğrulanmaz",
+  "avukat_perf/params_kural.py",
+  "or len({kod for kod, _ in ciftler}) != len(ciftler):",
+  "or False:"
+ ],
+ [
+  "alt başlık adı doğrulanmaz",
+  "avukat_perf/params_kural.py",
+  "                if not all(_ad_mi(ad) for ad in gorunum[alan].values())]",
+  "                if False]"
+ ],
+ [
+  "bilinmeyen sayfa adı yanıta yansır",
+  "../webapp/backend.py",
+  "        return jsonify({\"hata\": \"bilinmeyen sayfa\"}), 400",
+  "        return jsonify({\"hata\": \"bilinmeyen sayfa: \" + ad}), 400"
+ ],
+ [
+  "arka uç avukat süzgecini iletmez",
+  "../webapp/backend.py",
+  "for k in sunum.SECIMLER if request.args.get(k)}",
+  "for k in sunum.SECIMLER[:-1] if request.args.get(k)}"
+ ],
+ [
+  "önizleme avukat süzgecini iletmez",
+  "../../araclar/onizleme.py",
+  "secim = {ad: sorgu[ad] for ad in sunum.SECIMLER if sorgu.get(ad)}",
+  "secim = {ad: sorgu[ad] for ad in sunum.SECIMLER[:-1] if sorgu.get(ad)}"
+ ],
+ [
+  "sayfa seçimlerinde avukat yok",
+  "arayuz/sunum.py",
+  "SECIMLER = (\"kod\",) + tuple(sunum_sure.FILTRE)",
+  "SECIMLER = (\"kod\", \"kriter\", \"seviye\")"
+ ],
+ [
+  "sözleşme alanı kaynak sütununun adını taşır",
+  "arayuz/sozlesme.py",
+  "[\"avukat_kodu\", \"unvan\", \"aktif_dosya\", \"gerceklesen_beklenen\", \"tahsilat_yeterli\",",
+  "[\"avukat_kodu\", \"unvan\", \"aktif_dosya\", \"tahsilat_orani\", \"tahsilat_yeterli\","
+ ],
+ [
+  "konum şeridi kullanılmayan notu taşır",
+  "arayuz/sozlesme_dagilim.py",
+  "KUTU_KONUM = [ad for ad in KUTU if ad != \"not_adi\"]",
+  "KUTU_KONUM = KUTU"
+ ],
+ [
+  "gecelik puan Yayımlandı etiketiyle",
+  "../webapp/uygulama.js",
+  "YAYIMLANDI: \"Hesaplandı\",",
+  "YAYIMLANDI: \"Yayımlandı\","
+ ],
+ [
+  "KPI yayımlanan puan diyor",
+  "../webapp/uygulama.js",
+  "kpi(\"Puanı hesaplanan\",",
+  "kpi(\"Yayımlanan puan\","
+ ],
+ [
+  "Not Geçmişi dönem etiketini kullanmaz",
+  "../webapp/uygulama.js",
+  "rozet(al(r, \"durum\"), DONEM_DURUM[al(r, \"durum\")] || DURUM[al(r, \"durum\")])",
+  "durumRozeti(al(r, \"durum\"))"
+ ],
+ [
+  "kutu grafiğinde eski taban metni",
+  "../webapp/uygulama.js",
+  ">Yeterli veri eşiğine ulaşan avukat yok</span>\"",
+  ">Tabana ulaşan avukat yok</span>\""
+ ],
+ [
+  "tahsilat oranı mutabakat vaadi",
+  "../webapp/uygulama.js",
+  "\"tahsilat (dosya atanmadan önce, sulh döneminde ya da iki atama arasında); puana girmez.\",",
+  "\"tahsilat; puana girmez, toplamın tahsilat raporuyla tutması için ayrıca gösterilir.\","
+ ],
+ [
+  "kurallar değişti yalnız parametreyi anar",
+  "../webapp/uygulama.js",
+  "ipucuRozeti(\"UYARI\", \"Kurallar değişti\", \"Parametreler ya da \" +",
+  "ipucuRozeti(\"UYARI\", \"Kurallar değişti\", \"Parametreler son başarılı \" +"
+ ],
+ [
+  "branş adı JS'te yazılır",
+  "../webapp/uygulama.js",
+  "var BRANS = {}, ALT_BASLIK = {}, MEVCUT_ALAN = {};",
+  "var BRANS = { TRAFIK: \"Trafik\" }, ALT_BASLIK = {}, MEVCUT_ALAN = {};"
+ ],
+ [
+  "branş rengi paletten alınmaz",
+  "../webapp/uygulama.js",
+  "sira >= 1 && sira <= BRANS_PALET_BOYU ? \"var(--brans-\" + sira + \")\" : \"var(--brans-bilinmeyen)\"",
+  "\"var(--brans-bilinmeyen)\""
+ ],
+ [
+  "oran yazısı yuvarlanır",
+  "../webapp/uygulama.js",
+  "yuzde(oran, 0, true) + \"</span>\", true, oran) +",
+  "yuzde(oran, 0) + \"</span>\", true, oran) +"
+ ],
+ [
+  "oran eşiği elle yazılır",
+  "../webapp/uygulama.js",
+  "oran < BEKLENEN_ORAN ? \"kotu-metin\"",
+  "oran < 1 ? \"kotu-metin\""
+ ],
+ [
+  "yıllıkta yazılamayan kodu farklı",
+  "../webapp/uygulama.js",
+  "hucre(kod === \"ATANAMAYAN\" ? \"<span class='ikincil'>Avukata yazılmayan</span>\" :\n        \"<b>\" + kac(kod) + \"</b>\") + yillar.map(",
+  "hucre(kod === \"YAZILMAYAN\" ? \"<span class='ikincil'>Avukata yazılmayan</span>\" :\n        \"<b>\" + kac(kod) + \"</b>\") + yillar.map("
+ ],
+ [
+  "Veri Durumu kendine yönlendirir",
+  "../webapp/uygulama.js",
+  "    if (durum.sayfa === \"veri\") { return \"Henüz bu denetim için kayıt yok.\"; }\n",
+  ""
+ ],
+ [
+  "son olaylar istemcide kesilir",
+  "../webapp/uygulama.js",
+  "var son = kayitlar.filter(function (o) { return !bos(o.sira); }).sort(function (a, b) { return a.sira - b.sira; });",
+  "var son = kayitlar.slice(0, 30);"
+ ],
+ [
+  "kısmi ay yalnız bilgi simgesinde",
+  "../webapp/uygulama.js",
+  "\"yazılmayan tutar\"), kismiNotu(veri)) +",
+  "\"yazılmayan tutar\"), null) +"
+ ],
+ [
+  "eksen etiketi adımı yok sayar",
+  "../webapp/uygulama.js",
+  "kisa(deger, olcek.adim)",
+  "kisa(deger)"
+ ],
+ [
+  "eksi sıfır işaretli yazılır",
+  "../webapp/uygulama.js",
+  "return yuvarlanmis(v, d).toLocaleString(",
+  "return Number(v).toLocaleString("
+ ],
+ [
+  "eksi sıfır yüzde işaretli",
+  "../webapp/uygulama.js",
+  "(Number(v) < 0 && /[1-9]/.test(mutlak) ? \"-%\" : \"%\")",
+  "(Number(v) < 0 ? \"-%\" : \"%\")"
+ ],
+ [
+  "yıllık değişim rengi yuvarlamaya bakmaz",
+  "../webapp/uygulama.js",
+  "(eksiMi(d, 1) ? \"kotu-metin\" : \"\")",
+  "(d < 0 ? \"kotu-metin\" : \"\")"
+ ],
+ [
+  "ay başlığı kaçışsız",
+  "../webapp/uygulama.js",
+  "return \"#\" + kac(e.etiket) + (e.alt ? \" \" + kac(e.alt) : \"\");",
+  "return \"#\" + e.etiket + (e.alt ? \" \" + e.alt : \"\");"
+ ],
+ [
+  "ay etiketi çift kaçış",
+  "../webapp/uygulama.js",
+  "if (g.length !== 2) { return { etiket: String(v), alt: \"\", uzun: String(v) }; }",
+  "if (g.length !== 2) { return { etiket: kac(v), alt: \"\", uzun: kac(v) }; }"
+ ],
+ [
+  "bölüm sekmesi okla geçmişe yazar",
+  "../webapp/uygulama.js",
+  "history[odakla ? \"replaceState\" : \"pushState\"](null, \"\", hedef);",
+  "history.pushState(null, \"\", hedef);"
+ ],
+ [
+  "geçersiz bölüm adresi düzeltilmez",
+  "../webapp/uygulama.js",
+  "        history.replaceState(null, \"\", uygulananAdres);\n      }\n    }\n    /* Zil ya da menü",
+  "      }\n    }\n    /* Zil ya da menü"
+ ],
+ [
+  "rozet açıklaması ekran okuyucuya ulaşmaz",
+  "../webapp/uygulama.js",
+  "\"' tabindex='0' role='img' aria-label=\\\"\" + kac(metin + \": \" + ipucu) +",
+  "\"' tabindex='0' data-x=\\\"\" + kac(metin + \": \" + ipucu) +"
+ ],
+ [
+  "açıklama düğmesinde durum yok",
+  "../webapp/uygulama.js",
+  "      dugme.setAttribute(\"aria-expanded\", panel.hidden ? \"false\" : \"true\");\n",
+  ""
+ ],
+ [
+  "pasta adsız görsel",
+  "../webapp/uygulama.js",
+  "<svg viewBox='0 0 150 150' aria-hidden='true'>",
+  "<svg viewBox='0 0 150 150' role='img'>"
+ ],
+ [
+  "not süzgecinin adı yok",
+  "../webapp/uygulama.js",
+  "\"<div class='segment' role='group' aria-label='Not süzgeci'><button",
+  "\"<div class='segment'><button"
+ ],
+ [
+  "kullanılmayan CSS kuralı",
+  "../webapp/stil.css",
+  ".kotu-metin { color: var(--kirmizi); font-weight: 600; }",
+  ".kotu-metin { color: var(--kirmizi); font-weight: 600; }\n.alan-uyarisi { color: var(--kirmizi); }"
+ ],
+ [
+  "gölge kriterden bağımsız",
+  "../webapp/uygulama.js",
+  "return !!durum.golge[kriter] && (kod === \"SARI\"",
+  "return (durum.golge.K1 || durum.golge.K2) && (kod === \"SARI\""
+ ],
+ [
+  "şerit gölgesi tek bayraktan",
+  "../webapp/uygulama.js",
+  "durum.golge = { K1: al(d, \"golge_ilk_islem\") === true, K2: al(d, \"golge_dava_acma\") === true };",
+  "durum.golge = { K1: al(d, \"golge_mod\") === true, K2: al(d, \"golge_mod\") === true };"
+ ],
+ [
+  "olay rozeti kritersiz",
+  "../webapp/uygulama.js",
+  "hucre(seviyeRozeti(o.seviye, o.kriter)) +",
+  "hucre(seviyeRozeti(o.seviye)) +"
+ ],
+ [
+  "tahsilat bekleniyor boş durumu çizilmez",
+  "../webapp/uygulama.js",
+  "      if (TAHSILAT_BILESENLERI.indexOf(kimlik) >= 0 && tahsilatBekleniyor() && !veriVar(veri)) {",
+  "      if (false) {"
+ ],
+ [
+  "KPI tahsilat bekleniyor demez",
+  "../webapp/uygulama.js",
+  "var tahsilatAlt = bos(oran) && tahsilatBekleniyor() ? sistemAdi(\"tahsilat_raporu\")",
+  "var tahsilatAlt = false ? sistemAdi(\"tahsilat_raporu\")"
+ ],
+ [
+  "tahsilat kartı başlığı uzun",
+  "../webapp/uygulama.js",
+  "tablo([\"Bileşen\", \"#Puan\"], satirlar)",
+  "tablo([\"Bileşen · gerçekleşen / beklenen\", \"#Puan\"], satirlar)"
+ ],
+ [
+  "süre puanında yeterli veri işareti yok",
+  "../webapp/uygulama.js",
+  "puanMetni(al(r, \"sure\")) + azVeriSatiri(al(r, \"sure_yeterli\"), al(r, \"sure\"))",
+  "puanMetni(al(r, \"sure\"))"
+ ],
+ [
+  "şerit okuma kesintisini söylemez",
+  "../webapp/uygulama.js",
+  "(durum.okunamayan.length ? ipucuRozeti(\"KALDI\", \"Veri okunamadı\", \"Okunamayan tablolar: \" +",
+  "(false ? ipucuRozeti(\"KALDI\", \"Okuma\", \"Okunamayan tablolar: \" +"
+ ],
+ [
+  "şerit dönem yayınının kaldığını söylemez",
+  "../webapp/uygulama.js",
+  "(donem === \"KALDI\" ? \"<span class='uyari-hap'>Dönem \"",
+  "(false ? \"<span class='uyari-hap'>Dönem \""
+ ],
+ [
+  "boş sayfa okuma kesintisini kurulum günü sayar",
+  "../webapp/uygulama.js",
+  "    if (durum.okunamayan.length) {\n      return \"Bazı tablolar okunamadı",
+  "    if (false) {\n      return \"Bazı tablolar okunamadı"
+ ],
+ [
+  "parametre hata kartı ilk açılışta görünür",
+  "../webapp/index.html",
+  "data-bilesen=\"kurallar.hatalar\" hidden",
+  "data-bilesen=\"kurallar.hatalar\""
+ ],
+ [
+  "eski gölge durumu adı",
+  "../webapp/uygulama.js",
+  "GOLGE_DONEMI: \"Gölge döneminde, puana girmez\" };",
+  "GOLGE_DONEMI: \"Gölge döneminde, puana girmez\", CANLI_ONCESI: \"Canlı öncesi\" };"
+ ],
+ [
+  "gruplamaya bağlı grup sütunu zorunlu sayılır",
+  "arayuz/temel.py",
+  "set(_sutunlar) - set(SECIMLIK_SUTUNLAR.get(_tablo, ())))",
+  "set(_sutunlar))"
+ ],
+ [
+  "sahte Dataiku: gizli with_secrets olmadan okunur",
+  "hat/dataiku_ortam.py",
+  "get_auth_info(with_secrets=True)",
+  "get_auth_info()"
+ ],
+ [
+  "boş değerli tamsayı int_as_float denenmez",
+  "hat/dataiku_ortam.py",
+  "{\"infer_with_pandas\": False, \"int_as_float\": True},\n                    {\"infer_with_pandas\": False, \"int_as_float\": True, \"bool_as_str\": True}",
+  "{\"infer_with_pandas\": False},\n                    {\"infer_with_pandas\": False, \"bool_as_str\": True}"
+ ],
+ [
+  "yerel çalıştırıcı senaryodan önce klasörü siler",
+  "../../araclar/yerel_calistir.py",
+  "    ayarlar, params = senaryo_ayarlari(senaryo)\n    _sifirla(klasor)\n",
+  "    _sifirla(klasor)\n    ayarlar, params = senaryo_ayarlari(senaryo)\n"
+ ],
+ [
+  "mutasyon aracı yazım testlerini tümden dışlar",
+  "../../araclar/mutasyon.py",
+  "SAYILMAYAN = (\"tests/test_yazim.py::test_satir_en_cok_100_karakter\",\n              \"tests/test_yazim.py::test_modul_en_cok_120_satir\",",
+  "SAYILMAYAN = (\"tests/test_yazim.py\","
+ ],
+ [
+  "mutasyon aracında zaman sınırı yok",
+  "../../araclar/mutasyon.py",
+  "capture_output=True, timeout=ZAMAN_SINIRI)",
+  "capture_output=True)"
+ ],
+ [
+  "özet varsayılan ayar dosyalarını kapsamaz",
+  "../../araclar/ozet.py",
+  "              for ad in AYARLAR]",
+  "              for ad in ()]"
+ ],
+ [
+  "özet kontrol not defterlerini kapsamaz",
+  "../../araclar/ozet.py",
+  "(\"tarifler\", TARIFLER), (\"kontrol\", KONTROL))",
+  "(\"tarifler\", TARIFLER))"
+ ],
+ [
+  "özet paket listesi elle yazılır",
+  "../../araclar/ozet.py",
+  "PAKETLER = paketler()\n",
+  "PAKETLER = (\"avukat_perf\", \"hat\", \"arayuz\")\n"
+ ],
+ [
+  "özet paketi __init__.py'siz klasörü de sayar",
+  "../../araclar/ozet.py",
+  "if os.path.isfile(os.path.join(kutuphane, ad, \"__init__.py\"))))",
+  "if os.path.isdir(os.path.join(kutuphane, ad))))"
+ ],
+ [
+  "ayar özeti anahtar sırasına bağlı",
+  "avukat_perf/surum.py",
+  "json.dumps(deger, sort_keys=True, ensure_ascii=False)",
+  "json.dumps(deger, ensure_ascii=False)"
+ ],
+ [
+  "aktarım kontrolü varsayılan ayar özetini yazmaz",
+  "../kontrol/aktarim_kontrol.py",
+  "    print(\"degiskenler/\" + ad, json_ozeti(ortam.ayar_oku(ad)))\n",
+  "    pass\n"
+ ],
+ [
+  "atama logu anahtarında referans yok",
+  "avukat_perf/sema.py",
+  "\"anahtar\": [\"dosya_no\", \"avukat_kodu\", \"atama_tarihi\", \"atama_ref\"],",
+  "\"anahtar\": [\"dosya_no\", \"avukat_kodu\", \"atama_tarihi\"],"
+ ],
+ [
+  "takip bilgisi gözlem kaynağı değil",
+  "avukat_perf/sema.py",
+  "\"anahtar\": [\"dosya_no\"], \"istege_bagli\": True, \"gozlem\": True,\n              \"yinelenen_uyari\"",
+  "\"anahtar\": [\"dosya_no\"], \"istege_bagli\": True, \"gozlem\": False,\n              \"yinelenen_uyari\""
+ ],
+ [
+  "rücu tutarı zorunlu değil",
+  "avukat_perf/sema.py",
+  "(\"rucu_tutari\", \"sayi\", True)",
+  "(\"rucu_tutari\", \"sayi\", False)"
+ ],
+ [
+  "aylık tahsilat tablosu ızgaranın ilk ayları",
+  "arayuz/sunum_tahsilat.py",
+  "[-AYLIK_TABLO_AY:]",
+  "[:AYLIK_TABLO_AY]"
+ ],
+ [
+  "Grafana: kaynak beklenirken gece tamamlanmamış sayılır",
+  "../../grafana/sorgular.sql",
+  "AND durum IN ('GECTI', 'KAYNAK_BEKLENIYOR')",
+  "AND durum = 'GECTI'"
+ ],
+ [
+  "Grafana: bayat kaynak gece kararına bakar",
+  "../../grafana/sorgular.sql",
+  "AND kalite_sonucu = 'GECTI'",
+  "AND durum = 'BASARILI'"
+ ],
+ [
+  "Grafana: P5 uyarıları KALDI'nın önüne dizer",
+  "../../grafana/sorgular.sql",
+  "ORDER BY CASE durum WHEN 'KALDI' THEN 0 ELSE 1 END, kaynak, kontrol;",
+  "ORDER BY durum DESC, kaynak, kontrol;"
+ ],
+ [
+  "MinIO: eski sürüm saklama kuralı kurulmaz",
+  "../../minio/kurulum.sh",
+  "  mc ilm rule add --noncurrent-expire-days \"$ESKI_SURUM_GUN\" \"$ALIAS/$KOVA_ISLENMIS\"\n",
+  "  true\n"
+ ],
+ [
+  "MinIO: bağlı politika yeniden bağlanır",
+  "../../minio/kurulum.sh",
+  "if mc admin user info \"$ALIAS\" \"$HIZMET_HESABI\" | grep -q \"$POLITIKA_ADI\"; then",
+  "if false; then"
+ ],
+ [
+  "mutabakat açıklaması tutar yazar",
+  "avukat_perf/kalite_iliski.py",
+  "\"hesaplanan ile rapor toplamı arasındaki göreli fark\",",
+  "\"hesaplanan {:.2f}, rapor {:.2f}\".format(bizim.get(donem, 0.0), toplam),"
+ ],
+ [
+  "tahsilat ve süre puanı ölçeği farklı olabilir",
+  "avukat_perf/params_kural.py",
+  "if (tah[\"taban\"], tah[\"egim\"]) != (sure[\"taban\"], sure[\"egim\"]):",
+  "if False:"
+ ],
+ [
+  "gizlilik taraması NFC'ye çevirmez",
+  "../../tests/test_gizlilik.py",
+  "    goreli, metin = _nfc(goreli), _nfc(metin)\n",
+  ""
+ ],
+ [
+  "aktarım kontrolü özeti satır sonu boşluğunu silmez",
+  "../kontrol/aktarim_kontrol.py",
+  "    satirlar = [satir.rstrip() for satir in metin.splitlines()]",
+  "    satirlar = [satir for satir in metin.splitlines()]"
+ ],
+ [
+  "aktarım kontrolü özeti yalnız \\n ile böler",
+  "../kontrol/aktarim_kontrol.py",
+  "    satirlar = [satir.rstrip() for satir in metin.splitlines()]",
+  "    satirlar = [satir.rstrip() for satir in metin.split(\"\\n\")]"
+ ],
+ [
+  "boş değerli tamsayı ikinci seçenekte int_as_float yok",
+  "hat/dataiku_ortam.py",
+  "{\"infer_with_pandas\": False, \"int_as_float\": True},\n",
+  "{\"infer_with_pandas\": False},\n"
+ ],
+ [
+  "README prova kurulum ayarını söylemez",
+  "../../README.md",
+  "tek fark `kurulum.py` 1. hücresinde `DOSYA_KAYNAGI_VAR = True` yazılmasıdır",
+  "tek fark `kurulum.py` 1. hücresinde dosya klasörünün açılmasıdır"
+ ],
+ [
+  "README sözleşme tablosunda hareket kimliği yok",
+  "../../README.md",
+  "tutar\\* (sayı), hareket_turu, hareket_no |",
+  "tutar\\* (sayı), hareket_turu |"
+ ],
+ [
+  "Grafana README alarm sorgusunda tablo adını söylemez",
+  "../../grafana/README.md",
+  "yerine gerçek tablo adı yazılır** (3. adımdaki ad",
+  "yerine pano değişkeni bırakılır** (3. adımdaki ad"
+ ],
+ [
+  "README bilerek yapılmayanlarda yetkili avukat yok",
+  "../../README.md",
+  "bölge ve yetkili avukat",
+  "ve bölge"
+ ],
+ [
+  "süre açıklamasında R satırındaki E kesilir",
+  "avukat_perf/aciklama.py",
+  "sabit(sp[\"guven_sabiti\"]), kesin(s.e),",
+  "sabit(sp[\"guven_sabiti\"]), sayim(s.e, 4),"
+ ],
+ [
+  "özet etkisi: en büyük kalan yerine tek tek yuvarlama",
+  "avukat_perf/aciklama_ozet.py",
+  "    if not 0 <= artis <= len(etkin):",
+  "    if True:"
+ ],
+ [
+  "özet etkisi: taban 75 yerine sıfır",
+  "avukat_perf/aciklama_ozet.py",
+  "_d(params[\"tahsilat\"][\"taban\"])",
+  "_d(0)"
+ ],
+ [
+  "özet etkisi: kuruş en küçük kalana verilir",
+  "avukat_perf/aciklama_ozet.py",
+  "key=lambda ad: -(kesin[ad] - taban_alti[ad])",
+  "key=lambda ad: (kesin[ad] - taban_alti[ad])"
+ ],
+ [
+  "özet: puanı geçersiz satıra da cümle eklenir",
+  "avukat_perf/aciklama.py",
+  "if s.durum == \"GECERLI\" else satirlar",
+  "if True else satirlar"
+ ],
+ [
+  "özet: küçük eksi etki düşüren sayılır",
+  "avukat_perf/aciklama_ozet.py",
+  "if _d(e) <= -YAKIN)",
+  "if _d(e) < 0)"
+ ],
+ [
+  "özet: etki özet dışı satırlara da yazılır",
+  "avukat_perf/aciklama.py",
+  "etkiler.get(kod, {}).get(sutun) if tur == \"OZET\" else None",
+  "etkiler.get(kod, {}).get(sutun) if True else None"
+ ],
+ [
+  "özet: üçten çok en düşük alt başlık adlarıyla yazılır",
+  "avukat_perf/aciklama_ozet.py",
+  "    if len(dusukler) > 2:",
+  "    if len(dusukler) > 3:"
+ ],
+ [
+  "sunum: not birleşik dışı satırlara da yazılır",
+  "arayuz/sunum_avukat.py",
+  "notu if sutun == \"birlesik\" else None",
+  "notu"
+ ],
+ [
+  "ilk faz: süre de birleşik puana girer",
+  "avukat_perf/agirlik.py",
+  "    return tuple(ad for ad in SUTUNLAR if ad in secilen)",
+  "    return tuple(SUTUNLAR)"
+ ],
+ [
+  "ilk faz: girmeyen sütun eksik sayılır",
+  "avukat_perf/birlesik.py",
+  "    eksik = genis[etkin].isna()",
+  "    eksik = genis.isna()"
+ ],
+ [
+  "ilk faz: girmeyen sütunun ağırlığı sıfır değil",
+  "avukat_perf/agirlik.py",
+  "    return {ad: tam.get(ad, 0) / 100.0 for ad in SUTUNLAR}",
+  "    return {ad: tam.get(ad, 25) / 100.0 for ad in SUTUNLAR}"
+ ],
+ [
+  "birleşik sütun listesi denetlenmez",
+  "avukat_perf/agirlik.py",
+  "            len(sutunlar) or not set(sutunlar) <= set(SUTUNLAR):",
+  "            len(sutunlar) or False:"
+ ],
+ [
+  "açıklama birleşik formülünde girmeyen sütun da yazılır",
+  "avukat_perf/aciklama.py",
+  "                          for ad in agirlik.etkin_sutunlar(params))",
+  "                          for ad in ('tahsilat', 'sure', 'kalite', 'davranis'))"
+ ],
+ [
+  "üç sütunda tutarlılık sabiti dört sütununki",
+  "avukat_perf/agirlik.py",
+  "RASTGELE_TUTARLILIK = {3: 0.58, 4: 0.90}",
+  "RASTGELE_TUTARLILIK = {3: 0.90, 4: 0.90}"
+ ]
+]

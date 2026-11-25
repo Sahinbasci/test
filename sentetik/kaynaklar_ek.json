@@ -1,0 +1,37 @@
+{
+  "_not": "Sentetik prova eki: dataiku/degiskenler/kaynaklar.json üzerine birleştirilir. Bütün sistemler sentetik/veri altındaki CSV'lerden okunur (dosya yöntemi). Dataiku'daki prova projesinde bu dosya ayarlar klasörüne kaynaklar_ek.json adıyla yüklenir.",
+  "sistemler": {
+    "cekirdek": {
+      "yontem": "dosya"
+    },
+    "tahsilat_raporu": {
+      "yontem": "dosya"
+    },
+    "degerlendirme": {
+      "yontem": "dosya"
+    },
+    "dava_takip": {
+      "yontem": "dosya"
+    },
+    "duzeltme": {
+      "yontem": "dosya"
+    }
+  },
+  "kaynaklar": {
+    "atama_log": {
+      "alan_eslemesi": {
+        "DOSYA_NO": "dosya_no",
+        "AV_KOD": "avukat_kodu",
+        "ATAMA_ZAMANI": "atama_tarihi",
+        "IPTAL_ZAMANI": "iptal_tarihi",
+        "ATAMA_NO": "atama_ref",
+        "GRUP_KODU": "grup",
+        "ATAMA_TIPI": "tipi"
+      },
+      "tarih_bicimi": "%d/%m/%Y %H:%M:%S"
+    },
+    "tahsilat_hareketi": {
+      "sayi_bicimi": "tr"
+    }
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "_teyit_aciklama": "Hukuk ya da kaynak ekibi teyidi bekleyen parametreler (_teyit_bekleyen); Puanlama Kuralları sayfasında 'Teyit bekliyor' olarak işaretlenir. Bir karar kesinleşince yalnız buradan çıkarılır; hesap sürümünü etkilemez.",
+  "_teyit_bekleyen": [
+    "agirliklar",
+    "birlesik_sutunlar",
+    "notlar",
+    "kriter1.uyari_gun",
+    "kriter1.oto_branslar",
+    "kriter1.sonlanan_atamada_dusum_korunur",
+    "kriter2.dusum_ay",
+    "kriter2.sonlanan_atamada_dusum_korunur",
+    "kriter2.kapanis_kodlari",
+    "tahsilat.gruplama",
+    "tahsilat.tutar_bantlari",
+    "tahsilat.olgunluk_ay",
+    "tahsilat.yas_bantlari",
+    "tahsilat.bilesen_agirliklari",
+    "tahsilat.guncellik_pencere_ay",
+    "tahsilat.enflasyon_duzeltme",
+    "tahsilat.elde_tutma_paydasi",
+    "tahsilat.yeterli_olgun_dosya",
+    "kalite_davranis.olcek",
+    "kalite_davranis.ters_yonlu",
+    "kalite_davranis.coklu_degerlendirme",
+    "kalite_davranis.pencere_ay",
+    "sure_puani.pencere_ay",
+    "sure_puani.yeterli_dosya",
+    "uyari.golge_mod",
+    "hazirlik.iptal_yorumu",
+    "hazirlik.sulh_avukat_kodlari",
+    "hazirlik.sulh_alani",
+    "hazirlik.sulh_degerleri",
+    "hazirlik.tahsilat_hareket_turleri",
+    "kalite.bilinen_branslar",
+    "kalite.iliski_en_cok_yetim_orani"
+  ],
+  "kriter1": {
+    "_not": "Oto kapsamı (oto_branslar) varsayımdır; teyit bekliyor. Atama iade ya da yeniden atamayla biterse bitişten önce oluşmuş puan düşümünün korunup korunmayacağı (sonlanan_atamada_dusum_korunur) Hukuk teyidi bekliyor.",
+    "uyari_gun": 10,
+    "dusum_gun_oto": 20,
+    "dusum_ay_diger": 2,
+    "oto_branslar": [
+      "TRAFIK",
+      "KASKO"
+    ],
+    "sonlanan_atamada_dusum_korunur": true
+  },
+  "kriter2": {
+    "_not": "Puan düşümünün ayı (dusum_ay) teyit bekliyor (4 ya da 6). Uyarı yalnız rucu_kodu kodlu dosyalarda aranır. Dosyanın kapandığını gösteren rücu kodları (kapanis_kodlari) ya da R11'de açık bakiyenin sıfırlanması koşul kaybıdır: Kriter 2 dönemi o gün kapanır, tahsilatın sıklık ve güncelliğinde dosyanın süresi o gün biter. Atama bekleyen ya da iade edilen dosyanın başka kodu kapanış sayılmaz. Kod listesi çekirdek sistem ekibinden teyit bekliyor.",
+    "uyari_ay": 3,
+    "dusum_ay": 6,
+    "rucu_kodu": "R11",
+    "kapanis_kodlari": [
+      "R06",
+      "R12"
+    ],
+    "sonlanan_atamada_dusum_korunur": true
+  },
+  "tahsilat": {
+    "_not": "İzleme süreleri (olgunluk_ay) başlangıç tahminidir. Tutar bantları (tutar_bantlari) dosyaları tutarına göre gruplar; başlangıç sınırları 40.000 ve 150.000 TL, gerçek rücu verisi üç eşit gruba bölünerek güncellenecek. Boş liste tek bant demektir. Tahsilat puanı üç bileşenin ağırlıklı toplamıdır (bilesen_agirliklari): tutar (gerçekleşen ÷ beklenen tahsilat), sıklık (olgun dosyalarda avukatın tahsilat yaptığı dosya-ay sayısı ÷ elde tuttuğu süreden beklenen sayı) ve güncellik (aynısı, son guncellik_pencere_ay ayda bütün dosyalarla). Beklenen değerler aynı dosya grubundaki (gruplama: branş, dosya yaşı bandı, tutar bandı) diğer avukatların oranından kurulur, avukatın kendi sonucu kendi beklentisine girmez (grupta başka avukat yoksa aynı branştaki, o da yoksa bütün diğer avukatlar); yas_bantlari rücuya verilişten geçen ayın sınırlarıdır (sıklık ve güncellikte her gün o günkü yaşın bandına yazılır). Kapanan dosyanın süresi kapandığı gün biter. Sayım bileşenlerinde güven ayarı olay sayısına uygulanır (olay_guven_sabiti). Bileşen ağırlıkları, yaş sınırları ve pencere tasarım değeridir; Hukuk teyidi bekliyor. Puan en az en_az_olgun_dosya (1) olgun dosyada hesaplanır; olgun dosya yeterli_olgun_dosya'nın (10) altındaysa puan yine üretilir ve geçerli sayılır, ekranda 'Yeterli veri yok' uyarısıyla gösterilir (güven ayarı az veride puanı beklenen düzeye yaklaştırır). Branş puanında aynı kural o branşın dosyalarıyla uygulanır. Enflasyon düzeltmesi seçenektir, henüz uygulanmadı. Yıllık tahsilat tablosu son yillik_yil_sayisi takvim yılını gösterir. Elde tutma payı (elde_tutma_paydasi): ilk_atamadan (varsayılan) avukatın dosyayı tuttuğu günleri dosyanın ilk atamasından kesite kadarki güne böler; iade sonrası ve iki atama arasındaki boşluk kimseye yazılmaz, kısa süre tutulup iade edilen dosya beklentiye tam dosya olarak girmez, tek avukatın tuttuğu dosya 1 sayılır. avukat_gunleri payı yalnız avukatların tuttuğu günler arasında böler (önceki yöntem). Seçim Hukuk teyidi bekliyor.",
+    "gruplama": [
+      "brans",
+      "yas_bandi",
+      "tutar_bandi"
+    ],
+    "tutar_bantlari": [
+      40000,
+      150000
+    ],
+    "yas_bantlari": [
+      12,
+      24,
+      36,
+      48,
+      60,
+      84
+    ],
+    "olgunluk_ay": {
+      "TRAFIK": 24,
+      "KASKO": 24,
+      "DIGER": 36
+    },
+    "en_az_olgun_dosya": 1,
+    "yeterli_olgun_dosya": 10,
+    "guven_sabiti": 10,
+    "olay_guven_sabiti": 10,
+    "taban": 75,
+    "egim": 50,
+    "bilesen_agirliklari": {
+      "tutar": 0.6,
+      "siklik": 0.2,
+      "guncellik": 0.2
+    },
+    "elde_tutma_paydasi": "ilk_atamadan",
+    "enflasyon_duzeltme": false,
+    "guncellik_pencere_ay": 12,
+    "aylik_pencere_ay": 24,
+    "yillik_yil_sayisi": 3
+  },
+  "kalite_davranis": {
+    "_not": "Bir sütunun puanı için alt başlıkların en az üçte ikisi puanlanmış olmalıdır (yeterlilik). Değerlendirme sisteminin puan ölçeği ve yüksek puanın olumsuz olduğu alt başlıklar (ters_yonlu) teyit bekliyor; teyit gelene kadar bu iki sütun puanlanmaz. Bir alt başlıkta birden çok değerlendirme varsa ortalaması alınır. Mevcut dört alan (mevcut_alanlar) yeni alt başlıklar eklenene kadar avukat kartında bilgi amaçlı gösterilir; puana girmez.",
+    "yeterlilik": [
+      2,
+      3
+    ],
+    "alt_basliklar": {
+      "kalite": [
+        "eksik_hatali_islem",
+        "yanlis_muhatap_eksik_taraf",
+        "hatali_dava_takip_islemi",
+        "hukuki_degerlendirme",
+        "ic_ekip_mudahalesi",
+        "sistem_kullanimi_guncellik"
+      ],
+      "davranis": [
+        "tekrarlayan_bilgi_talebi",
+        "dosyaya_hakimiyet",
+        "karar_alma_inisiyatif",
+        "surekli_yonlendirme_ihtiyaci",
+        "yazili_iletisim_niteligi",
+        "sorumluluk_alma",
+        "indirim_sulh_yaklasimi"
+      ]
+    },
+    "olcek": {
+      "en_dusuk": null,
+      "en_yuksek": null
+    },
+    "ters_yonlu": null,
+    "coklu_degerlendirme": "ortalama",
+    "pencere_ay": 12,
+    "mevcut_alanlar": [
+      "brans_yetkinligi",
+      "cozum_yetenegi",
+      "ulasilabilirlik",
+      "durustluk_duzeyi"
+    ]
+  },
+  "sure_puani": {
+    "_not": "Ölçüm penceresi, risk altındaki dönem ve veri kapsamı tanımları önerilen varsayılandır; Hukuk teyidi bekliyor. Beklenen düşüm tabanı (en_az_beklenen) 0: puan göreli olduğu için kimse gecikmeyince beklenen düşüm 0 olur; taban 5 iken bu durumda süre puanı ve birleşik puan hiç yayımlanmıyordu. Şimdi herkes zamanındaysa herkes 75 alır. Beklenen düşüm aynı gruptaki (kriter, süreç, branş) diğer avukatların düşüm oranından kurulur, avukatın kendi dönemleri kendi beklentisine girmez (grupta başka avukat yoksa aynı kriter ve süreçteki, o da yoksa bütün diğer avukatlar). En az bir risk altındaki dönemi olan avukatın puanı hesaplanır; risk altındaki dönemlerdeki farklı dosya sayısı yeterli_dosya'nın (10) altındaysa puan yine geçerlidir, ekranda 'Yeterli veri yok' uyarısıyla gösterilir. Veri kapsamı (en_az_kapsam) tabanı değişmedi.",
+    "guven_sabiti": 10,
+    "taban": 75,
+    "egim": 50,
+    "yeterli_dosya": 10,
+    "en_az_beklenen": 0,
+    "en_az_kapsam": 0.8,
+    "pencere_ay": 12
+  },
+  "uyari": {
+    "_not": "Gölge mod açıkken süre bayrakları hesaplanır; e-posta gönderilmez, puan düşümü ve süre puanı uygulanmaz.",
+    "golge_mod": true
+  },
+  "hazirlik": {
+    "_not": "Çekirdek sistem alanlarının anlamı teyit bekliyor: iptal tarihinin yeniden atamayı mı hatalı girişi mi gösterdiği (iptal_yorumu), sulh amaçlı atamanın nasıl ayırt edildiği ve hangi hareket türlerinin tahsilat sayılacağı. Hareket türü verilmezse bütün hareketler tahsilat sayılır; verilirse ters kayıt (eksi tutarlı) türü de listeye yazılır, listede olmayan tür puana girmez (kalite kapısı sayısını uyarır). sulh_alani atama logunun sözleşme alanlarından biridir (atama_ref, grup, tipi); ham kaynak adı değil. Dosya aynı avukata kesintisiz yeniden atanırsa (araya başka avukat girmeden yeni atama kaydı) surer iken dönem sürer, süre ilk atamadan işler, dosyada tek düşüm olur; süre yalnız başka bir avukata atamada yeniden başlar, aynı dosyada düşüm bir defadır. yeni_donem yeni atama dönemi açar, süre yeni kayıttan başlar.",
+    "iptal_yorumu": "sonraki_atamaya_gore",
+    "ayni_avukata_yeniden_atama": "surer",
+    "sulh_avukat_kodlari": [],
+    "sulh_alani": null,
+    "sulh_degerleri": [],
+    "tahsilat_hareket_turleri": null
+  },
+  "kalite": {
+    "_not": "Veri kalite kapısının eşikleri: önceki başarılı çekime göre satır sayısında izin verilen değişim (satir_sapma_orani; meşru bir sıçramada bir gece için yükseltilir), sapmanın denetlenmediği küçük tablo sınırı (sapma_en_az_satir) ve tahsilat raporuyla mutabakat toleransı. Bu tarihten eski tarih (en_eski_tarih; boş yerine yazılmış 1900-01-01 gibi) geceyi durdurur. Branş değeri bilinen_branslar listesinde yoksa gece durur (yazım farkı oto eşiğini ve olgunluk süresini sessizce değiştirirdi; kaynak kodları kaynak ayarındaki deger_eslemesi ile çevrilir); liste gerçek kodlarla teyit edilecek. Kaynaklar arası ilişkide eşleşmeyen anahtar oranı iliski_en_cok_yetim_orani'nı aşarsa gece durur (tahsilat hareketinde tutarla da tartılır); meşru eşleşmeyen kayıt olabileceği için değer ilk gerçek çekimde ölçülerek belirlenir.",
+    "satir_sapma_orani": 0.5,
+    "sapma_en_az_satir": 100,
+    "mutabakat_tolerans": 0.005,
+    "gelecek_tarih_gun": 1,
+    "en_eski_tarih": "1950-01-01",
+    "bilinen_branslar": [
+      "TRAFIK",
+      "KASKO",
+      "NAKLIYAT",
+      "YANGIN",
+      "DAHILI_SU",
+      "HIRSIZLIK",
+      "DIGER"
+    ],
+    "iliski_en_cok_yetim_orani": 0.1
+  },
+  "_notlar_aciklama": "yüksekten düşüğe [not, eşik]; toplam >= eşik olan ilk not verilir. B notu teyit bekliyor",
+  "notlar": [
+    [
+      "A",
+      85
+    ],
+    [
+      "B+",
+      75
+    ],
+    [
+      "B",
+      65
+    ],
+    [
+      "B-",
+      55
+    ],
+    [
+      "C",
+      0
+    ]
+  ],
+  "agirliklar": {
+    "_not": "Sütun ağırlıkları ikili karşılaştırmalardan (Analitik Hiyerarşi Süreci) hesaplanır: \"a/b\": a sütunu b sütununun kaç katı önemli. Gerekçe: Tahsilat ve Süre nesnel sistem verisine dayanır; Hukuki Kalite ile Davranış ve İletişim aynı değerlendiricinin öznel puanıdır, bu yüzden ikisi birlikte nesnel sütunların toplamından küçük tutulur. Tahsilat Süre'den biraz (1,17 kat), Hukuki Kalite'den 1,4 kat önemli; Süre Hukuki Kalite'den 1,2 kat; hukuki doğruluk iletişim biçiminin 2,5 katı. Sonuç 35 / 30 / 25 / 10, tutarlılık oranı yaklaşık 0. Değerlendirmeler Hukuk teyidi bekliyor.",
+    "tahsilat/sure": 1.17,
+    "tahsilat/kalite": 1.4,
+    "tahsilat/davranis": 3.5,
+    "sure/kalite": 1.2,
+    "sure/davranis": 3,
+    "kalite/davranis": 2.5
+  },
+  "_birlesik_aciklama": "Birleşik puana giren sütunlar (birlesik_sutunlar). İlk fazda dava takip sistemi verisi olmadığından Süre ve Performans birleşik puana girmez; Süre Takibi sayfası ve bayraklar bilgi olarak kalır. Ağırlıklar yalnız giren sütunların ikili karşılaştırmalarından hesaplanır: Süre'nin payı diğerlerine oranında dağılır. Giren sütunların hepsi geçerli değilse birleşik puan, not ve sıra yayımlanmaz (birlesik_puan_kosulu); eksik puan sıfır sayılmaz.",
+  "birlesik_sutunlar": [
+    "tahsilat",
+    "kalite",
+    "davranis"
+  ],
+  "birlesik_puan_kosulu": "tum_sutunlar",
+  "gorunum": {
+    "_not": "Ekranda görünen adların TEK tanımlandığı yer: sistem adları, branş adları (brans_adlari: [kod, ad] listesi; sıra branşın renk paletindeki yeridir, liste ek dosyada bütünüyle değişir), kalite ve davranış alt başlıkları ile mevcut değerlendirme alanlarının adları. Gerçek adları yalnız burada yazın; arayüzdeki bütün etiketler buradan gelir. Sistem kodları (sol taraf) değişmez; branş kodları kalite.bilinen_branslar ile aynı olmalı. Listede olmayan branş ekranda kendi koduyla ve nötr renkle görünür. Bu bölüm hesaplamayı ve hesap sürümünü etkilemez.",
+    "sistem_adlari": {
+      "cekirdek": "Çekirdek sistem",
+      "tahsilat_raporu": "Tahsilat raporu",
+      "degerlendirme": "Değerlendirme sistemi",
+      "dava_takip": "Dava takip sistemi",
+      "duzeltme": "Düzeltme kayıtları"
+    },
+    "brans_adlari": [
+      ["TRAFIK", "Trafik"],
+      ["KASKO", "Kasko"],
+      ["NAKLIYAT", "Nakliyat"],
+      ["YANGIN", "Yangın"],
+      ["DAHILI_SU", "Dahili Su"],
+      ["HIRSIZLIK", "Hırsızlık"],
+      ["DIGER", "Diğer"]
+    ],
+    "alt_baslik_adlari": {
+      "eksik_hatali_islem": "Eksik veya hatalı işlemler",
+      "yanlis_muhatap_eksik_taraf": "Yanlış muhatap veya eksik taraf",
+      "hatali_dava_takip_islemi": "Hatalı dava ve takip işlemleri",
+      "hukuki_degerlendirme": "Hukuki değerlendirme ve yorumlama",
+      "ic_ekip_mudahalesi": "İç ekibin müdahale ihtiyacı",
+      "sistem_kullanimi_guncellik": "Sistem kullanımı ve güncellik",
+      "tekrarlayan_bilgi_talebi": "Tekrarlayan bilgi talepleri",
+      "dosyaya_hakimiyet": "Dosyaya hakimiyet",
+      "karar_alma_inisiyatif": "Karar alma ve inisiyatif",
+      "surekli_yonlendirme_ihtiyaci": "Sürekli yönlendirme ihtiyacı",
+      "yazili_iletisim_niteligi": "Yazılı iletişimin niteliği",
+      "sorumluluk_alma": "Sorumluluk alma",
+      "indirim_sulh_yaklasimi": "İndirim ve sulh süreçlerindeki yaklaşım"
+    },
+    "mevcut_alan_adlari": {
+      "brans_yetkinligi": "Branş yetkinliği",
+      "cozum_yetenegi": "Çözüm yeteneği",
+      "ulasilabilirlik": "Ulaşılabilirlik",
+      "durustluk_duzeyi": "Dürüstlük düzeyi"
+    }
+  }
+}

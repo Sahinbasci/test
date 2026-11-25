@@ -1,0 +1,252 @@
+<!-- Sözleşmeli Avukat Performans Sistemi: Dataiku web uygulaması HTML sekmesi.
+     Her veri bileşeni data-bilesen ile işaretlidir; içerik yalnız arka uçtan gelen veriyle
+     doldurulur. Sayfalar bölümlere ayrılır (bolum-sekme); seçilen sayfa, bölüm ve avukat
+     adres çubuğuna yazılır, tarayıcının geri ve ileri tuşları çalışır. Bu dosyanın metninde
+     rakam bulunmaz (test denetler). -->
+<div class="uygulama" lang="tr">
+  <div hidden data-bilesen="ortak.adlar"></div>
+  <aside class="yan-menu">
+    <div class="marka">
+      <div class="marka-isaret">AP</div>
+      <div>
+        <div class="marka-ad">Avukat Performans</div>
+      </div>
+    </div>
+    <nav aria-label="Sayfalar">
+      <div class="menu-baslik">Genel</div>
+      <a class="menu-oge" data-sayfa="genel" href="#genel" aria-label="Genel Bakış">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <span class="menu-ad">Genel Bakış</span></a>
+      <div class="menu-baslik">Performans</div>
+      <a class="menu-oge" data-sayfa="avukat" href="#avukat" aria-label="Avukatlar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/>
+          <path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <span class="menu-ad">Avukatlar</span></a>
+      <a class="menu-oge" data-sayfa="sure" href="#sure" aria-label="Süre Takibi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/>
+          <path d="M12 9v4l3 2M9 2h6"/></svg>
+        <span class="menu-ad">Süre Takibi</span><span class="rozet-sayi" id="bayrak-rozeti"></span></a>
+      <a class="menu-oge" data-sayfa="kurallar" href="#kurallar" aria-label="Puanlama Kuralları">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/>
+          <path d="M9 8h6M9 12h6M9 16h4"/></svg>
+        <span class="menu-ad">Puanlama Kuralları</span></a>
+      <div class="menu-baslik">Sistem</div>
+      <a class="menu-oge" data-sayfa="veri" href="#veri" aria-label="Veri Durumu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/>
+          <path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+        <span class="menu-ad">Veri Durumu</span></a>
+    </nav>
+  </aside>
+
+  <main class="icerik">
+    <header class="ust-cubuk">
+      <div class="ust-serit" data-bilesen="ortak.durum"></div>
+      <div class="ust-sag">
+        <a class="zil" data-sayfa="sure" href="#sure" title="Kırmızı bayraklı aktif gecikmeler">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>
+          <span class="rozet-sayi" id="zil-sayi"></span></a>
+      </div>
+    </header>
+
+    <section class="sayfa" id="sayfa-genel">
+      <div class="sayfa-baslik">
+        <div>
+          <div class="yol">Avukat Performans › Genel</div>
+          <h1>Genel Bakış</h1>
+        </div>
+        <div class="baslik-sag disa-aktar"><button class="dugme" data-disa-aktar="xlsx" aria-label="Sayfadaki tabloları Excel dosyası olarak indir">Excel</button><button class="dugme" data-disa-aktar="csv" aria-label="Sayfadaki tabloları CSV dosyası olarak indir">CSV</button></div>
+      </div>
+      <div class="bolumler" role="tablist" aria-label="Genel Bakış bölümleri">
+        <button class="bolum-sekme etkin" data-bolum="ozet" role="tab" id="genel-ozet-sekme"
+          aria-controls="genel-ozet" aria-selected="true">Özet</button>
+        <button class="bolum-sekme" data-bolum="siralama" role="tab" id="genel-siralama-sekme"
+          aria-controls="genel-siralama" aria-selected="false">Sıralama</button>
+        <button class="bolum-sekme" data-bolum="dagilim" role="tab" id="genel-dagilim-sekme"
+          aria-controls="genel-dagilim" aria-selected="false">Dağılımlar</button>
+        <button class="bolum-sekme" data-bolum="tahsilat" role="tab" id="genel-tahsilat-sekme"
+          aria-controls="genel-tahsilat" aria-selected="false">Tahsilat</button>
+        <button class="bolum-sekme" data-bolum="portfoy" role="tab" id="genel-portfoy-sekme"
+          aria-controls="genel-portfoy" aria-selected="false">Portföy</button>
+      </div>
+      <div class="bolum-panel etkin" data-bolum-panel="ozet" role="tabpanel" id="genel-ozet"
+        aria-labelledby="genel-ozet-sekme">
+        <div class="kpi-satiri" data-bilesen="genel.kpi"></div>
+        <div class="izgara iki-bir">
+          <div class="kart" data-bilesen="genel.aylik"></div>
+          <div class="kart oncelikli" data-bilesen="genel.oncelikli"></div>
+        </div>
+        <div class="kart" data-bilesen="genel.sutun_durumu"></div>
+      </div>
+      <div class="bolum-panel" data-bolum-panel="siralama" role="tabpanel" id="genel-siralama"
+        aria-labelledby="genel-siralama-sekme">
+        <div class="kart" data-bilesen="genel.avukat_tablosu"></div>
+      </div>
+      <div class="bolum-panel" data-bolum-panel="dagilim" role="tabpanel" id="genel-dagilim"
+        aria-labelledby="genel-dagilim-sekme">
+        <div class="izgara iki">
+          <div class="kart" data-bilesen="genel.dagilim"></div>
+          <div class="kart" data-bilesen="genel.tahsilat_dosya"></div>
+        </div>
+        <div class="kart" data-bilesen="genel.brans_oran"></div>
+      </div>
+      <div class="bolum-panel" data-bolum-panel="tahsilat" role="tabpanel" id="genel-tahsilat"
+        aria-labelledby="genel-tahsilat-sekme">
+        <div class="kart" data-bilesen="genel.aylik_avukat"></div>
+        <div class="kart" data-bilesen="genel.yillik"></div>
+        <div class="kart" data-bilesen="genel.gruplar"></div>
+      </div>
+      <div class="bolum-panel" data-bolum-panel="portfoy" role="tabpanel" id="genel-portfoy"
+        aria-labelledby="genel-portfoy-sekme">
+        <div class="izgara iki-bir">
+          <div class="kart" data-bilesen="genel.brans"></div>
+          <div class="kart" data-bilesen="genel.bant"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sayfa" id="sayfa-avukat">
+      <div class="sayfa-baslik">
+        <div>
+          <div class="yol">Avukat Performans › Performans</div>
+          <h1>Avukatlar</h1>
+        </div>
+        <div class="baslik-sag disa-aktar"><button class="dugme" data-disa-aktar="xlsx" aria-label="Sayfadaki tabloları Excel dosyası olarak indir">Excel</button><button class="dugme" data-disa-aktar="csv" aria-label="Sayfadaki tabloları CSV dosyası olarak indir">CSV</button></div>
+      </div>
+      <div class="izgara bir-iki">
+        <div class="kart avukat-liste" data-bilesen="avukat.liste"></div>
+        <div>
+          <div class="kart" data-bilesen="avukat.baslik"></div>
+          <div class="neden" id="neden-paneli" hidden data-bilesen="avukat.aciklama"></div>
+          <div class="sekmeler" role="tablist" aria-label="Avukat kartı bölümleri">
+            <button class="sekme etkin" data-sekme="ozet" role="tab" id="sekme-ozet" aria-controls="panel-ozet"
+              aria-selected="true">Özet</button>
+            <button class="sekme" data-sekme="tahsilat" role="tab" id="sekme-tahsilat" aria-controls="panel-tahsilat"
+              aria-selected="false">Tahsilat</button>
+            <button class="sekme" data-sekme="sure" role="tab" id="sekme-sure" aria-controls="panel-sure"
+              aria-selected="false">Süre</button>
+            <button class="sekme" data-sekme="kalite" role="tab" id="sekme-kalite" aria-controls="panel-kalite"
+              aria-selected="false">Kalite ve Davranış</button>
+            <button class="sekme" data-sekme="gecmis" role="tab" id="sekme-gecmis" aria-controls="panel-gecmis"
+              aria-selected="false">Not Geçmişi</button>
+          </div>
+          <div class="sekme-panel etkin" data-panel="ozet" role="tabpanel" id="panel-ozet"
+            aria-labelledby="sekme-ozet">
+            <div class="kart" data-bilesen="avukat.sutunlar"></div>
+            <div class="izgara iki">
+              <div class="kart" data-bilesen="avukat.tahsilat"></div>
+              <div class="kart" data-bilesen="avukat.sure"></div>
+            </div>
+            <div class="kart" data-bilesen="avukat.konum"></div>
+          </div>
+          <div class="sekme-panel" data-panel="tahsilat" role="tabpanel" id="panel-tahsilat"
+            aria-labelledby="sekme-tahsilat">
+            <div class="kart" data-bilesen="avukat.aylik"></div>
+            <div class="kart" data-bilesen="avukat.brans"></div>
+            <div class="kart" data-bilesen="avukat.portfoy"></div>
+          </div>
+          <div class="sekme-panel" data-panel="sure" role="tabpanel" id="panel-sure"
+            aria-labelledby="sekme-sure">
+            <div class="kart" data-bilesen="avukat.sure_ozet"></div>
+          </div>
+          <div class="sekme-panel" data-panel="kalite" role="tabpanel" id="panel-kalite"
+            aria-labelledby="sekme-kalite">
+            <div class="kart" data-bilesen="avukat.kalite_davranis"></div>
+            <div class="kart" data-bilesen="avukat.alt_basliklar"></div>
+            <div class="kart" data-bilesen="avukat.mevcut_degerlendirme"></div>
+          </div>
+          <div class="sekme-panel" data-panel="gecmis" role="tabpanel" id="panel-gecmis"
+            aria-labelledby="sekme-gecmis">
+            <div class="kart" data-bilesen="avukat.gecmis"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sayfa" id="sayfa-sure">
+      <div class="sayfa-baslik">
+        <div>
+          <div class="yol">Avukat Performans › Performans</div>
+          <h1>Süre Takibi</h1>
+        </div>
+        <div class="baslik-sag disa-aktar"><button class="dugme" data-disa-aktar="xlsx" aria-label="Sayfadaki tabloları Excel dosyası olarak indir">Excel</button><button class="dugme" data-disa-aktar="csv" aria-label="Sayfadaki tabloları CSV dosyası olarak indir">CSV</button></div>
+      </div>
+      <div class="bolumler" role="tablist" aria-label="Süre Takibi bölümleri">
+        <button class="bolum-sekme etkin" data-bolum="ozet" role="tab" id="sure-ozet-sekme"
+          aria-controls="sure-ozet" aria-selected="true">Özet</button>
+        <button class="bolum-sekme" data-bolum="donemler" role="tab" id="sure-donemler-sekme"
+          aria-controls="sure-donemler" aria-selected="false">Dönemler</button>
+        <button class="bolum-sekme" data-bolum="bildirim" role="tab" id="sure-bildirim-sekme"
+          aria-controls="sure-bildirim" aria-selected="false">Uyarı ve olaylar</button>
+      </div>
+      <div class="bolum-panel etkin" data-bolum-panel="ozet" role="tabpanel" id="sure-ozet"
+        aria-labelledby="sure-ozet-sekme">
+        <div class="kart" data-bilesen="sure.seviyeler"></div>
+        <div class="kart" data-bilesen="sure.ilk_islem_dagilim"></div>
+      </div>
+      <div class="bolum-panel" data-bolum-panel="donemler" role="tabpanel" id="sure-donemler"
+        aria-labelledby="sure-donemler-sekme">
+        <div class="kart">
+          <div class="kart-parca" data-bilesen="sure.filtre"></div>
+          <div data-bilesen="sure.liste"></div>
+        </div>
+      </div>
+      <div class="bolum-panel" data-bolum-panel="bildirim" role="tabpanel" id="sure-bildirim"
+        aria-labelledby="sure-bildirim-sekme">
+        <div class="izgara iki genis">
+          <div class="kart" data-bilesen="sure.eposta"></div>
+          <div class="kart" data-bilesen="sure.olaylar"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sayfa" id="sayfa-kurallar">
+      <div class="sayfa-baslik">
+        <div>
+          <div class="yol">Avukat Performans › Performans</div>
+          <h1>Puanlama Kuralları</h1>
+        </div>
+        <div class="baslik-sag disa-aktar"><button class="dugme" data-disa-aktar="xlsx" aria-label="Sayfadaki tabloları Excel dosyası olarak indir">Excel</button><button class="dugme" data-disa-aktar="csv" aria-label="Sayfadaki tabloları CSV dosyası olarak indir">CSV</button></div>
+      </div>
+      <div class="kart" data-bilesen="kurallar.hatalar" hidden></div>
+      <div class="izgara iki">
+        <div class="kart" data-bilesen="kurallar.agirliklar"></div>
+        <div class="kart" data-bilesen="kurallar.notlar"></div>
+      </div>
+      <div class="kart" data-bilesen="kurallar.parametreler"></div>
+      <div class="kart" data-bilesen="kurallar.aciklamalar"></div>
+    </section>
+
+    <section class="sayfa" id="sayfa-veri">
+      <div class="sayfa-baslik">
+        <div>
+          <div class="yol">Avukat Performans › Sistem</div>
+          <h1>Veri Durumu</h1>
+        </div>
+        <div class="baslik-sag disa-aktar"><button class="dugme" data-disa-aktar="xlsx" aria-label="Sayfadaki tabloları Excel dosyası olarak indir">Excel</button><button class="dugme" data-disa-aktar="csv" aria-label="Sayfadaki tabloları CSV dosyası olarak indir">CSV</button></div>
+      </div>
+      <div class="kart" data-bilesen="veri.kaynaklar"></div>
+      <div class="izgara iki genis">
+        <div class="kart" data-bilesen="veri.calismalar"></div>
+        <div class="kart" data-bilesen="veri.kalite"></div>
+      </div>
+      <div class="kart">
+        <div class="kart-parca" data-bilesen="veri.celiski_ozet"></div>
+        <div data-bilesen="veri.celiski"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cekmece-arka" id="cekmece-arka" hidden></div>
+  <aside class="cekmece" id="cekmece" hidden role="dialog" aria-modal="true"
+    aria-labelledby="cekmece-baslik" tabindex="-1"></aside>
+  <div class="ipucu" id="ipucu" role="tooltip"></div>
+</div>

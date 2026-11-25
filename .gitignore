@@ -1,0 +1,11 @@
+docs/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+onizleme/
+.yasakli_adlar
+
+# Şirkete özgü ayar ekleri depoya girmez (yalnız Dataiku ayarlar klasöründe durur)
+dataiku/degiskenler/*_ek.json
